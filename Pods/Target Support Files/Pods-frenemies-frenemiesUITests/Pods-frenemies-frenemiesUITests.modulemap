@@ -1,0 +1,6 @@
+framework module Pods_frenemies_frenemiesUITests {
+  umbrella header "Pods-frenemies-frenemiesUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

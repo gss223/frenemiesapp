@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2212D0A12707F72601DAE7A1 /* Pods_frenemies_frenemiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FD82E4BF510242883CD936 /* Pods_frenemies_frenemiesUITests.framework */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
 		AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D98269CAFAF00A6BC5E /* ViewController.m */; };
@@ -16,6 +17,9 @@
 		AADF7DA4269CAFB000A6BC5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7DA3269CAFB000A6BC5E /* main.m */; };
 		AADF7DAE269CAFB000A6BC5E /* frenemiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7DAD269CAFB000A6BC5E /* frenemiesTests.m */; };
 		AADF7DB9269CAFB000A6BC5E /* frenemiesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7DB8269CAFB000A6BC5E /* frenemiesUITests.m */; };
+		AADF7DC9269CEBCA00A6BC5E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7DC8269CEBCA00A6BC5E /* LoginViewController.m */; };
+		CBAA6E0BDBC2CC498B021EC4 /* Pods_frenemiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A99CDD99B473C155BB11CF /* Pods_frenemiesTests.framework */; };
+		E82AA638465FD56F4E0D3CD9 /* Pods_frenemies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3702435EB8E711C0C0013243 /* Pods_frenemies.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171EE3FBB27CCADF50664BBF /* Pods-frenemies-frenemiesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemies-frenemiesUITests.debug.xcconfig"; path = "Target Support Files/Pods-frenemies-frenemiesUITests/Pods-frenemies-frenemiesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		35F626D86E283C5E2306394A /* Pods-frenemiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemiesTests.release.xcconfig"; path = "Target Support Files/Pods-frenemiesTests/Pods-frenemiesTests.release.xcconfig"; sourceTree = "<group>"; };
+		3702435EB8E711C0C0013243 /* Pods_frenemies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_frenemies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40FD82E4BF510242883CD936 /* Pods_frenemies_frenemiesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_frenemies_frenemiesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCB02DDDCE8DEA372E51C1C /* Pods-frenemiesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemiesTests.debug.xcconfig"; path = "Target Support Files/Pods-frenemiesTests/Pods-frenemiesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		72C59350E77F21961A3B9B88 /* Pods-frenemies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemies.debug.xcconfig"; path = "Target Support Files/Pods-frenemies/Pods-frenemies.debug.xcconfig"; sourceTree = "<group>"; };
+		79A99CDD99B473C155BB11CF /* Pods_frenemiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_frenemiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7D8E269CAFAF00A6BC5E /* frenemies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frenemies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +65,10 @@
 		AADF7DB4269CAFB000A6BC5E /* frenemiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = frenemiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7DB8269CAFB000A6BC5E /* frenemiesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = frenemiesUITests.m; sourceTree = "<group>"; };
 		AADF7DBA269CAFB000A6BC5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADF7DC7269CEBCA00A6BC5E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		AADF7DC8269CEBCA00A6BC5E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D8B7AB2FC98E795BE8937C8F /* Pods-frenemies-frenemiesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemies-frenemiesUITests.release.xcconfig"; path = "Target Support Files/Pods-frenemies-frenemiesUITests/Pods-frenemies-frenemiesUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EA2B48AC51465C9DF86F7D86 /* Pods-frenemies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemies.release.xcconfig"; path = "Target Support Files/Pods-frenemies/Pods-frenemies.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E82AA638465FD56F4E0D3CD9 /* Pods_frenemies.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBAA6E0BDBC2CC498B021EC4 /* Pods_frenemiesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +92,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2212D0A12707F72601DAE7A1 /* Pods_frenemies_frenemiesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33BB7757C8F8C93B83756373 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				72C59350E77F21961A3B9B88 /* Pods-frenemies.debug.xcconfig */,
+				EA2B48AC51465C9DF86F7D86 /* Pods-frenemies.release.xcconfig */,
+				171EE3FBB27CCADF50664BBF /* Pods-frenemies-frenemiesUITests.debug.xcconfig */,
+				D8B7AB2FC98E795BE8937C8F /* Pods-frenemies-frenemiesUITests.release.xcconfig */,
+				6FCB02DDDCE8DEA372E51C1C /* Pods-frenemiesTests.debug.xcconfig */,
+				35F626D86E283C5E2306394A /* Pods-frenemiesTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		93C90D2E56E9275291A6E679 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3702435EB8E711C0C0013243 /* Pods_frenemies.framework */,
+				40FD82E4BF510242883CD936 /* Pods_frenemies_frenemiesUITests.framework */,
+				79A99CDD99B473C155BB11CF /* Pods_frenemiesTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AADF7D85269CAFAF00A6BC5E = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +129,8 @@
 				AADF7DAC269CAFB000A6BC5E /* frenemiesTests */,
 				AADF7DB7269CAFB000A6BC5E /* frenemiesUITests */,
 				AADF7D8F269CAFAF00A6BC5E /* Products */,
+				33BB7757C8F8C93B83756373 /* Pods */,
+				93C90D2E56E9275291A6E679 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +147,7 @@
 		AADF7D90269CAFAF00A6BC5E /* frenemies */ = {
 			isa = PBXGroup;
 			children = (
+				AADF7DC6269CEB9C00A6BC5E /* View Controllers */,
 				AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */,
 				AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */,
 				AADF7D94269CAFAF00A6BC5E /* SceneDelegate.h */,
@@ -137,6 +181,15 @@
 			path = frenemiesUITests;
 			sourceTree = "<group>";
 		};
+		AADF7DC6269CEB9C00A6BC5E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AADF7DC7269CEBCA00A6BC5E /* LoginViewController.h */,
+				AADF7DC8269CEBCA00A6BC5E /* LoginViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +197,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AADF7DBD269CAFB000A6BC5E /* Build configuration list for PBXNativeTarget "frenemies" */;
 			buildPhases = (
+				AD8A4C5ACEB416D5293C422C /* [CP] Check Pods Manifest.lock */,
 				AADF7D8A269CAFAF00A6BC5E /* Sources */,
 				AADF7D8B269CAFAF00A6BC5E /* Frameworks */,
 				AADF7D8C269CAFAF00A6BC5E /* Resources */,
+				C2C2A8CB626BD9EB95314F95 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,6 +216,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AADF7DC0269CAFB000A6BC5E /* Build configuration list for PBXNativeTarget "frenemiesTests" */;
 			buildPhases = (
+				C04B09EE2FEED669649EB3B1 /* [CP] Check Pods Manifest.lock */,
 				AADF7DA5269CAFB000A6BC5E /* Sources */,
 				AADF7DA6269CAFB000A6BC5E /* Frameworks */,
 				AADF7DA7269CAFB000A6BC5E /* Resources */,
@@ -179,9 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AADF7DC3269CAFB000A6BC5E /* Build configuration list for PBXNativeTarget "frenemiesUITests" */;
 			buildPhases = (
+				90FAABF899311A4119243B11 /* [CP] Check Pods Manifest.lock */,
 				AADF7DB0269CAFB000A6BC5E /* Sources */,
 				AADF7DB1269CAFB000A6BC5E /* Frameworks */,
 				AADF7DB2269CAFB000A6BC5E /* Resources */,
+				10F411AB28E7D8F455951E41 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -261,6 +319,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		10F411AB28E7D8F455951E41 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frenemies-frenemiesUITests/Pods-frenemies-frenemiesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frenemies-frenemiesUITests/Pods-frenemies-frenemiesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-frenemies-frenemiesUITests/Pods-frenemies-frenemiesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90FAABF899311A4119243B11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-frenemies-frenemiesUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD8A4C5ACEB416D5293C422C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-frenemies-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C04B09EE2FEED669649EB3B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-frenemiesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2C2A8CB626BD9EB95314F95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frenemies/Pods-frenemies-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frenemies/Pods-frenemies-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-frenemies/Pods-frenemies-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AADF7D8A269CAFAF00A6BC5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -270,6 +431,7 @@
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
 				AADF7DA4269CAFB000A6BC5E /* main.m in Sources */,
 				AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */,
+				AADF7DC9269CEBCA00A6BC5E /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +600,7 @@
 		};
 		AADF7DBE269CAFB000A6BC5E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72C59350E77F21961A3B9B88 /* Pods-frenemies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -456,6 +619,7 @@
 		};
 		AADF7DBF269CAFB000A6BC5E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA2B48AC51465C9DF86F7D86 /* Pods-frenemies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -474,6 +638,7 @@
 		};
 		AADF7DC1269CAFB000A6BC5E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FCB02DDDCE8DEA372E51C1C /* Pods-frenemiesTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -494,6 +659,7 @@
 		};
 		AADF7DC2269CAFB000A6BC5E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35F626D86E283C5E2306394A /* Pods-frenemiesTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -514,6 +680,7 @@
 		};
 		AADF7DC4269CAFB000A6BC5E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 171EE3FBB27CCADF50664BBF /* Pods-frenemies-frenemiesUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F87X6892G9;
@@ -532,6 +699,7 @@
 		};
 		AADF7DC5269CAFB000A6BC5E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8B7AB2FC98E795BE8937C8F /* Pods-frenemies-frenemiesUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F87X6892G9;
