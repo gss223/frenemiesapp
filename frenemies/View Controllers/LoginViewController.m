@@ -11,7 +11,11 @@
 #import<Parse/Parse.h>
 #import <PFFacebookUtils.h>
 @import Parse;
+@interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *password;
 
+@end
 // Add this to the body
 @implementation LoginViewController
 
@@ -37,6 +41,25 @@
             NSLog(@"success");
         }
     }];
+}
+- (void)loginUser {
+    NSString *username = self.username.text;
+    NSString *password = self.password.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error != nil) {
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User logged in successfully");
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        }
+    }];
+}
+- (IBAction)normalLogin:(id)sender {
+    [self loginUser];
+}
+- (IBAction)signupAction:(id)sender {
+    [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
 }
 
 /*
