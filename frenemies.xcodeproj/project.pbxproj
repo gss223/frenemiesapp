@@ -11,6 +11,7 @@
 		AA349982269E137500DCC7E7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349981269E137500DCC7E7 /* SignUpViewController.m */; };
 		AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349984269E1DF100DCC7E7 /* FeedViewController.m */; };
 		AA349988269E1E1700DCC7E7 /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349987269E1E1700DCC7E7 /* CreateViewController.m */; };
+		AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA34998A269F785900DCC7E7 /* ProfileViewController.m */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
 		AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D98269CAFAF00A6BC5E /* ViewController.m */; };
@@ -56,6 +57,8 @@
 		AA349984269E1DF100DCC7E7 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		AA349986269E1E1700DCC7E7 /* CreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
 		AA349987269E1E1700DCC7E7 /* CreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
+		AA349989269F785900DCC7E7 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		AA34998A269F785900DCC7E7 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		AADF7D8E269CAFAF00A6BC5E /* frenemies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frenemies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				AA349984269E1DF100DCC7E7 /* FeedViewController.m */,
 				AA349986269E1E1700DCC7E7 /* CreateViewController.h */,
 				AA349987269E1E1700DCC7E7 /* CreateViewController.m */,
+				AA349989269F785900DCC7E7 /* ProfileViewController.h */,
+				AA34998A269F785900DCC7E7 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */,
+				AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
 				AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */,
 				AA349982269E137500DCC7E7 /* SignUpViewController.m in Sources */,
