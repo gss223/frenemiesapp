@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 
 @interface FeedViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

@@ -12,6 +12,9 @@
 		AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349984269E1DF100DCC7E7 /* FeedViewController.m */; };
 		AA349988269E1E1700DCC7E7 /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349987269E1E1700DCC7E7 /* CreateViewController.m */; };
 		AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA34998A269F785900DCC7E7 /* ProfileViewController.m */; };
+		AA349990269F9D4400DCC7E7 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA34998F269F9D4400DCC7E7 /* FeedCell.m */; };
+		AA349993269F9D6100DCC7E7 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349992269F9D6100DCC7E7 /* FriendCell.m */; };
+		AA349996269F9D7100DCC7E7 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349995269F9D7100DCC7E7 /* TagCell.m */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
 		AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D98269CAFAF00A6BC5E /* ViewController.m */; };
@@ -59,6 +62,12 @@
 		AA349987269E1E1700DCC7E7 /* CreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
 		AA349989269F785900DCC7E7 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		AA34998A269F785900DCC7E7 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		AA34998E269F9D4400DCC7E7 /* FeedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = "<group>"; };
+		AA34998F269F9D4400DCC7E7 /* FeedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = "<group>"; };
+		AA349991269F9D6100DCC7E7 /* FriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		AA349992269F9D6100DCC7E7 /* FriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		AA349994269F9D7100DCC7E7 /* TagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
+		AA349995269F9D7100DCC7E7 /* TagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
 		AADF7D8E269CAFAF00A6BC5E /* frenemies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frenemies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -134,6 +143,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA34998C269F9D2000DCC7E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA34998D269F9D2800DCC7E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA34998E269F9D4400DCC7E7 /* FeedCell.h */,
+				AA34998F269F9D4400DCC7E7 /* FeedCell.m */,
+				AA349991269F9D6100DCC7E7 /* FriendCell.h */,
+				AA349992269F9D6100DCC7E7 /* FriendCell.m */,
+				AA349994269F9D7100DCC7E7 /* TagCell.h */,
+				AA349995269F9D7100DCC7E7 /* TagCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AADF7D85269CAFAF00A6BC5E = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +188,8 @@
 		AADF7D90269CAFAF00A6BC5E /* frenemies */ = {
 			isa = PBXGroup;
 			children = (
+				AA34998D269F9D2800DCC7E7 /* Views */,
+				AA34998C269F9D2000DCC7E7 /* Models */,
 				AADF7DC6269CEB9C00A6BC5E /* View Controllers */,
 				AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */,
 				AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */,
@@ -447,7 +478,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA349996269F9D7100DCC7E7 /* TagCell.m in Sources */,
 				AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */,
+				AA349990269F9D4400DCC7E7 /* FeedCell.m in Sources */,
 				AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
 				AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */,
@@ -456,6 +489,7 @@
 				AADF7DA4269CAFB000A6BC5E /* main.m in Sources */,
 				AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */,
 				AADF7DC9269CEBCA00A6BC5E /* LoginViewController.m in Sources */,
+				AA349993269F9D6100DCC7E7 /* FriendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,8 +6,19 @@
 //
 
 #import "CreateViewController.h"
+#import <Parse/Parse.h>
 
 @interface CreateViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *challengePic;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITextField *challengeName;
+@property (weak, nonatomic) IBOutlet UISwitch *publicSwitch;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startTime;
+@property (weak, nonatomic) IBOutlet UIDatePicker *endTime;
+@property (weak, nonatomic) IBOutlet UIView *dropView;
+@property (weak, nonatomic) IBOutlet UITextView *challengeDescription;
+
 
 @end
 

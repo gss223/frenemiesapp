@@ -9,6 +9,7 @@ target 'frenemies' do
   pod 'FBSDKLoginKit', '4.28.0'
   pod 'Parse','1.16.0'
   pod 'Parse/FacebookUtils'
+  pod 'MKDropdownMenu'
 
   target 'frenemiesTests' do
     inherit! :search_paths
