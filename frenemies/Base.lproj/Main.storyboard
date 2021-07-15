@@ -352,7 +352,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="eRR-EH-bYE">
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="0nw-sU-BL1"/>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="0nw-sU-BL1">
+                            <connections>
+                                <action selector="createAction:" destination="bDb-DG-URH" id="XBn-QM-Tum"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="challengeDescription" destination="bQf-fs-L9G" id="SLR-Vt-t52"/>
