@@ -19,5 +19,8 @@
 
     // Configure the view for the selected state
 }
+- (void)setUser:(PFUser *)user {
+    _user = user;
+}
 
 @end
