@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-frenemies-frenemiesUITests/Pods-frenemies-frenemiesUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/CCDropDownMenus/CCDropDownMenus.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework
 ${BUILT_PRODUCTS_DIR}/MKDropdownMenu/MKDropdownMenu.framework

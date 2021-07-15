@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "42465A188431886AB035275F049824D3"
-               BuildableName = "Bolts.framework"
-               BlueprintName = "Bolts"
+               BlueprintIdentifier = "DF93D018E96C61278F55F7881DBF87EE"
+               BuildableName = "CCDropDownMenus.framework"
+               BlueprintName = "CCDropDownMenus"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -10,20 +10,23 @@
 #import "MKDropdownMenu.h"
 #import "FriendCell.h"
 #import "TagCell.h"
+#import <CCDropDownMenus/CCDropDownMenus.h>
 
-@interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,CCDropDownMenuDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *challengePic;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UITextField *challengeName;
 @property (weak, nonatomic) IBOutlet UISwitch *publicSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startTime;
-@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
+//@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endTime;
 @property (weak, nonatomic) IBOutlet UITextView *challengeDescription;
 @property (nonatomic, strong) NSArray *friendArray;
 @property (nonatomic, strong) NSArray *tagArray;
 @property (nonatomic, strong) NSArray *dropdownArray;
+@property (weak, nonatomic) IBOutlet UIView *dropdownView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -36,6 +39,11 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.dropdownArray = [[NSArray alloc] initWithObjects:@"mile",@"meter",@"liter",@"second",@"day",@"cup",@"meal",@"minute",nil];
+    ManaDropDownMenu *menu = [[ManaDropDownMenu alloc] initWithFrame:self.dropdownView.frame title:@"Units"];
+        menu.delegate = self;
+        menu.numberOfRows = self.dropdownArray.count;
+        menu.textOfRows = self.dropdownArray;
+        [self.contentView addSubview:menu];
     UITapGestureRecognizer *photoTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapPhoto:)];
     [self.challengePic addGestureRecognizer:photoTapGestureRecognizer];
     [self.challengePic setUserInteractionEnabled:YES];
@@ -90,7 +98,7 @@
     
     return [PFFile fileWithName:@"image.png" data:imageData];
 }
-- (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu{
+/*- (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu{
     return 1;
 }
 - (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component{
@@ -101,7 +109,7 @@
 }
 - (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return self.dropdownArray[row];
-}
+}*/
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.friendArray.count;
 }

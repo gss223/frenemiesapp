@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.9.1):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.1)
+  - CCDropDownMenus (0.1.2)
   - FBSDKCoreKit (4.28.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.28.0):
@@ -22,6 +23,7 @@ PODS:
     - Parse/Core
 
 DEPENDENCIES:
+  - CCDropDownMenus
   - FBSDKLoginKit (= 4.28.0)
   - MKDropdownMenu
   - Parse (= 1.16.0)
@@ -30,6 +32,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Bolts
+    - CCDropDownMenus
     - FBSDKCoreKit
     - FBSDKLoginKit
     - MKDropdownMenu
@@ -37,11 +40,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  CCDropDownMenus: ee65b63286a16354907fdde49c40c1817f463470
   FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
   FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   Parse: 5b36dc2c2f0a2fd82a257ae018bc3d68cf2c24e7
 
-PODFILE CHECKSUM: abf1b5ff5636ecc124bba303ba55df527bde759d
+PODFILE CHECKSUM: 8e4c68947e1e0fb7577987f42a6baae3acffd14e
 
 COCOAPODS: 1.10.1
