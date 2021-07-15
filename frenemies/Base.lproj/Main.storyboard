@@ -252,10 +252,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvp-pz-oqG">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvp-pz-oqG" customClass="MKDropdownMenu">
                                                 <rect key="frame" x="199" y="232" width="179" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="bDb-DG-URH" id="97V-ge-9na"/>
+                                                    <outlet property="delegate" destination="bDb-DG-URH" id="dVO-et-zkB"/>
+                                                </connections>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED9-qH-alk">
                                                 <rect key="frame" x="23" y="30" width="90" height="92"/>
@@ -363,7 +367,7 @@
                         <outlet property="challengeName" destination="l3X-UJ-evg" id="Xgu-Oy-XLC"/>
                         <outlet property="challengePic" destination="ED9-qH-alk" id="x0M-oh-8DT"/>
                         <outlet property="collectionView" destination="3ni-05-OTe" id="vBc-Zf-PwO"/>
-                        <outlet property="dropView" destination="lvp-pz-oqG" id="mlP-0O-Sp6"/>
+                        <outlet property="dropdownMenu" destination="lvp-pz-oqG" id="6q7-kK-nYs"/>
                         <outlet property="endTime" destination="IPJ-mL-gdx" id="vuc-PC-RVA"/>
                         <outlet property="publicSwitch" destination="aRA-ta-8fR" id="63Q-J1-59M"/>
                         <outlet property="startTime" destination="qUo-4R-QLv" id="qLg-yC-xQB"/>

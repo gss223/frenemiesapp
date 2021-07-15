@@ -10,6 +10,7 @@ target 'frenemies' do
   pod 'Parse','1.16.0'
   pod 'Parse/FacebookUtils'
   pod 'MKDropdownMenu'
+  pod 'CCDropDownMenus'
 
   target 'frenemiesTests' do
     inherit! :search_paths

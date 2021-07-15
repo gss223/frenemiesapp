@@ -8,6 +8,8 @@
 #import "CreateViewController.h"
 #import <Parse/Parse.h>
 #import "MKDropdownMenu.h"
+#import "FriendCell.h"
+#import "TagCell.h"
 
 @interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *challengePic;
@@ -16,12 +18,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *challengeName;
 @property (weak, nonatomic) IBOutlet UISwitch *publicSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startTime;
+@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endTime;
-@property (weak, nonatomic) IBOutlet UIView *dropView;
 @property (weak, nonatomic) IBOutlet UITextView *challengeDescription;
 @property (nonatomic, strong) NSArray *friendArray;
 @property (nonatomic, strong) NSArray *tagArray;
-
+@property (nonatomic, strong) NSArray *dropdownArray;
 
 @end
 
@@ -33,10 +35,7 @@
     self.tableView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    MKDropdownMenu *dropdownMenu = [[MKDropdownMenu alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    dropdownMenu.dataSource = self;
-    dropdownMenu.delegate = self;
-    [self.dropView addSubview:dropdownMenu];
+    self.dropdownArray = [[NSArray alloc] initWithObjects:@"mile",@"meter",@"liter",@"second",@"day",@"cup",@"meal",@"minute",nil];
     UITapGestureRecognizer *photoTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapPhoto:)];
     [self.challengePic addGestureRecognizer:photoTapGestureRecognizer];
     [self.challengePic setUserInteractionEnabled:YES];
@@ -90,6 +89,33 @@
     }
     
     return [PFFile fileWithName:@"image.png" data:imageData];
+}
+- (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu{
+    return 1;
+}
+- (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component{
+    return self.dropdownArray.count;
+}
+- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForComponent:(NSInteger)component{
+    return @"Units";
+}
+- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return self.dropdownArray[row];
+}
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.friendArray.count;
+}
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    FriendCell* cell = (FriendCell *) [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
+    return cell;
+}
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TagCell" forIndexPath:indexPath];
+    return cell;
+    
+}
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.tagArray.count;
 }
 /*
 #pragma mark - Navigation
