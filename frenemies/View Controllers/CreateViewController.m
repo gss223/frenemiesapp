@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *dropdownView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (nonatomic,strong) NSString *unitChose;
+@property (nonatomic, strong) NSMutableArray *selectedTags;
 
 @end
 
@@ -39,6 +40,7 @@
     self.tableView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.allowsMultipleSelection = true;
     self.dropdownArray = [NSArray arrayWithObjects:@"mile",@"meter",@"liter",@"second",@"day",@"cup",@"meal",@"minute",nil];
     ManaDropDownMenu *menu = [[ManaDropDownMenu alloc] initWithFrame:self.dropdownView.frame title:@"Units"];
         menu.delegate = self;
@@ -144,6 +146,14 @@
     cell.contentView.layer.borderWidth = 1;
     return cell;
     
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *taggingArray =[NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
+    if (self.selectedTags.count<3){
+    [self.selectedTags addObject:taggingArray[indexPath.row]];
+    UICollectionViewCell *cell= [collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor= [UIColor greenColor];
+    }
 }
 
 /*

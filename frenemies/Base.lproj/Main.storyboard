@@ -189,8 +189,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="qUo-4R-QLv">
-                                                <rect key="frame" x="120" y="135.5" width="274" height="50"/>
+                                                <rect key="frame" x="120" y="135.5" width="200" height="50"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="g5c-Oz-t68"/>
                                                     <constraint firstAttribute="height" constant="50" id="zui-iv-c7r"/>
                                                 </constraints>
                                             </datePicker>
@@ -347,9 +348,10 @@
                                                 </constraints>
                                             </view>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="IPJ-mL-gdx">
-                                                <rect key="frame" x="120" y="195.5" width="274" height="50"/>
+                                                <rect key="frame" x="120" y="195.5" width="200" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="8TL-Em-OaQ"/>
+                                                    <constraint firstAttribute="width" constant="200" id="RYC-Yc-gkK"/>
                                                 </constraints>
                                             </datePicker>
                                         </subviews>
@@ -359,7 +361,6 @@
                                             <constraint firstItem="ED9-qH-alk" firstAttribute="leading" secondItem="lvn-se-WO3" secondAttribute="leading" constant="20" id="2iY-HE-TWy"/>
                                             <constraint firstItem="IPJ-mL-gdx" firstAttribute="leading" secondItem="qUo-4R-QLv" secondAttribute="leading" id="70H-wc-CfW"/>
                                             <constraint firstItem="IPJ-mL-gdx" firstAttribute="centerY" secondItem="eN1-qy-Gub" secondAttribute="centerY" id="9Id-SX-x8U"/>
-                                            <constraint firstAttribute="trailing" secondItem="qUo-4R-QLv" secondAttribute="trailing" constant="20" id="9su-2l-f6n"/>
                                             <constraint firstItem="Fua-LW-HPO" firstAttribute="leading" secondItem="ED9-qH-alk" secondAttribute="leading" id="9wq-TA-Ck4"/>
                                             <constraint firstAttribute="trailing" secondItem="bQf-fs-L9G" secondAttribute="trailing" constant="20" id="9xi-da-JIL"/>
                                             <constraint firstItem="JTy-Iy-G4x" firstAttribute="bottom" secondItem="O4d-g6-LAc" secondAttribute="bottom" id="AAb-bo-dLz"/>
@@ -381,7 +382,6 @@
                                             <constraint firstItem="O4d-g6-LAc" firstAttribute="leading" secondItem="JTy-Iy-G4x" secondAttribute="trailing" constant="50" id="alN-7y-jqW"/>
                                             <constraint firstItem="aRA-ta-8fR" firstAttribute="centerY" secondItem="l3X-UJ-evg" secondAttribute="centerY" id="bT4-3H-ByU"/>
                                             <constraint firstItem="bQf-fs-L9G" firstAttribute="top" secondItem="Fua-LW-HPO" secondAttribute="bottom" constant="10" id="bq5-pa-REm"/>
-                                            <constraint firstAttribute="trailing" secondItem="IPJ-mL-gdx" secondAttribute="trailing" constant="20" id="fxA-Nq-bmJ"/>
                                             <constraint firstAttribute="trailing" secondItem="3ni-05-OTe" secondAttribute="trailing" constant="20" id="hk1-Jz-Vg0"/>
                                             <constraint firstItem="O4d-g6-LAc" firstAttribute="top" secondItem="JTy-Iy-G4x" secondAttribute="top" id="i1O-Hx-QYJ"/>
                                             <constraint firstItem="3ni-05-OTe" firstAttribute="top" secondItem="h0q-kc-seV" secondAttribute="bottom" constant="10" id="imW-DN-tkI"/>
