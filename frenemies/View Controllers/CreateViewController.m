@@ -7,7 +7,6 @@
 
 #import "CreateViewController.h"
 #import <Parse/Parse.h>
-#import "MKDropdownMenu.h"
 #import "FriendCell.h"
 #import "TagCell.h"
 #import <CCDropDownMenus/CCDropDownMenus.h>
@@ -20,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *challengeName;
 @property (weak, nonatomic) IBOutlet UISwitch *publicSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startTime;
-//@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endTime;
 @property (weak, nonatomic) IBOutlet UITextView *challengeDescription;
 @property (nonatomic, strong) NSArray *friendArray;
