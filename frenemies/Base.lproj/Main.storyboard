@@ -112,7 +112,7 @@
             </objects>
             <point key="canvasLocation" x="1714" y="-277"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Challenges-->
         <scene sceneID="fEM-GD-VLa">
             <objects>
                 <viewController id="t4b-f5-Oxk" customClass="FeedViewController" sceneMemberID="viewController">
@@ -135,19 +135,28 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afp-lE-SMJ">
                                                     <rect key="frame" x="20" y="20" width="374" height="119"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts0-X8-xaH">
-                                                            <rect key="frame" x="40" y="40" width="294" height="27.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Challenge" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts0-X8-xaH">
+                                                            <rect key="frame" x="40" y="40" width="204" height="39"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PZP-qr-KMW">
+                                                            <rect key="frame" x="264" y="24.5" width="70" height="70"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="70" id="ciG-MN-aeu"/>
+                                                                <constraint firstAttribute="width" constant="70" id="ckf-KG-ZlK"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="ts0-X8-xaH" secondAttribute="trailing" constant="40" id="3t8-gJ-bWL"/>
                                                         <constraint firstItem="ts0-X8-xaH" firstAttribute="top" secondItem="afp-lE-SMJ" secondAttribute="top" constant="40" id="4Ib-IO-oE4"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PZP-qr-KMW" secondAttribute="trailing" constant="40" id="5dd-5E-RW2"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ts0-X8-xaH" secondAttribute="bottom" constant="40" id="JM8-mA-EQn"/>
+                                                        <constraint firstItem="PZP-qr-KMW" firstAttribute="leading" secondItem="ts0-X8-xaH" secondAttribute="trailing" constant="20" id="csk-x6-eXH"/>
                                                         <constraint firstItem="ts0-X8-xaH" firstAttribute="leading" secondItem="afp-lE-SMJ" secondAttribute="leading" constant="40" id="hGb-15-Pj3"/>
+                                                        <constraint firstItem="PZP-qr-KMW" firstAttribute="centerY" secondItem="ts0-X8-xaH" secondAttribute="centerY" id="kWc-GT-0UJ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -159,6 +168,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="challengeImage" destination="PZP-qr-KMW" id="srX-Lj-gjG"/>
                                             <outlet property="challengeName" destination="ts0-X8-xaH" id="hBs-wY-QPB"/>
                                             <outlet property="containerView" destination="afp-lE-SMJ" id="lNB-0K-bBQ"/>
                                         </connections>
@@ -169,7 +179,7 @@
                         <viewLayoutGuide key="safeArea" id="hnk-sB-06U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="m0W-xt-Fnq">
+                    <navigationItem key="navigationItem" title="Challenges" id="m0W-xt-Fnq">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="ALp-gV-Fgy">
                             <connections>
                                 <action selector="logoutAction:" destination="t4b-f5-Oxk" id="tHD-sV-UKe"/>

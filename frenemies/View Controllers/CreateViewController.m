@@ -68,9 +68,10 @@
     self.myFriends = [PFUser currentUser][@"friends"];
     if (self.myFriends!=nil){
         PFQuery *query = [PFUser query];
-        for (NSString *friend in self.myFriends){
+        [query whereKey:@"objectId" containedIn:self.myFriends];
+        /*for (NSString *friend in self.myFriends){
             [query whereKey:@"objectId" equalTo:friend];
-        }
+        }*/
         self.friendArray = [query findObjects];
     }
     [self.tableView reloadData];
