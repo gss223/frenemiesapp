@@ -15,6 +15,7 @@
 @interface FeedViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *challengeArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -25,6 +26,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self setUpChallenge];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self action:@selector(setUpChallenge) forControlEvents:UIControlEventValueChanged];
+        [self.tableView insertSubview: self.refreshControl atIndex:0];
     // Do any additional setup after loading the view.
 }
 -(void) setUpChallenge{
@@ -40,6 +44,7 @@
                 NSLog(@"success");
                 PFQuery *query2 = [PFQuery queryWithClassName:@"Challenge"];
                 [query2 whereKey:@"objectId" containedIn:user[@"challenges"]];
+                [query2 orderByDescending:@"timeEnd"];
                 
                 [query2 findObjectsInBackgroundWithBlock:^(NSArray <Challenge *> *objects, NSError *error) {
                   if (!error) {
@@ -49,6 +54,7 @@
                           NSLog(chall.challengeName);
                       }
                       [self.tableView reloadData];
+                      [self.refreshControl endRefreshing];
                     
                   } else {
                     // Log details of the failure
