@@ -22,8 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *timeStart;
 @property (nonatomic, strong) NSDate *timeEnd;
 @property (nonatomic, strong) NSMutableArray *tags;
+@property (nonatomic,strong) NSString *unitChosen;
 
-+ (void) postChallenge: ( UIImage * _Nullable )image withOtherinfo: (NSMutableArray *) other withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postChallenge: ( UIImage * _Nullable )image withOtherinfo: (NSArray *) other withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

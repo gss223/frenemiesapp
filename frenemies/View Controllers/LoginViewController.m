@@ -39,7 +39,7 @@
     [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email",@"user_friends"] block:^(PFUser * _Nullable user, NSError * _Nullable error) {
         if(error==nil){
             NSLog(@"success");
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            [self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
         }
     }];
 }
@@ -52,7 +52,7 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            [self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
         }
     }];
 }
