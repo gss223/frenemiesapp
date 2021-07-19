@@ -468,7 +468,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kem-Xa-GBB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kem-Xa-GBB">
                                 <rect key="frame" x="20" y="108" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="3fz-Q9-uZe"/>
@@ -484,6 +484,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1a-SS-QlV">
                                 <rect key="frame" x="160" y="180" width="117" height="30"/>
                                 <state key="normal" title="Link to Facebook"/>
+                                <connections>
+                                    <action selector="facebookLink:" destination="rGR-YF-B5d" eventType="touchUpInside" id="HUa-Ra-axN"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-yu-qyY">
                                 <rect key="frame" x="160" y="108" width="234" height="34"/>
@@ -493,6 +496,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxy-f3-z0e">
                                 <rect key="frame" x="160" y="220" width="98" height="30"/>
                                 <state key="normal" title="Save Changes"/>
+                                <connections>
+                                    <action selector="saveChanges:" destination="rGR-YF-B5d" eventType="touchUpInside" id="5Ns-wU-lzI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N6D-Og-myI"/>
@@ -514,6 +520,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="hp9-cc-bsr"/>
                     <connections>
+                        <outlet property="facebookLink" destination="E1a-SS-QlV" id="ndJ-lP-qfD"/>
                         <outlet property="nameField" destination="jyL-yu-qyY" id="xxf-EW-BWJ"/>
                         <outlet property="profilePic" destination="kem-Xa-GBB" id="z8A-nf-kc0"/>
                         <outlet property="username" destination="zLL-ee-OGl" id="kUP-Nv-Tlz"/>
