@@ -67,9 +67,6 @@
     self.profilePic.image = editedImage;
     self.setPic = editedImage;
     
-    //[self sendProfile:self.author.objectId withImage:[self getPFFileFromImage:[self resizeI:editedImage withSize:editedImage.size]]];
-    
-    
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }

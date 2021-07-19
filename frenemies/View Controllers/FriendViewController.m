@@ -6,9 +6,11 @@
 //
 
 #import "FriendViewController.h"
+#import <Parse/Parse.h>
 
-@interface FriendViewController ()
+@interface FriendViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) NSArray *allUsers;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
@@ -17,7 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
     // Do any additional setup after loading the view.
+}
+
+-(void)setUpFriends{
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
+        self.allUsers = objects;
+    }];
+    
+}
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.allUsers.count;
 }
 
 /*

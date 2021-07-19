@@ -594,6 +594,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZZz-Af-Y2T"/>
+                    <connections>
+                        <outlet property="tableView" destination="w92-Im-m5Y" id="ov7-8H-X71"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcL-q7-cIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
