@@ -43,15 +43,18 @@
     self.profilePic.layer.masksToBounds = YES;
     PFQuery *query = [PFUser query];
     [query whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
-    PFUser *user = [query findObjects][0];
-    self.nameField.text = user[@"name"];
-    self.username.text = user.username;
-    PFFile *userImageFile = user[@"profilePic"];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            self.profilePic.image = [UIImage imageWithData:imageData];
-        }
+    [query findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
+        PFUser *user = objects[0];
+        self.nameField.text = user[@"name"];
+        self.username.text = user.username;
+        PFFile *userImageFile = user[@"profilePic"];
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                self.profilePic.image = [UIImage imageWithData:imageData];
+            }
+        }];
     }];
+    
     
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

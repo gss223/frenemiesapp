@@ -33,26 +33,26 @@
 }
 -(void) setUpChallenge{
     NSString *yourId =[PFUser currentUser].objectId;
-    PFQuery *query = [PFUser query];
+    PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
+    [query whereKey:@"userId" equalTo:yourId];
 
         // Retrieve the object by id
-        [query getObjectInBackgroundWithId:yourId
-                                     block:^(PFObject *user, NSError *error) {
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             if(error==nil){
                 //NSArray *challengeIds = [NSArray arrayWithArray:user[@"challenges"]];
-                NSLog(@"%@",user[@"challenges"]);
+                NSLog(@"%@",object[@"challengeArray"]);
                 NSLog(@"success");
                 PFQuery *query2 = [PFQuery queryWithClassName:@"Challenge"];
-                [query2 whereKey:@"objectId" containedIn:user[@"challenges"]];
+                [query2 whereKey:@"objectId" containedIn:object[@"challengeArray"]];
                 [query2 orderByDescending:@"timeEnd"];
                 
                 [query2 findObjectsInBackgroundWithBlock:^(NSArray <Challenge *> *objects, NSError *error) {
                   if (!error) {
                       NSLog(@"got challenge");
                       self.challengeArray = objects;
-                      for (Challenge *chall in self.challengeArray){
+                      /*for (Challenge *chall in self.challengeArray){
                           NSLog(chall.challengeName);
-                      }
+                      }*/
                       [self.tableView reloadData];
                       [self.refreshControl endRefreshing];
                     

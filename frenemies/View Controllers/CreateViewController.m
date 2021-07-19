@@ -65,16 +65,34 @@
     // Do any additional setup after loading the view.
 }
 -(void) setupFriend{
-    self.myFriends = [PFUser currentUser][@"friends"];
-    if (self.myFriends!=nil){
-        PFQuery *query = [PFUser query];
-        [query whereKey:@"objectId" containedIn:self.myFriends];
-        /*for (NSString *friend in self.myFriends){
-            [query whereKey:@"objectId" equalTo:friend];
-        }*/
-        self.friendArray = [query findObjects];
-    }
-    [self.tableView reloadData];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
+    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if(object==nil){
+            PFObject *friend = [PFObject objectWithClassName:@"Friend"];
+            friend[@"userId"] =[PFUser currentUser].objectId;
+            friend[@"friendArray"] = [NSMutableArray array];
+            [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                // The object has been saved.
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            self.myFriends = object[@"friendArray"];
+            if (self.myFriends!=nil && self.myFriends.count>0){
+                PFQuery *query2 = [PFUser query];
+                [query2 whereKey:@"objectId" containedIn:self.myFriends];
+                [query2 findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
+                    self.friendArray = objects;
+                    [self.tableView reloadData];
+                }];
+            }
+        }
+    }];
 }
 - (void)dropDownMenu:(CCDropDownMenu *)dropDownMenu didSelectRowAtIndex:(NSInteger)index {
     self.unitChose = self.dropdownArray[index];

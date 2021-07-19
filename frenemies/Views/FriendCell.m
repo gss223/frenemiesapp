@@ -23,6 +23,8 @@
     _user = user;
     self.username.text = user.username;
     self.name.text = user[@"name"];
+    self.friendPic.layer.cornerRadius = 20;
+    self.friendPic.layer.masksToBounds = YES;
     PFFile *userImageFile = user[@"imageFile"];
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

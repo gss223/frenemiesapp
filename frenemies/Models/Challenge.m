@@ -40,35 +40,49 @@
     newChallenge.createdBy = [PFUser currentUser];
     newChallenge.unitChosen = other[5];
     NSMutableArray *friends = other[7];
-    /*if(friends==nil){
+    if(friends==nil){
         friends = [NSMutableArray array];
     }
-    else{
-        [friends addObject:[PFUser currentUser].objectId];
-    }*/
     [newChallenge saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSString *challengeOId = newChallenge.objectId;
             NSString *yourId =[PFUser currentUser].objectId;
-            PFQuery *query = [PFUser query];
+            PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
+            [query whereKey:@"userId" equalTo:yourId];
 
                 // Retrieve the object by id
-                [query getObjectInBackgroundWithId:yourId
-                                             block:^(PFObject *user, NSError *error) {
+            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                if(objects==nil || objects.count==0){
+                    PFObject *newLink = [PFObject objectWithClassName:@"LinkChallenge"];
+                    newLink[@"userId"] = yourId;
+                    newLink[@"challengeArray"] = [NSMutableArray arrayWithObject:challengeOId];
+                    [newLink saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                      if (succeeded) {
+                          [self saveForFriends:friends withChallengeId:challengeOId];
+                      }
+                      else {
+                        // There was a problem, check error.description
+                      }
+                    }];
+                }
+                else{
+                
                     if(error==nil){
-                        if (user[@"challenges"] ==nil){
-                            user[@"challenges"] = [NSMutableArray arrayWithObject:challengeOId];
+                        PFObject *user = objects[0];
+                        if (user[@"challengeArray"] ==nil){
+                            user[@"challengeArray"] = [NSMutableArray arrayWithObject:challengeOId];
                         }
                         else{
-                            NSMutableArray *challArray =user[@"challenges"];
+                            NSMutableArray *challArray =user[@"challengeArray"];
                             [challArray addObject:challengeOId];
-                            user[@"challenges"] = challArray;
+                            user[@"challengeArray"] = challArray;
                         }
-                        NSLog(@"%@",user[@"challenges"]);
+                        NSLog(@"%@",user[@"challengeArray"]);
                         NSLog(@"success");
                         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                             if (error==nil){
                                 NSLog(@"saved user");
+                                [self saveForFriends:friends withChallengeId:challengeOId];
                             }
                             else{
                                 NSLog(@"%@", error.localizedDescription);
@@ -77,7 +91,7 @@
                     }
                     else{
                         NSLog(@"%@", error.localizedDescription);
-                    }
+                    }}
                 }];
         }
     }];
@@ -97,6 +111,46 @@
     }
     
     return [PFFile fileWithName:@"image.png" data:imageData];
+}
+
++ (void)saveForFriends: (NSMutableArray *)friends withChallengeId:(NSString *)challengeId{
+    for (NSString *friend in friends){
+        PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
+        [query whereKey:@"userId" equalTo:friend];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects==nil || objects.count==0){
+                PFObject *newLink = [PFObject objectWithClassName:@"LinkChallenge"];
+                newLink[@"userId"] = friend;
+                newLink[@"challengeArray"] = [NSMutableArray arrayWithObject:challengeId];
+                [newLink saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                  if (succeeded) {
+                    // The object has been saved.
+                  } else {
+                    // There was a problem, check error.description
+                  }
+                }];
+            }
+            else{
+                PFQuery *query2 = [PFQuery queryWithClassName:@"LinkChallenge"];
+
+                // Retrieve the object by id
+                [query2 getObjectInBackgroundWithId:objects[0][@"objectId"]
+                                             block:^(PFObject *linkChall, NSError *error) {
+                    // Now let's update it with some new data. In this case, only cheatMode and score
+                    // will get sent to the cloud. playerName hasn't changed.
+                    if (linkChall[@"challengeArray"] ==nil){
+                        linkChall[@"challengeArray"] = [NSMutableArray arrayWithObject:challengeId];
+                    }
+                    else{
+                        NSMutableArray *challArray =linkChall[@"challengeArray"];
+                        [challArray addObject:challengeId];
+                        linkChall[@"challengeArray"] = challArray;
+                    }
+                    [linkChall saveInBackground];
+                }];
+            }
+        }];
+    }
 }
 
 @end

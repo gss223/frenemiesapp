@@ -15,6 +15,8 @@
 		AA349990269F9D4400DCC7E7 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA34998F269F9D4400DCC7E7 /* FeedCell.m */; };
 		AA349993269F9D6100DCC7E7 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349992269F9D6100DCC7E7 /* FriendCell.m */; };
 		AA349996269F9D7100DCC7E7 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349995269F9D7100DCC7E7 /* TagCell.m */; };
+		AA44948A26A5FB8B00E78128 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA44948926A5FB8B00E78128 /* FriendViewController.m */; };
+		AA44948D26A61C8900E78128 /* SwipeUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA44948C26A61C8900E78128 /* SwipeUserCell.m */; };
 		AA459CAA26A0B2FD00E996B7 /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459CA926A0B2FD00E996B7 /* Challenge.m */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
@@ -69,6 +71,10 @@
 		AA349992269F9D6100DCC7E7 /* FriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		AA349994269F9D7100DCC7E7 /* TagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
 		AA349995269F9D7100DCC7E7 /* TagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
+		AA44948826A5FB8B00E78128 /* FriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendViewController.h; sourceTree = "<group>"; };
+		AA44948926A5FB8B00E78128 /* FriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendViewController.m; sourceTree = "<group>"; };
+		AA44948B26A61C8900E78128 /* SwipeUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeUserCell.h; sourceTree = "<group>"; };
+		AA44948C26A61C8900E78128 /* SwipeUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipeUserCell.m; sourceTree = "<group>"; };
 		AA459CA826A0B2FD00E996B7 /* Challenge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Challenge.h; sourceTree = "<group>"; };
 		AA459CA926A0B2FD00E996B7 /* Challenge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Challenge.m; sourceTree = "<group>"; };
 		AADF7D8E269CAFAF00A6BC5E /* frenemies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frenemies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +170,8 @@
 				AA349992269F9D6100DCC7E7 /* FriendCell.m */,
 				AA349994269F9D7100DCC7E7 /* TagCell.h */,
 				AA349995269F9D7100DCC7E7 /* TagCell.m */,
+				AA44948B26A61C8900E78128 /* SwipeUserCell.h */,
+				AA44948C26A61C8900E78128 /* SwipeUserCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +250,8 @@
 				AA349987269E1E1700DCC7E7 /* CreateViewController.m */,
 				AA349989269F785900DCC7E7 /* ProfileViewController.h */,
 				AA34998A269F785900DCC7E7 /* ProfileViewController.m */,
+				AA44948826A5FB8B00E78128 /* FriendViewController.h */,
+				AA44948926A5FB8B00E78128 /* FriendViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -486,7 +496,9 @@
 				AA349996269F9D7100DCC7E7 /* TagCell.m in Sources */,
 				AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */,
 				AA349990269F9D4400DCC7E7 /* FeedCell.m in Sources */,
+				AA44948D26A61C8900E78128 /* SwipeUserCell.m in Sources */,
 				AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */,
+				AA44948A26A5FB8B00E78128 /* FriendViewController.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
 				AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */,
 				AA349982269E137500DCC7E7 /* SignUpViewController.m in Sources */,
