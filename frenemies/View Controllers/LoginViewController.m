@@ -10,6 +10,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import<Parse/Parse.h>
 #import <PFFacebookUtils.h>
+#import "SceneDelegate.h"
 @import Parse;
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
@@ -39,7 +40,11 @@
     [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email",@"user_friends"] block:^(PFUser * _Nullable user, NSError * _Nullable error) {
         if(error==nil){
             NSLog(@"success");
-            [self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            myDelegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedTabController"];
+            
+            //[self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
         }
     }];
 }
@@ -52,7 +57,10 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            myDelegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedTabController"];
+            //[self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
         }
     }];
 }
