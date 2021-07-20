@@ -13,6 +13,7 @@
 @property (strong,nonatomic) NSArray *allUsers;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
 @end
@@ -25,6 +26,9 @@
     self.tableView.dataSource = self;
     self.cellsCurrentlyEditing = [NSMutableSet new];
     [self removeCurrentFriends];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self action:@selector(removeCurrentFriends) forControlEvents:UIControlEventValueChanged];
+        [self.tableView insertSubview: self.refreshControl atIndex:0];
     // Do any additional setup after loading the view.
 }
 
@@ -38,6 +42,7 @@
                 NSLog(@"%@",user.username);
             }
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else{
             NSLog(@"%@", error.localizedDescription);
@@ -55,7 +60,7 @@
             friend[@"friendArray"] = [NSMutableArray array];
             [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
               if (succeeded) {
-                  [self setUpFriends:nil];
+                  [self setUpFriends:[NSArray arrayWithObject:[PFUser currentUser].objectId]];
                 // The object has been saved.
               } else {
                 // There was a problem, check error.description
@@ -63,8 +68,14 @@
             }];
         }
         else{
-            NSArray *currFriends = object[@"friendArray"];
-            [self setUpFriends:currFriends];
+            if (object[@"friendArray"]!=nil){
+                NSMutableArray *currFriends = object[@"friendArray"];
+                [currFriends addObject:[PFUser currentUser].objectId];
+                [self setUpFriends:(NSArray *)currFriends];
+            }
+            else{
+                [self setUpFriends:[NSArray arrayWithObject:[PFUser currentUser].objectId]];
+            }
             
            
         }
