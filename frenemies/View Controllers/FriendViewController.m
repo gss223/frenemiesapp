@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.cellsCurrentlyEditing = [NSMutableSet new];
+    
     [self removeCurrentFriends];
     self.refreshControl = [[UIRefreshControl alloc] init];
         [self.refreshControl addTarget:self action:@selector(removeCurrentFriends) forControlEvents:UIControlEventValueChanged];
@@ -51,6 +51,7 @@
     
 }
 -(void)removeCurrentFriends{
+    self.cellsCurrentlyEditing = [NSMutableSet new];
     PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
     [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {

@@ -25,7 +25,7 @@
     self.name.text = user[@"name"];
     self.friendPic.layer.cornerRadius = 20;
     self.friendPic.layer.masksToBounds = YES;
-    PFFile *userImageFile = user[@"imageFile"];
+    PFFile *userImageFile = user[@"profilePic"];
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
             self.friendPic.image = [UIImage imageWithData:imageData];
