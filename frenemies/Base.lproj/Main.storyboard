@@ -673,6 +673,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Find Friends" id="ZZz-Af-Y2T"/>
                     <connections>
+                        <outlet property="searchBar" destination="zwZ-RZ-Ozf" id="9mu-w8-sga"/>
                         <outlet property="tableView" destination="w92-Im-m5Y" id="ov7-8H-X71"/>
                         <segue destination="cFB-Sa-zf1" kind="show" identifier="viewProfile" id="Z9m-rs-tl6"/>
                     </connections>

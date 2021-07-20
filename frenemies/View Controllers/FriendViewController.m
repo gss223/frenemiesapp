@@ -9,11 +9,13 @@
 #import <Parse/Parse.h>
 #import "SwipeUserCell.h"
 
-@interface FriendViewController () <UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate>
+@interface FriendViewController () <UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate,UISearchBarDelegate>
 @property (strong,nonatomic) NSArray *allUsers;
+@property (strong,nonatomic) NSArray *filteredData;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 @end
@@ -24,6 +26,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.searchBar.delegate = self;
     
     [self removeCurrentFriends];
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -41,6 +44,7 @@
             for (PFUser *user in self.allUsers){
                 NSLog(@"%@",user.username);
             }
+            self.filteredData = self.allUsers;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
         }
@@ -84,11 +88,11 @@
     
 }
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.allUsers.count;
+    return self.filteredData.count;
 }
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
-    cell.user = self.allUsers[indexPath.row];
+    cell.user = self.filteredData[indexPath.row];
     cell.delegate = self;
     if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
       [cell openCell];
@@ -220,6 +224,25 @@
            
         }
     }];
+}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *evaluatedObject, NSDictionary *bindings) {
+            return ([evaluatedObject.username.lowercaseString containsString:searchText.lowercaseString] || [((NSString *) evaluatedObject[@"name"]).lowercaseString containsString:searchText.lowercaseString]);
+        }];
+        self.filteredData = [self.allUsers filteredArrayUsingPredicate:predicate];
+        
+        NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.allUsers;
+    }
+    
+    [self.tableView reloadData];
+ 
 }
 
 #pragma mark - Navigation
