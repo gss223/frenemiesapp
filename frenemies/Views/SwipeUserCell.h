@@ -9,15 +9,16 @@
 #import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+@protocol SwipeUserCellDelegate <NSObject>
+- (void)addButtonAction:(PFUser *)user;
+- (void)profileButtonAction:(PFUser *)user;
+- (void)cellDidOpen:(UITableViewCell *)cell;
+- (void)cellDidClose:(UITableViewCell *)cell;
+@end
 @interface SwipeUserCell : UITableViewCell
 @property (nonatomic, strong) PFUser *user;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UIImageView *profilePic;
-@property (weak, nonatomic) IBOutlet UILabel *nameField;
-@property (weak, nonatomic) IBOutlet UILabel *username;
-@property (weak, nonatomic) IBOutlet UIView *swipeView;
+@property (nonatomic, weak) id <SwipeUserCellDelegate> delegate;
+- (void)openCell;
 
 @end
-
 NS_ASSUME_NONNULL_END
