@@ -24,12 +24,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.cellsCurrentlyEditing = [NSMutableSet new];
-    [self setUpFriends];
+    [self removeCurrentFriends];
     // Do any additional setup after loading the view.
 }
 
--(void)setUpFriends{
+-(void)setUpFriends:(NSArray *)currFriends{
     PFQuery *query = [PFUser query];
+    [query whereKey:@"objectId" notContainedIn:currFriends];
     [query findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
         if (error==nil){
             self.allUsers = objects;
@@ -40,6 +41,32 @@
         }
         else{
             NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+}
+-(void)removeCurrentFriends{
+    PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
+    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if(object==nil){
+            PFObject *friend = [PFObject objectWithClassName:@"Friend"];
+            friend[@"userId"] =[PFUser currentUser].objectId;
+            friend[@"friendArray"] = [NSMutableArray array];
+            [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                  [self setUpFriends:nil];
+                // The object has been saved.
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            NSArray *currFriends = object[@"friendArray"];
+            [self setUpFriends:currFriends];
+            
+           
         }
     }];
     
