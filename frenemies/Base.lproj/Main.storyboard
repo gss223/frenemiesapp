@@ -542,7 +542,7 @@
             </objects>
             <point key="canvasLocation" x="3073.913043478261" y="1143.75"/>
         </scene>
-        <!--Friend View Controller-->
+        <!--Find Friends-->
         <scene sceneID="4mT-63-RSD">
             <objects>
                 <viewController id="Yia-gh-jtl" customClass="FriendViewController" sceneMemberID="viewController">
@@ -554,9 +554,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="zwZ-RZ-Ozf">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwipeUserCell" rowHeight="88" id="uqM-TN-yyz" customClass="SwipeUserCell">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="88"/>
+                                        <rect key="frame" x="0.0" y="68.5" width="414" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uqM-TN-yyz" id="yoy-0M-FH2">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
@@ -666,7 +671,7 @@
                         <viewLayoutGuide key="safeArea" id="iff-Ly-Kyd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZZz-Af-Y2T"/>
+                    <navigationItem key="navigationItem" title="Find Friends" id="ZZz-Af-Y2T"/>
                     <connections>
                         <outlet property="tableView" destination="w92-Im-m5Y" id="ov7-8H-X71"/>
                         <segue destination="cFB-Sa-zf1" kind="show" identifier="viewProfile" id="Z9m-rs-tl6"/>
@@ -676,10 +681,10 @@
             </objects>
             <point key="canvasLocation" x="4498.5507246376819" y="1143.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Friend Profile View Controller-->
         <scene sceneID="7gj-kf-xoG">
             <objects>
-                <viewController id="cFB-Sa-zf1" sceneMemberID="viewController">
+                <viewController id="cFB-Sa-zf1" customClass="FriendProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EH3-cW-Qd7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
