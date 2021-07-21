@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *allChallenges;
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic,strong) NSString *linkChallengeId;
 
 @end
 
@@ -23,26 +25,59 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self setUpChallenges:[NSArray array]];
+    [self removeCurrentChallenges];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(removeCurrentChallenges) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview: self.refreshControl atIndex:0];
     // Do any additional setup after loading the view.
 }
 -(void)setUpChallenges:(NSArray *)avoidChallenges{
-    /*PFQuery *query = [PFQuery queryWithClassName:@"Challenge"];
-    [query whereKey:@"objectId" notContainedIn:avoidChallenges];
-    PFQuery *query2 = [PFQuery queryWithClassName:@"Challenge"];
-    [query2 whereKey:@"publicorprivate" equalTo:@(true)];
-    PFQuery *query3 = [PFQuery queryWithClassName:@"Challenge"];
-    [query3 whereKey:@"completed" equalTo:@(false)];*/
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"publicorprivate = true AND NOT(objectId IN %@) AND completed = false",avoidChallenges];
     PFQuery *query = [PFQuery queryWithClassName:@"Challenge" predicate:predicate];
     [query findObjectsInBackgroundWithBlock:^(NSArray <Challenge *> * _Nullable objects, NSError * _Nullable error) {
-        self.allChallenges = objects;
-        [self.tableView reloadData];
+        if (error==nil){
+            self.allChallenges = objects;
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
     }];
 }
 -(void)removeCurrentChallenges{
+    self.cellsCurrentlyEditing = [NSMutableSet new];
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
     [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if(object==nil){
+            PFObject *challenge = [PFObject objectWithClassName:@"LinkChallenge"];
+            challenge[@"userId"] =[PFUser currentUser].objectId;
+            challenge[@"challengeArray"] = [NSMutableArray array];
+            [challenge saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                  self.linkChallengeId = challenge.objectId;
+                  [self setUpChallenges:[NSArray array]];
+                // The object has been saved.
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            self.linkChallengeId = object.objectId;
+            if (object[@"challengeArray"]!=nil){
+                NSMutableArray *currChallenge = object[@"challengeArray"];
+                [self setUpChallenges:(NSArray *)currChallenge];
+            }
+            else{
+                [self setUpChallenges:[NSArray array]];
+            }
+            
+           
+        }
+    }];
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.allChallenges.count;
@@ -62,9 +97,20 @@
   [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
 }
 -(void)addChallengeButtonAction:(Challenge *)challenge{
+    PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
+
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:self.linkChallengeId
+                                 block:^(PFObject *linkChallenge, NSError *error) {
+        NSMutableArray *challenges = linkChallenge[@"challengeArray"];
+        [challenges addObject:challenge.objectId];
+        linkChallenge[@"challengeArray"] = challenges;
+        [linkChallenge saveInBackground];
+    }];
     
 }
 -(void)detailButtonAction:(Challenge *)challenge{
+    [self performSegueWithIdentifier:@"viewChallengeDetail" sender:challenge];
     
 }
 /*

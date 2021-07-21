@@ -682,7 +682,7 @@
             </objects>
             <point key="canvasLocation" x="4498.5507246376819" y="1143.75"/>
         </scene>
-        <!--Challenge Find View Controller-->
+        <!--FInd Challenges-->
         <scene sceneID="irX-hL-7Ab">
             <objects>
                 <viewController id="5Hz-Rw-fpT" customClass="ChallengeFindViewController" sceneMemberID="viewController">
@@ -745,10 +745,9 @@
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_forward arrow_1010478" translatesAutoresizingMaskIntoConstraints="NO" id="3oh-gJ-mKg">
-                                                            <rect key="frame" x="374" y="0.0" width="30" height="101"/>
+                                                            <rect key="frame" x="374" y="10" width="30" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="NfD-kU-8FZ"/>
-                                                                <constraint firstAttribute="height" constant="101" id="vN2-Xb-HyJ"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -758,11 +757,11 @@
                                                         <constraint firstItem="ccf-Kk-4IB" firstAttribute="leading" secondItem="vFY-J0-gCo" secondAttribute="leading" constant="20" id="5hB-sQ-1y5"/>
                                                         <constraint firstAttribute="trailing" secondItem="3oh-gJ-mKg" secondAttribute="trailing" constant="10" id="Fzb-P9-Pc6"/>
                                                         <constraint firstItem="cMo-IY-gcH" firstAttribute="top" secondItem="vFY-J0-gCo" secondAttribute="top" constant="10" id="f1b-j5-Tv3"/>
-                                                        <constraint firstAttribute="bottom" secondItem="3oh-gJ-mKg" secondAttribute="bottom" id="mS3-gs-Ifr"/>
                                                         <constraint firstItem="3oh-gJ-mKg" firstAttribute="leading" secondItem="cMo-IY-gcH" secondAttribute="trailing" constant="10" id="ngS-cn-1YN"/>
                                                         <constraint firstItem="cMo-IY-gcH" firstAttribute="leading" secondItem="ccf-Kk-4IB" secondAttribute="trailing" constant="10" id="oee-97-gS6"/>
+                                                        <constraint firstItem="3oh-gJ-mKg" firstAttribute="height" secondItem="cMo-IY-gcH" secondAttribute="height" id="rWB-z4-wbX"/>
                                                         <constraint firstItem="ccf-Kk-4IB" firstAttribute="centerY" secondItem="vFY-J0-gCo" secondAttribute="centerY" id="wTf-hx-VAO"/>
-                                                        <constraint firstItem="3oh-gJ-mKg" firstAttribute="top" secondItem="vFY-J0-gCo" secondAttribute="top" id="zT5-Fs-rSI"/>
+                                                        <constraint firstItem="3oh-gJ-mKg" firstAttribute="top" secondItem="vFY-J0-gCo" secondAttribute="top" constant="10" id="zT5-Fs-rSI"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -796,7 +795,7 @@
                         <viewLayoutGuide key="safeArea" id="uvh-kb-PLe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="I6m-uE-abJ"/>
+                    <navigationItem key="navigationItem" title="FInd Challenges" id="I6m-uE-abJ"/>
                     <connections>
                         <outlet property="tableView" destination="At2-FO-ocB" id="8YC-sv-ryu"/>
                         <segue destination="GsL-q8-bjx" kind="show" identifier="viewChallengeDetail" id="UyG-Nr-7d0"/>
