@@ -694,9 +694,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="4k2-z1-V9d">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChallengeFindCell" rowHeight="101" id="mKB-i2-jWw" customClass="ChallengeFindCell">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="101"/>
+                                        <rect key="frame" x="0.0" y="68.5" width="414" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mKB-i2-jWw" id="YNf-0W-kDc">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="101"/>
@@ -797,6 +802,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="FInd Challenges" id="I6m-uE-abJ"/>
                     <connections>
+                        <outlet property="searchBar" destination="4k2-z1-V9d" id="YUL-Ch-vcX"/>
                         <outlet property="tableView" destination="At2-FO-ocB" id="8YC-sv-ryu"/>
                         <segue destination="GsL-q8-bjx" kind="show" identifier="viewChallengeDetail" id="UyG-Nr-7d0"/>
                     </connections>
@@ -821,10 +827,10 @@
             </objects>
             <point key="canvasLocation" x="4514" y="1809"/>
         </scene>
-        <!--View Controller-->
+        <!--Challenge Detail View Controller-->
         <scene sceneID="CKg-N3-sut">
             <objects>
-                <viewController id="GsL-q8-bjx" sceneMemberID="viewController">
+                <viewController id="GsL-q8-bjx" customClass="ChallengeDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3rp-Ac-txf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

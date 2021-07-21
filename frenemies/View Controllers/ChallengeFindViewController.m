@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic,strong) NSString *linkChallengeId;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 

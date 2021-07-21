@@ -21,6 +21,7 @@
 		AA459CAA26A0B2FD00E996B7 /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459CA926A0B2FD00E996B7 /* Challenge.m */; };
 		AA46CBED26A8757D00ED656D /* ChallengeFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBEC26A8757D00ED656D /* ChallengeFindViewController.m */; };
 		AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */; };
+		AA46CBF326A8BBA600ED656D /* ChallengeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
 		AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D98269CAFAF00A6BC5E /* ViewController.m */; };
@@ -86,6 +87,8 @@
 		AA46CBEC26A8757D00ED656D /* ChallengeFindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeFindViewController.m; sourceTree = "<group>"; };
 		AA46CBEE26A879AE00ED656D /* ChallengeFindCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeFindCell.h; sourceTree = "<group>"; };
 		AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeFindCell.m; sourceTree = "<group>"; };
+		AA46CBF126A8BBA600ED656D /* ChallengeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeDetailViewController.h; sourceTree = "<group>"; };
+		AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeDetailViewController.m; sourceTree = "<group>"; };
 		AADF7D8E269CAFAF00A6BC5E /* frenemies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frenemies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				AA44948F26A777EE00E78128 /* FriendProfileViewController.m */,
 				AA46CBEB26A8757D00ED656D /* ChallengeFindViewController.h */,
 				AA46CBEC26A8757D00ED656D /* ChallengeFindViewController.m */,
+				AA46CBF126A8BBA600ED656D /* ChallengeDetailViewController.h */,
+				AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */,
 				AA44948A26A5FB8B00E78128 /* FriendViewController.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
+				AA46CBF326A8BBA600ED656D /* ChallengeDetailViewController.m in Sources */,
 				AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */,
 				AA349982269E137500DCC7E7 /* SignUpViewController.m in Sources */,
 				AA349988269E1E1700DCC7E7 /* CreateViewController.m in Sources */,
