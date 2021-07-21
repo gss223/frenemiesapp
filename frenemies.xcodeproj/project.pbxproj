@@ -19,6 +19,8 @@
 		AA44948D26A61C8900E78128 /* SwipeUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA44948C26A61C8900E78128 /* SwipeUserCell.m */; };
 		AA44949026A777EE00E78128 /* FriendProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA44948F26A777EE00E78128 /* FriendProfileViewController.m */; };
 		AA459CAA26A0B2FD00E996B7 /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459CA926A0B2FD00E996B7 /* Challenge.m */; };
+		AA46CBED26A8757D00ED656D /* ChallengeFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBEC26A8757D00ED656D /* ChallengeFindViewController.m */; };
+		AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
 		AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D98269CAFAF00A6BC5E /* ViewController.m */; };
@@ -80,6 +82,10 @@
 		AA44948F26A777EE00E78128 /* FriendProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendProfileViewController.m; sourceTree = "<group>"; };
 		AA459CA826A0B2FD00E996B7 /* Challenge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Challenge.h; sourceTree = "<group>"; };
 		AA459CA926A0B2FD00E996B7 /* Challenge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Challenge.m; sourceTree = "<group>"; };
+		AA46CBEB26A8757D00ED656D /* ChallengeFindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeFindViewController.h; sourceTree = "<group>"; };
+		AA46CBEC26A8757D00ED656D /* ChallengeFindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeFindViewController.m; sourceTree = "<group>"; };
+		AA46CBEE26A879AE00ED656D /* ChallengeFindCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeFindCell.h; sourceTree = "<group>"; };
+		AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeFindCell.m; sourceTree = "<group>"; };
 		AADF7D8E269CAFAF00A6BC5E /* frenemies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frenemies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -175,6 +181,8 @@
 				AA349995269F9D7100DCC7E7 /* TagCell.m */,
 				AA44948B26A61C8900E78128 /* SwipeUserCell.h */,
 				AA44948C26A61C8900E78128 /* SwipeUserCell.m */,
+				AA46CBEE26A879AE00ED656D /* ChallengeFindCell.h */,
+				AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +265,8 @@
 				AA44948926A5FB8B00E78128 /* FriendViewController.m */,
 				AA44948E26A777EE00E78128 /* FriendProfileViewController.h */,
 				AA44948F26A777EE00E78128 /* FriendProfileViewController.m */,
+				AA46CBEB26A8757D00ED656D /* ChallengeFindViewController.h */,
+				AA46CBEC26A8757D00ED656D /* ChallengeFindViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -504,6 +514,7 @@
 				AA349990269F9D4400DCC7E7 /* FeedCell.m in Sources */,
 				AA44948D26A61C8900E78128 /* SwipeUserCell.m in Sources */,
 				AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */,
+				AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */,
 				AA44948A26A5FB8B00E78128 /* FriendViewController.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
 				AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */,
@@ -511,6 +522,7 @@
 				AA349988269E1E1700DCC7E7 /* CreateViewController.m in Sources */,
 				AA459CAA26A0B2FD00E996B7 /* Challenge.m in Sources */,
 				AADF7DA4269CAFB000A6BC5E /* main.m in Sources */,
+				AA46CBED26A8757D00ED656D /* ChallengeFindViewController.m in Sources */,
 				AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */,
 				AADF7DC9269CEBCA00A6BC5E /* LoginViewController.m in Sources */,
 				AA349993269F9D6100DCC7E7 /* FriendCell.m in Sources */,
