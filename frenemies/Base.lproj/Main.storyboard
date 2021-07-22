@@ -841,7 +841,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQQ-Bu-vTo">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GF6-Vv-q02">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GF6-Vv-q02">
                                                 <rect key="frame" x="24" y="22" width="110" height="117"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -940,7 +940,7 @@
                                                 <rect key="frame" x="26" y="383" width="364" height="172"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f3t-EC-PaM">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f3t-EC-PaM">
                                                     <size key="itemSize" width="134" height="167"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -948,26 +948,38 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RelatedChallengeCell" id="vNm-b9-ooR" customClass="RelatedChallengeCell">
-                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="167"/>
+                                                        <rect key="frame" x="0.0" y="2.5" width="135" height="167"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ERK-U3-WlE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="134" height="167"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="135" height="167"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Adi-TX-bku">
-                                                                    <rect key="frame" x="28" y="8" width="79" height="75"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Adi-TX-bku">
+                                                                    <rect key="frame" x="20" y="10" width="95" height="95"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="95" id="EXD-v6-fbJ"/>
+                                                                        <constraint firstAttribute="height" constant="95" id="ujf-4S-cuh"/>
+                                                                    </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAp-CS-g87">
-                                                                    <rect key="frame" x="46" y="91" width="42" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAp-CS-g87">
+                                                                    <rect key="frame" x="20" y="115" width="95" height="42"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="kAp-CS-g87" firstAttribute="leading" secondItem="ERK-U3-WlE" secondAttribute="leading" constant="20" id="21c-UR-lZj"/>
+                                                                <constraint firstItem="Adi-TX-bku" firstAttribute="top" secondItem="ERK-U3-WlE" secondAttribute="top" constant="10" id="Adn-Vc-m4y"/>
+                                                                <constraint firstAttribute="bottom" secondItem="kAp-CS-g87" secondAttribute="bottom" constant="10" id="DFY-3s-00X"/>
+                                                                <constraint firstItem="kAp-CS-g87" firstAttribute="centerX" secondItem="Adi-TX-bku" secondAttribute="centerX" id="Dih-2x-FJI"/>
+                                                                <constraint firstItem="kAp-CS-g87" firstAttribute="top" secondItem="Adi-TX-bku" secondAttribute="bottom" constant="10" id="Uj5-jd-mjM"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Adi-TX-bku" secondAttribute="trailing" constant="20" id="lKY-yi-Ohh"/>
+                                                                <constraint firstAttribute="trailing" secondItem="kAp-CS-g87" secondAttribute="trailing" constant="20" id="lMe-qh-Vg8"/>
+                                                                <constraint firstItem="Adi-TX-bku" firstAttribute="leading" secondItem="ERK-U3-WlE" secondAttribute="leading" constant="20" id="rVT-jd-IWI"/>
+                                                            </constraints>
                                                         </collectionViewCellContentView>
-                                                        <size key="customSize" width="134" height="167"/>
+                                                        <size key="customSize" width="135" height="167"/>
                                                         <connections>
                                                             <outlet property="challengeImage" destination="Adi-TX-bku" id="JjE-bT-Ugp"/>
                                                             <outlet property="challengeName" destination="kAp-CS-g87" id="5Fk-nG-Fnl"/>

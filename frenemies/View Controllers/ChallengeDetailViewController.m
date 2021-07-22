@@ -69,6 +69,7 @@
     [dateForm setDateFormat:@"EEE, dd MMM yyy HH:mm"];
     self.timeStartLabel.text = [dateForm stringFromDate:self.challenge.timeStart];
     self.timeEndLabel.text = [dateForm stringFromDate:self.challenge.timeEnd];
+    self.challengeDescripLabel.text = self.challenge.challengeDescription;
     [self setUpParticipants];
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.tagView.collectionViewLayout;
     layout.minimumInteritemSpacing = 10;
@@ -196,7 +197,7 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
         TagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TagCell" forIndexPath:indexPath];
         //NSArray *taggingArray =[NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
         cell.tagName.text = self.taggingArray[indexPath.row];
-        NSLog(self.taggingArray[indexPath.row]);
+        //NSLog(self.taggingArray[indexPath.row]);
         cell.contentView.layer.cornerRadius = 5.0;
         cell.contentView.layer.masksToBounds = true;
         cell.contentView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -206,6 +207,7 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
     else{
         RelatedChallengeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RelatedChallengeCell" forIndexPath:indexPath];
         cell.challenge = self.relatedChallenges[indexPath.row];
+        NSLog (@"%@",cell.challenge.challengeName);
         return cell;
     }
 }
