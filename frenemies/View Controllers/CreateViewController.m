@@ -57,11 +57,11 @@
     [self.challengePic addGestureRecognizer:photoTapGestureRecognizer];
     [self.challengePic setUserInteractionEnabled:YES];
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
-        layout.minimumInteritemSpacing = 10;
-        layout.minimumLineSpacing = 10;
-        CGFloat itemWidth = (self.collectionView.frame.size.width-layout.minimumInteritemSpacing*(4-1))/4;
-        CGFloat itemHeight = itemWidth*0.3;
-        layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    layout.minimumInteritemSpacing = 10;
+    layout.minimumLineSpacing = 10;
+    CGFloat itemWidth = (self.collectionView.frame.size.width-layout.minimumInteritemSpacing*(4-1))/4;
+    CGFloat itemHeight = itemWidth*0.3;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
     // Do any additional setup after loading the view.
 }
 -(void) setupFriend{
