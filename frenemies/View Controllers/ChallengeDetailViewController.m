@@ -27,6 +27,9 @@
 @property (strong,nonatomic) NSArray *participants;
 @property (strong,nonatomic) NSArray *taggingArray;
 @property (strong, nonatomic)NSArray *relatedChallenges;
+@property (strong,nonatomic)NSNumber *totalChallenges;
+@property (strong,nonatomic)NSArray *tagArray;
+@property (strong,nonatomic)NSArray *countArray;
 
 @end
 
@@ -38,6 +41,8 @@
     self.tableView.dataSource = self;
     self.tagView.delegate = self;
     self.tagView.dataSource = self;
+    self.relatedChallengeView.dataSource = self;
+    self.relatedChallengeView.delegate = self;
     [self setUpDetails];
     // Do any additional setup after loading the view.
 }
@@ -72,10 +77,8 @@
     CGFloat itemHeight = itemWidth*0.3;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
     self.taggingArray = self.challenge.tags;
-    /*for (NSString *tag in self.taggingArray){
-        NSLog(@"%@",tag);
-    }*/
     [self.tagView reloadData];
+    [self getInitialStats];
 }
 -(void)setUpParticipants{
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
@@ -95,16 +98,22 @@
         }
     }];
 }
--(NSNumber *)calculateRelated:(NSArray *)tagArray withCounts:(NSArray *)countArray withTags:(NSArray *)yourTags withTotal:(NSNumber *)total{
+NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* context)
+{
+    id firstValue = [first objectAtIndex:0];
+    id secondValue = [second objectAtIndex:0];
+    return [firstValue compare:secondValue];
+}
+-(NSNumber *)calculateRelated:(NSArray *)yourTags{
     float counter = [[NSNumber numberWithInt:yourTags.count] floatValue];
     float n = [[NSNumber numberWithInt:yourTags.count] floatValue];
     float totalRelTagVal = 0;
     for (NSString *tag in yourTags){
-        NSInteger findInd= [tagArray indexOfObject:tag];
-        NSNumber *countofTag = countArray[findInd];
+        NSInteger findInd= [self.tagArray indexOfObject:tag];
+        NSNumber *countofTag = self.countArray[findInd];
         float tdf = counter/(n*(n+1)/2);
         float df = [countofTag floatValue];
-        float totalN = [total floatValue];
+        float totalN = [self.totalChallenges floatValue];
         float idf = logf(totalN/(df+1));
         float relTagVal = tdf*idf;
         totalRelTagVal+=relTagVal;
@@ -112,6 +121,58 @@
     }
     return [NSNumber numberWithFloat:totalRelTagVal];
 }
+-(void)getInitialStats{
+    PFQuery *query = [PFQuery queryWithClassName:@"Tag"];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if (error==nil){
+            self.totalChallenges = object[@"total"];
+            self.tagArray = object[@"tagArray"];
+            self.countArray = object[@"countArray"];
+            [self setUpRelated];
+        }
+    }];
+}
+-(void)setUpRelated{
+    NSNumber *compareWeight = [self calculateRelated:self.challenge.tags];
+    NSMutableArray *queries = [NSMutableArray array];
+    for (NSString *tag in self.challenge.tags){
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ IN tags AND objectId!=%@ AND completed = false AND publicorprivate = true",tag,self.challenge.objectId];
+        PFQuery *query = [PFQuery queryWithClassName:@"Challenge" predicate:predicate];
+        //[query whereKey:@"tags" equalTo:tag];
+        [queries addObject:query];
+    }
+    PFQuery *combinedquery = [PFQuery orQueryWithSubqueries:queries];
+    [combinedquery findObjectsInBackgroundWithBlock:^(NSArray <Challenge *> * _Nullable objects, NSError * _Nullable error) {
+        NSMutableArray *yourTags = [NSMutableArray array];
+        NSMutableArray *weightTags = [NSMutableArray array];
+        for (Challenge *chall in objects){
+            [yourTags addObject:chall.tags];
+        }
+        int count = 0;
+        for (NSArray *yourTag in yourTags){
+            [weightTags addObject:[NSArray arrayWithObjects:[self calculateAbsRelated:yourTag withBaseVal:compareWeight],[NSNumber numberWithInt:count], nil]];
+            count+=1;
+        }
+        NSArray* sortedTagArray = [weightTags sortedArrayUsingFunction:customCompareFunction context:NULL];
+        NSMutableArray *topTen = [NSMutableArray array];
+        NSInteger amountRel = 10;
+        if (sortedTagArray.count<10){
+            amountRel = weightTags.count;
+        }
+        for (int i = 0; i<amountRel; i++){
+            NSInteger j = [sortedTagArray[i][1] intValue];
+            [topTen addObject:objects[j]];
+        }
+        self.relatedChallenges = (NSArray *)topTen;
+        [self.relatedChallengeView reloadData];
+    }];
+}
+-(NSNumber *)calculateAbsRelated:(NSArray *)yourTags withBaseVal:(NSNumber *)value{
+    float tagWeight = [[self calculateRelated:yourTags] floatValue];
+    float difBetween = tagWeight - [value floatValue];
+    return [NSNumber numberWithFloat:fabsf(difBetween)];
+}
+
 - (IBAction)addChallengeAction:(id)sender {
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -144,6 +205,7 @@
     }
     else{
         RelatedChallengeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RelatedChallengeCell" forIndexPath:indexPath];
+        cell.challenge = self.relatedChallenges[indexPath.row];
         return cell;
     }
 }

@@ -968,6 +968,10 @@
                                                             </subviews>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="134" height="167"/>
+                                                        <connections>
+                                                            <outlet property="challengeImage" destination="Adi-TX-bku" id="JjE-bT-Ugp"/>
+                                                            <outlet property="challengeName" destination="kAp-CS-g87" id="5Fk-nG-Fnl"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
