@@ -10,9 +10,10 @@
 #import "Challenge.h"
 #import <Parse/Parse.h>
 
-@interface ChallengeFindViewController () <UITableViewDelegate,UITableViewDataSource,ChallengeFindCellDelegate>
+@interface ChallengeFindViewController () <UITableViewDelegate,UITableViewDataSource,ChallengeFindCellDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *allChallenges;
+@property (strong,nonatomic) NSArray *filteredData;
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic,strong) NSString *linkChallengeId;
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.searchBar.delegate = self;
     [self removeCurrentChallenges];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(removeCurrentChallenges) forControlEvents:UIControlEventValueChanged];
@@ -38,6 +40,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray <Challenge *> * _Nullable objects, NSError * _Nullable error) {
         if (error==nil){
             self.allChallenges = objects;
+            self.filteredData = self.allChallenges;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
         }
@@ -81,12 +84,12 @@
     
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.allChallenges.count;
+    return self.filteredData.count;
 }
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ChallengeFindCell *cell = (ChallengeFindCell *) [self.tableView dequeueReusableCellWithIdentifier:@"ChallengeFindCell" forIndexPath:indexPath];
     cell.delegate = self;
-    cell.challenge = self.allChallenges[indexPath.row];
+    cell.challenge = self.filteredData[indexPath.row];
     return cell;
 }
 - (void)cellDidOpen:(UITableViewCell *)cell {
@@ -113,6 +116,25 @@
 -(void)detailButtonAction:(Challenge *)challenge{
     [self performSegueWithIdentifier:@"viewChallengeDetail" sender:challenge];
     
+}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Challenge *evaluatedObject, NSDictionary *bindings) {
+            return ([evaluatedObject.challengeName.lowercaseString containsString:searchText.lowercaseString] || [evaluatedObject.challengeDescription.lowercaseString containsString:searchText.lowercaseString]);
+        }];
+        self.filteredData = [self.allChallenges filteredArrayUsingPredicate:predicate];
+        
+        //NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.allChallenges;
+    }
+    
+    [self.tableView reloadData];
+ 
 }
 /*
 #pragma mark - Navigation
