@@ -6,6 +6,7 @@
 //
 
 #import "ChallengeDetailViewController.h"
+#import <math.h>
 
 @interface ChallengeDetailViewController ()
 
@@ -17,11 +18,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
--(void)calculateRelated:(NSArray *)tagArray withCounts:(NSArray *)countArray withTags:(NSArray *)yourTags withTotal:(NSArray *)totals{
-    NSInteger counter = yourTags.count;
+-(void)calculateRelated:(NSArray *)tagArray withCounts:(NSArray *)countArray withTags:(NSArray *)yourTags withTotal:(NSNumber *)total{
+    float counter = [[NSNumber numberWithInt:yourTags.count] floatValue];
+    float n = [[NSNumber numberWithInt:yourTags.count] floatValue];
+    float totalRelTagVal = 0;
     for (NSString *tag in yourTags){
         NSInteger findInd= [tagArray indexOfObject:tag];
-        
+        NSNumber *countofTag = countArray[findInd];
+        float tdf = counter/(n*(n+1)/2);
+        float df = [countofTag floatValue];
+        float totalN = [total floatValue];
+        float idf = logf(totalN/(df+1));
+        float relTagVal = tdf*idf;
+        totalRelTagVal+=relTagVal;
+        counter-=1;
     }
     
 }
