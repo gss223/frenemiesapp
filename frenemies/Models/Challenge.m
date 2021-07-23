@@ -95,6 +95,7 @@
                 }];
         }
     }];
+    [self updateStats:other[6]];
 }
 + (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
  
@@ -152,6 +153,21 @@
         }];
     }
 }
-
++(void)updateStats:(NSArray *)yourTags{
+    NSString *tagId = @"YydWA5vGjZ";
+    PFQuery *query = [PFQuery queryWithClassName:@"Tag"];
+    [query getObjectInBackgroundWithId:tagId block:^(PFObject * _Nullable stat, NSError * _Nullable error) {
+        [stat incrementKey:@"total"];
+        NSArray *tagArray = stat[@"tagArray"];
+        NSMutableArray *ctArray = stat[@"countArray"];
+        for (NSString *tag in yourTags){
+            NSInteger ind = [tagArray indexOfObject:tag];
+            ctArray[ind] = [NSNumber numberWithInt:([ctArray[ind] intValue]+1)];
+        }
+        stat[@"countArray"] = ctArray;
+        [stat saveInBackground];
+    }];
+    
+}
 
 @end

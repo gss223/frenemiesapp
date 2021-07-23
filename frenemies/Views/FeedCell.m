@@ -28,7 +28,6 @@
     self.containerView.layer.shadowOffset = CGSizeMake(3,3);
     self.challengeName.text = challenge.challengeName;
     PFFile *cImage= challenge.challengePic;
-    //UIImage *backdrop = nil;
     self.challengeImage.layer.cornerRadius = 35;
     self.challengeImage.layer.masksToBounds = YES;
     [cImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -36,10 +35,6 @@
             self.challengeImage.image = [UIImage imageWithData:imageData];
         }
     }];
-   
-    
-    
-    
 }
 -(UIColor*) generateRandomPastelColor
 {

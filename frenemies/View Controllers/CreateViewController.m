@@ -42,7 +42,7 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.allowsMultipleSelection = true;
-    self.dropdownArray = [NSArray arrayWithObjects:@"mile",@"meter",@"liter",@"second",@"day",@"cup",@"meal",@"minute",nil];
+    self.dropdownArray = [NSArray arrayWithObjects:@"mile",@"meter",@"liter",@"second",@"day",@"cup",@"meal",@"minute",@"hour",nil];
     self.taggingArray = [NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
     ManaDropDownMenu *menu = [[ManaDropDownMenu alloc] initWithFrame:self.dropdownView.frame title:@"Units"];
         menu.delegate = self;
