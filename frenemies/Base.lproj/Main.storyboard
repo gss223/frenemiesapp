@@ -218,8 +218,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBe-qE-YJY">
-                                                <rect key="frame" x="52" y="295" width="42" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBe-qE-YJY" customClass="UICountingLabel">
+                                                <rect key="frame" x="52" y="295" width="11" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -313,6 +313,9 @@
                                                 <rect key="frame" x="303" y="674" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Log"/>
+                                                <connections>
+                                                    <action selector="logAction:" destination="JiI-TM-rfZ" eventType="touchUpInside" id="haP-wk-H2m"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRG-c0-cPn">
                                                 <rect key="frame" x="49" y="20" width="68" height="21"/>
@@ -339,6 +342,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="Wne-Pu-Rru"/>
                     <connections>
+                        <outlet property="countLabel" destination="uBe-qE-YJY" id="TOT-tl-atC"/>
+                        <outlet property="horBarChart" destination="BE9-IB-3B6" id="85w-UD-u5Q"/>
+                        <outlet property="place" destination="NX2-Am-AZA" id="Aie-JN-rAh"/>
+                        <outlet property="totalPeople" destination="jY6-xE-d5b" id="yXm-I3-mhQ"/>
+                        <outlet property="unitsUsed" destination="RXr-Qx-j99" id="K6X-ah-YdR"/>
                         <segue destination="vC4-xT-Llc" kind="show" id="nEG-Dy-fYZ"/>
                     </connections>
                 </viewController>

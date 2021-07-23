@@ -6,8 +6,17 @@
 //
 
 #import "ChallengeViewController.h"
+#import "UICountingLabel.h"
+#import <Charts-Swift.h>
+@import Charts;
 
 @interface ChallengeViewController ()
+
+@property (weak, nonatomic) IBOutlet HorizontalBarChartView *horBarChart;
+@property (weak, nonatomic) IBOutlet UICountingLabel *countLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unitsUsed;
+@property (weak, nonatomic) IBOutlet UILabel *place;
+@property (weak, nonatomic) IBOutlet UILabel *totalPeople;
 
 @end
 
@@ -16,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)logAction:(id)sender {
 }
 
 /*
