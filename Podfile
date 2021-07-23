@@ -12,6 +12,8 @@ target 'frenemies' do
   pod 'MKDropdownMenu'
   pod 'CCDropDownMenus'
   pod 'DateTools'
+  pod 'UICountingLabel'
+  pod 'Charts'
 
   target 'frenemiesTests' do
     inherit! :search_paths

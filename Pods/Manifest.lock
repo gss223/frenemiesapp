@@ -6,6 +6,9 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.1)
   - CCDropDownMenus (0.1.2)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - DateTools (2.0.0)
   - FBSDKCoreKit (4.28.0):
     - Bolts (~> 1.7)
@@ -22,34 +25,41 @@ PODS:
     - FBSDKShareKit (~> 4.28.0)
     - FBSDKTVOSKit (~> 4.28.0)
     - Parse/Core
+  - UICountingLabel (1.4.1)
 
 DEPENDENCIES:
   - CCDropDownMenus
+  - Charts
   - DateTools
   - FBSDKLoginKit (= 4.28.0)
   - MKDropdownMenu
   - Parse (= 1.16.0)
   - Parse/FacebookUtils
+  - UICountingLabel
 
 SPEC REPOS:
   trunk:
     - Bolts
     - CCDropDownMenus
+    - Charts
     - DateTools
     - FBSDKCoreKit
     - FBSDKLoginKit
     - MKDropdownMenu
     - Parse
+    - UICountingLabel
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   CCDropDownMenus: ee65b63286a16354907fdde49c40c1817f463470
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
   FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   Parse: 5b36dc2c2f0a2fd82a257ae018bc3d68cf2c24e7
+  UICountingLabel: faf890b505d96312e324a86718f031fafffb0ccb
 
-PODFILE CHECKSUM: 0f192a4776338651d4c4c165c207b02bf51e4f13
+PODFILE CHECKSUM: c3d84c69edcae7e135337d11ab5534dbe2e7ff97
 
 COCOAPODS: 1.10.1
