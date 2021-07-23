@@ -24,6 +24,8 @@
 		AA46CBF326A8BBA600ED656D /* ChallengeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */; };
 		AA962F6526AA05630037229F /* RelatedChallengeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA962F6426AA05630037229F /* RelatedChallengeCell.m */; };
 		AABB837426AB403D00A0484E /* ChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837326AB403D00A0484E /* ChallengeViewController.m */; };
+		AABB837726AB441800A0484E /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837626AB441800A0484E /* LogViewController.m */; };
+		AABB837A26AB45A100A0484E /* DoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837926AB45A100A0484E /* DoneViewController.m */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
 		AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D98269CAFAF00A6BC5E /* ViewController.m */; };
@@ -95,6 +97,10 @@
 		AA962F6426AA05630037229F /* RelatedChallengeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedChallengeCell.m; sourceTree = "<group>"; };
 		AABB837226AB403D00A0484E /* ChallengeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeViewController.h; sourceTree = "<group>"; };
 		AABB837326AB403D00A0484E /* ChallengeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewController.m; sourceTree = "<group>"; };
+		AABB837526AB441800A0484E /* LogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
+		AABB837626AB441800A0484E /* LogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
+		AABB837826AB45A100A0484E /* DoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoneViewController.h; sourceTree = "<group>"; };
+		AABB837926AB45A100A0484E /* DoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoneViewController.m; sourceTree = "<group>"; };
 		AADF7D8E269CAFAF00A6BC5E /* frenemies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frenemies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF7D91269CAFAF00A6BC5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -282,6 +288,10 @@
 				AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */,
 				AABB837226AB403D00A0484E /* ChallengeViewController.h */,
 				AABB837326AB403D00A0484E /* ChallengeViewController.m */,
+				AABB837526AB441800A0484E /* LogViewController.h */,
+				AABB837626AB441800A0484E /* LogViewController.m */,
+				AABB837826AB45A100A0484E /* DoneViewController.h */,
+				AABB837926AB45A100A0484E /* DoneViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -530,6 +540,7 @@
 				AA349990269F9D4400DCC7E7 /* FeedCell.m in Sources */,
 				AA44948D26A61C8900E78128 /* SwipeUserCell.m in Sources */,
 				AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */,
+				AABB837A26AB45A100A0484E /* DoneViewController.m in Sources */,
 				AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */,
 				AA44948A26A5FB8B00E78128 /* FriendViewController.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
@@ -544,6 +555,7 @@
 				AA962F6526AA05630037229F /* RelatedChallengeCell.m in Sources */,
 				AADF7DC9269CEBCA00A6BC5E /* LoginViewController.m in Sources */,
 				AA349993269F9D6100DCC7E7 /* FriendCell.m in Sources */,
+				AABB837726AB441800A0484E /* LogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
