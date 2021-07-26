@@ -43,6 +43,57 @@
     self.countLabel.format = @"%d";
     self.countLabel.method = UILabelCountingMethodLinear;
     [self.countLabel countFromZeroTo:[self.amount floatValue]];
+    [self setUpGraph];
+}
+-(void)setUpGraph{
+    [self graphComp];
+    NSMutableArray <BarChartDataEntry *> *barChartDataEntries = [NSMutableArray array];
+    NSMutableArray *usernames = [NSMutableArray array];
+    int count = 5;
+    if ([self.totalParticipants intValue]<5){
+        count = [self.totalParticipants intValue];
+    }
+    for (int i = 0; i<count; i++){
+        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:(double)i y:[self.logNumbers[i] doubleValue]];
+        [barChartDataEntries addObject:entry];
+        [usernames addObject:self.participants[0][@"username"]];
+    }
+    BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:self.challenge.unitChosen];
+    BarChartData *data = [[BarChartData alloc] initWithDataSet:chartdataset];
+    
+    
+    self.horBarChart.data = data;
+}
+-(void)graphComp{
+    ChartXAxis *xAxis = self.horBarChart.xAxis;
+        xAxis.labelPosition = XAxisLabelPositionBottom;
+        xAxis.labelFont = [UIFont systemFontOfSize:10.f];
+        xAxis.drawAxisLineEnabled = YES;
+        xAxis.drawGridLinesEnabled = NO;
+        xAxis.granularity = 10.0;
+        
+    ChartYAxis *leftAxis = self.horBarChart.leftAxis;
+        leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
+        leftAxis.drawAxisLineEnabled = YES;
+        leftAxis.drawGridLinesEnabled = NO;
+        //leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
+        
+    ChartYAxis *rightAxis =self.horBarChart.rightAxis;
+        rightAxis.enabled = NO;
+        rightAxis.labelFont = [UIFont systemFontOfSize:10.f];
+        rightAxis.drawAxisLineEnabled = YES;
+        rightAxis.drawGridLinesEnabled = NO;
+        rightAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
+        
+    ChartLegend *l = self.horBarChart.legend;
+        l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
+        l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
+        l.orientation = ChartLegendOrientationHorizontal;
+        l.drawInside = NO;
+        l.form = ChartLegendFormSquare;
+        l.formSize = 8.0;
+        l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
+        l.xEntrySpace = 4.0;
 }
 -(void)getLogData{
     PFQuery *query = [PFQuery queryWithClassName:@"Log"];
