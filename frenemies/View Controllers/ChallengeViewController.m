@@ -12,7 +12,7 @@
 #import <Charts-Swift.h>
 @import Charts;
 
-@interface ChallengeViewController ()
+@interface ChallengeViewController () <ChartViewDelegate>
 
 @property (weak, nonatomic) IBOutlet HorizontalBarChartView *horBarChart;
 @property (weak, nonatomic) IBOutlet UICountingLabel *countLabel;
@@ -26,6 +26,8 @@
 @property (strong,nonatomic) NSNumber *totalParticipants;
 @property (strong,nonatomic) NSNumber *rank;
 @property (strong,nonatomic) Log *yourLog;
+@property (strong,nonatomic) NSMutableArray *usernames;
+@property (strong,nonatomic) PFUser *user;
 
 @end
 
@@ -33,8 +35,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.horBarChart.delegate = self;
+    [self getYourUser];
     [self getLogData];
     // Do any additional setup after loading the view.
+}
+-(void)getYourUser{
+    [PFUser getCurrentUserInBackground];
 }
 -(void)setUpViews{
     self.unitsUsed.text = self.challenge.unitChosen;
@@ -48,7 +55,7 @@
 -(void)setUpGraph{
     [self graphComp];
     NSMutableArray <BarChartDataEntry *> *barChartDataEntries = [NSMutableArray array];
-    NSMutableArray *usernames = [NSMutableArray array];
+    self.usernames = [NSMutableArray array];
     int count = 5;
     if ([self.totalParticipants intValue]<5){
         count = [self.totalParticipants intValue];
@@ -56,18 +63,18 @@
     for (int i = 0; i<count; i++){
         BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:(double)i y:[self.logNumbers[i] doubleValue]];
         [barChartDataEntries addObject:entry];
-        [usernames addObject:self.participants[0][@"username"]];
+        [self.usernames addObject:self.participants[i][@"username"]];
     }
     BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:self.challenge.unitChosen];
     BarChartData *data = [[BarChartData alloc] initWithDataSet:chartdataset];
     
-    
     self.horBarChart.data = data;
+    self.horBarChart.xAxis.valueFormatter = self;
 }
 -(void)graphComp{
     ChartXAxis *xAxis = self.horBarChart.xAxis;
         xAxis.labelPosition = XAxisLabelPositionBottom;
-        xAxis.labelFont = [UIFont systemFontOfSize:10.f];
+        xAxis.labelFont = [UIFont systemFontOfSize:5.f];
         xAxis.drawAxisLineEnabled = YES;
         xAxis.drawGridLinesEnabled = NO;
         xAxis.granularity = 10.0;
@@ -152,6 +159,20 @@
     
 }
 - (IBAction)logAction:(id)sender {
+}
+- (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis
+{
+    NSString *xAxisStringValue = @"";
+    int myInt = (int)value;
+
+    if(self.usernames.count > myInt)
+        xAxisStringValue = [self.usernames objectAtIndex:myInt];
+
+    return @"";
+}
+- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+{
+    NSLog(@"chartValueSelected");
 }
 
 /*
