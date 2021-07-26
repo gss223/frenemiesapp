@@ -9,6 +9,7 @@
 #import "UICountingLabel.h"
 #import "Log.h"
 #import <Parse/Parse.h>
+#import <DateTools/DateTools.h>
 #import <Charts-Swift.h>
 @import Charts;
 
@@ -28,6 +29,8 @@
 @property (strong,nonatomic) Log *yourLog;
 @property (strong,nonatomic) NSMutableArray *usernames;
 @property (strong,nonatomic) PFUser *user;
+@property (weak, nonatomic) IBOutlet UILabel *timeLeft;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -38,19 +41,42 @@
     self.horBarChart.delegate = self;
     [self getYourUser];
     [self getLogData];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
     // Do any additional setup after loading the view.
 }
 -(void)getYourUser{
     [PFUser getCurrentUserInBackground];
 }
 -(void)setUpViews{
-    self.unitsUsed.text = self.challenge.unitChosen;
+    if ([self.amount intValue]==1){
+        self.unitsUsed.text = self.challenge.unitChosen;
+    }
+    else{
+        self.unitsUsed.text = [self.challenge.unitChosen stringByAppendingString:@"s"];
+    }
+    
     self.totalPeople.text = [self.totalParticipants stringValue];
     self.place.text = [self.rank stringValue];
     self.countLabel.format = @"%d";
     self.countLabel.method = UILabelCountingMethodLinear;
     [self.countLabel countFromZeroTo:[self.amount floatValue]];
     [self setUpGraph];
+    NSTimeInterval ti = [self.challenge.timeEnd timeIntervalSinceDate:[NSDate date]];
+    NSUInteger h, m, s;
+    h = (ti / 3600);
+    m = ((NSUInteger)(ti / 60)) % 60;
+    s = ((NSUInteger) ti) % 60;
+    NSString *durat = [NSString stringWithFormat:@"%lu:%02lu:%02lu", h, m, s];
+    self.timeLeft.text = durat;
+}
+-(void)onTimer{
+    NSTimeInterval ti = [self.challenge.timeEnd timeIntervalSinceDate:[NSDate date]];
+    NSUInteger h, m, s;
+    h = (ti / 3600);
+    m = ((NSUInteger)(ti / 60)) % 60;
+    s = ((NSUInteger) ti) % 60;
+    NSString *durat = [NSString stringWithFormat:@"%lu:%02lu:%02lu", h, m, s];
+    self.timeLeft.text = durat;
 }
 -(void)setUpGraph{
     [self graphComp];
@@ -65,7 +91,7 @@
         [barChartDataEntries addObject:entry];
         [self.usernames addObject:self.participants[i][@"username"]];
     }
-    BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:self.challenge.unitChosen];
+    BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:[self.challenge.unitChosen stringByAppendingString:@"s"]];
     BarChartData *data = [[BarChartData alloc] initWithDataSet:chartdataset];
     
     self.horBarChart.data = data;
@@ -101,6 +127,7 @@
         l.formSize = 8.0;
         l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
         l.xEntrySpace = 4.0;
+    [self.horBarChart animateWithYAxisDuration:2.5];
 }
 -(void)getLogData{
     PFQuery *query = [PFQuery queryWithClassName:@"Log"];

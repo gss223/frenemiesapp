@@ -233,7 +233,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="logged" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61V-un-N9s">
-                                                <rect key="frame" x="179" y="295" width="53" height="21"/>
+                                                <rect key="frame" x="200" y="295" width="53" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -329,6 +329,13 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-ND-eji">
+                                                <rect key="frame" x="150" y="386" width="139" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
@@ -342,9 +349,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="Wne-Pu-Rru"/>
                     <connections>
+                        <outlet property="collectionView" destination="mop-lZ-anp" id="fus-DY-kJr"/>
                         <outlet property="countLabel" destination="uBe-qE-YJY" id="TOT-tl-atC"/>
                         <outlet property="horBarChart" destination="BE9-IB-3B6" id="85w-UD-u5Q"/>
                         <outlet property="place" destination="NX2-Am-AZA" id="Aie-JN-rAh"/>
+                        <outlet property="timeLeft" destination="Chg-ND-eji" id="7t6-C2-B83"/>
                         <outlet property="totalPeople" destination="jY6-xE-d5b" id="yXm-I3-mhQ"/>
                         <outlet property="unitsUsed" destination="RXr-Qx-j99" id="K6X-ah-YdR"/>
                         <segue destination="vC4-xT-Llc" kind="show" id="nEG-Dy-fYZ"/>
@@ -352,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Btc-mG-Teh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858" y="1858"/>
+            <point key="canvasLocation" x="857.97101449275374" y="1857.5892857142856"/>
         </scene>
         <!--Log View Controller-->
         <scene sceneID="xDg-bP-Ebl">
