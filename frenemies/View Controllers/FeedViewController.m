@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "Challenge.h"
 #import "FeedCell.h"
+#import "ChallengeViewController.h"
 
 @interface FeedViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -89,15 +90,24 @@
     cell.challenge = self.challengeArray[indexPath.row];
     return cell;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FeedCell *cell = (FeedCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"challengeLogSegue" sender:cell.challenge];
+}
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"challengeLogSegue"]){
+        Challenge *sentChallenge = sender;
+        ChallengeViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.challenge = sentChallenge;
+    }
 }
-*/
+
 
 @end

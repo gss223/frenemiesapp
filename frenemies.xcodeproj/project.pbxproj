@@ -22,6 +22,7 @@
 		AA46CBED26A8757D00ED656D /* ChallengeFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBEC26A8757D00ED656D /* ChallengeFindViewController.m */; };
 		AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */; };
 		AA46CBF326A8BBA600ED656D /* ChallengeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */; };
+		AA547E5726AEF56E00FA5357 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AA547E5626AEF56E00FA5357 /* Log.m */; };
 		AA962F6526AA05630037229F /* RelatedChallengeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA962F6426AA05630037229F /* RelatedChallengeCell.m */; };
 		AABB837426AB403D00A0484E /* ChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837326AB403D00A0484E /* ChallengeViewController.m */; };
 		AABB837726AB441800A0484E /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837626AB441800A0484E /* LogViewController.m */; };
@@ -94,6 +95,8 @@
 		AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeFindCell.m; sourceTree = "<group>"; };
 		AA46CBF126A8BBA600ED656D /* ChallengeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeDetailViewController.h; sourceTree = "<group>"; };
 		AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeDetailViewController.m; sourceTree = "<group>"; };
+		AA547E5526AEF56E00FA5357 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		AA547E5626AEF56E00FA5357 /* Log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
 		AA962F6326AA05630037229F /* RelatedChallengeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedChallengeCell.h; sourceTree = "<group>"; };
 		AA962F6426AA05630037229F /* RelatedChallengeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedChallengeCell.m; sourceTree = "<group>"; };
 		AABB837226AB403D00A0484E /* ChallengeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeViewController.h; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				AA459CA926A0B2FD00E996B7 /* Challenge.m */,
 				AABB837E26AB6AFF00A0484E /* Gallery.h */,
 				AABB837F26AB6AFF00A0484E /* Gallery.m */,
+				AA547E5526AEF56E00FA5357 /* Log.h */,
+				AA547E5626AEF56E00FA5357 /* Log.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				AA349982269E137500DCC7E7 /* SignUpViewController.m in Sources */,
 				AA349988269E1E1700DCC7E7 /* CreateViewController.m in Sources */,
 				AA459CAA26A0B2FD00E996B7 /* Challenge.m in Sources */,
+				AA547E5726AEF56E00FA5357 /* Log.m in Sources */,
 				AADF7DA4269CAFB000A6BC5E /* main.m in Sources */,
 				AA46CBED26A8757D00ED656D /* ChallengeFindViewController.m in Sources */,
 				AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */,
