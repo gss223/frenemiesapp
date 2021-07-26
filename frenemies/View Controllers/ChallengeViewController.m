@@ -8,12 +8,15 @@
 #import "ChallengeViewController.h"
 #import "UICountingLabel.h"
 #import "Log.h"
+#import "Gallery.h"
+#import "LogViewController.h"
 #import <Parse/Parse.h>
 #import <DateTools/DateTools.h>
+#import "GalleryCell.h"
 #import <Charts-Swift.h>
 @import Charts;
 
-@interface ChallengeViewController () <ChartViewDelegate>
+@interface ChallengeViewController () <ChartViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet HorizontalBarChartView *horBarChart;
 @property (weak, nonatomic) IBOutlet UICountingLabel *countLabel;
@@ -31,6 +34,7 @@
 @property (strong,nonatomic) PFUser *user;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeft;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong,nonatomic) NSArray *gallery;
 
 @end
 
@@ -39,8 +43,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.horBarChart.delegate = self;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     [self getYourUser];
     [self getLogData];
+    [self getGalleryData];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
     // Do any additional setup after loading the view.
 }
@@ -90,6 +97,9 @@
         BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:(double)i y:[self.logNumbers[i] doubleValue]];
         [barChartDataEntries addObject:entry];
         [self.usernames addObject:self.participants[i][@"username"]];
+    }
+    for (NSString *name in self.usernames){
+        NSLog(@"%@",name);
     }
     BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:[self.challenge.unitChosen stringByAppendingString:@"s"]];
     BarChartData *data = [[BarChartData alloc] initWithDataSet:chartdataset];
@@ -185,15 +195,34 @@
     }];
     
 }
+-(void)getGalleryData{
+    PFQuery *query = [PFQuery queryWithClassName:@"Gallery"];
+    [query whereKey:@"challengeId" equalTo:self.challenge.objectId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray <Gallery *> * _Nullable objects, NSError * _Nullable error) {
+        if (error==nil){
+            self.gallery = objects;
+            [self.collectionView reloadData];
+        }
+    }];
+    
+}
+-(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.gallery.count;
+}
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    GalleryCell *cell = (GalleryCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"GalleryCell" forIndexPath:indexPath];
+    cell.gallery = self.gallery[indexPath.row];
+    return cell;
+}
 - (IBAction)logAction:(id)sender {
+    [self performSegueWithIdentifier:@"unitLogSegue" sender:self.challenge];
 }
 - (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis
 {
     NSString *xAxisStringValue = @"";
     int myInt = (int)value;
-
-    if(self.usernames.count > myInt)
-        xAxisStringValue = [self.usernames objectAtIndex:myInt];
+    xAxisStringValue = self.participants[myInt][@"username"];
+    
 
     return @"";
 }
@@ -202,14 +231,20 @@
     NSLog(@"chartValueSelected");
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"unitLogSegue"]){
+        Challenge *sentChallenge = sender;
+        LogViewController *logViewController = [segue destinationViewController];
+        logViewController.challenge = sentChallenge;
+        logViewController.log = self.yourLog;
+    }
 }
-*/
+
 
 @end

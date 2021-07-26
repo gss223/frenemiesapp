@@ -23,6 +23,7 @@
 		AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */; };
 		AA46CBF326A8BBA600ED656D /* ChallengeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */; };
 		AA547E5726AEF56E00FA5357 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AA547E5626AEF56E00FA5357 /* Log.m */; };
+		AA547E5A26AF6DDE00FA5357 /* GalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA547E5926AF6DDE00FA5357 /* GalleryCell.m */; };
 		AA962F6526AA05630037229F /* RelatedChallengeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA962F6426AA05630037229F /* RelatedChallengeCell.m */; };
 		AABB837426AB403D00A0484E /* ChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837326AB403D00A0484E /* ChallengeViewController.m */; };
 		AABB837726AB441800A0484E /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837626AB441800A0484E /* LogViewController.m */; };
@@ -97,6 +98,8 @@
 		AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeDetailViewController.m; sourceTree = "<group>"; };
 		AA547E5526AEF56E00FA5357 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		AA547E5626AEF56E00FA5357 /* Log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
+		AA547E5826AF6DDE00FA5357 /* GalleryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryCell.h; sourceTree = "<group>"; };
+		AA547E5926AF6DDE00FA5357 /* GalleryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalleryCell.m; sourceTree = "<group>"; };
 		AA962F6326AA05630037229F /* RelatedChallengeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedChallengeCell.h; sourceTree = "<group>"; };
 		AA962F6426AA05630037229F /* RelatedChallengeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedChallengeCell.m; sourceTree = "<group>"; };
 		AABB837226AB403D00A0484E /* ChallengeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChallengeViewController.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				AA46CBEF26A879AE00ED656D /* ChallengeFindCell.m */,
 				AA962F6326AA05630037229F /* RelatedChallengeCell.h */,
 				AA962F6426AA05630037229F /* RelatedChallengeCell.m */,
+				AA547E5826AF6DDE00FA5357 /* GalleryCell.h */,
+				AA547E5926AF6DDE00FA5357 /* GalleryCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				AA44948D26A61C8900E78128 /* SwipeUserCell.m in Sources */,
 				AA34998B269F785900DCC7E7 /* ProfileViewController.m in Sources */,
 				AABB837A26AB45A100A0484E /* DoneViewController.m in Sources */,
+				AA547E5A26AF6DDE00FA5357 /* GalleryCell.m in Sources */,
 				AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */,
 				AA44948A26A5FB8B00E78128 /* FriendViewController.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,

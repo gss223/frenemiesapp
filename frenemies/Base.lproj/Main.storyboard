@@ -289,23 +289,33 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mop-lZ-anp">
-                                                <rect key="frame" x="49" y="489" width="240" height="128"/>
+                                                <rect key="frame" x="49" y="489" width="324" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ed2-4d-kId">
-                                                    <size key="itemSize" width="128" height="128"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ed2-4d-kId">
+                                                    <size key="itemSize" width="126" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Kiq-eH-7ma">
-                                                        <rect key="frame" x="56" y="0.0" width="128" height="128"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryCell" id="Kiq-eH-7ma" customClass="GalleryCell">
+                                                        <rect key="frame" x="0.0" y="0.0" width="126" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gIn-Ae-YRu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="126" height="128"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oo6-pk-zdW">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="126" height="128"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
                                                         </collectionViewCellContentView>
+                                                        <size key="customSize" width="126" height="128"/>
+                                                        <connections>
+                                                            <outlet property="galleryImage" destination="oo6-pk-zdW" id="Nr4-1u-d7G"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -356,7 +366,7 @@
                         <outlet property="timeLeft" destination="Chg-ND-eji" id="7t6-C2-B83"/>
                         <outlet property="totalPeople" destination="jY6-xE-d5b" id="yXm-I3-mhQ"/>
                         <outlet property="unitsUsed" destination="RXr-Qx-j99" id="K6X-ah-YdR"/>
-                        <segue destination="vC4-xT-Llc" kind="show" id="nEG-Dy-fYZ"/>
+                        <segue destination="vC4-xT-Llc" kind="show" identifier="unitLogSegue" id="nEG-Dy-fYZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Btc-mG-Teh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -375,10 +385,16 @@
                                 <rect key="frame" x="338" y="124" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addAction:" destination="vC4-xT-Llc" eventType="touchUpInside" id="aXi-BS-ilS"/>
+                                </connections>
                             </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-t7-nkC">
                                 <rect key="frame" x="107" y="163" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="valueDidChange:" destination="vC4-xT-Llc" eventType="valueChanged" id="BHl-y6-Wti"/>
+                                </connections>
                             </stepper>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PDU-1L-r7E">
                                 <rect key="frame" x="50" y="161" width="49" height="34"/>
@@ -408,6 +424,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="hmB-iv-Nci"/>
+                    <connections>
+                        <outlet property="logCaption" destination="75u-Wt-yLT" id="buA-fE-DHB"/>
+                        <outlet property="logImage" destination="hpB-PL-3z4" id="p8t-zb-Q6L"/>
+                        <outlet property="logUnit" destination="PDU-1L-r7E" id="8zi-JR-SbB"/>
+                        <outlet property="stepUnit" destination="kcP-t7-nkC" id="0vj-Rd-gbn"/>
+                        <outlet property="units" destination="Kmg-2U-xbw" id="JU4-s1-kS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLl-LR-aCU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
