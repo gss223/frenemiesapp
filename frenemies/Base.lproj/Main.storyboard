@@ -555,6 +555,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="df7-Cy-BNm"/>
+                    <connections>
+                        <outlet property="celebrateView" destination="YoX-Cd-4eh" id="67r-dC-fp0"/>
+                        <outlet property="partAmount" destination="oRp-6i-uQd" id="5aV-bk-DHT"/>
+                        <outlet property="rankLabel" destination="Yfj-jf-ewt" id="vto-ey-5nf"/>
+                        <outlet property="unitChose" destination="Xya-dz-duN" id="gX3-Zy-fcp"/>
+                        <outlet property="units" destination="NZI-4c-XaH" id="LNK-T6-9NX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EP6-Dc-l6X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
