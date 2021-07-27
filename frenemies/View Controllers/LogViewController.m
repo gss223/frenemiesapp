@@ -33,10 +33,17 @@
     self.units.text = [self.challenge.unitChosen stringByAppendingString:@"(s)"];
     
 }
-- (IBAction)valueDidChange:(UIStepper *)sender {
+- (IBAction)unitFieldChange:(id)sender {
     NSUInteger currVal = [self.logUnit.text intValue];
-    self.logUnit.text= [NSString stringWithFormat:@"%02lu",1+currVal];
-    self.stepUnit.value = 1+currVal;
+    self.stepUnit.value = currVal;
+}
+- (IBAction)unitDidChange:(id)sender {
+    NSUInteger currVal = [self.logUnit.text intValue];
+    self.stepUnit.value = currVal;
+}
+- (IBAction)valueDidChange:(UIStepper *)sender {
+    NSUInteger value= sender.value;
+    self.logUnit.text= [NSString stringWithFormat:@"%02lu",value];
 }
 - (IBAction)addAction:(id)sender {
     [Gallery postGallery:self.overallImage withCaption:self.logCaption.text withChallengeId:self.challenge.objectId withUnit:[NSNumber numberWithInt:[self.logUnit.text intValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
