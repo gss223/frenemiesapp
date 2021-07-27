@@ -46,12 +46,24 @@
     self.logUnit.text= [NSString stringWithFormat:@"%02lu",value];
 }
 - (IBAction)addAction:(id)sender {
-    [Gallery postGallery:self.overallImage withCaption:self.logCaption.text withChallengeId:self.challenge.objectId withUnit:[NSNumber numberWithInt:[self.logUnit.text intValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded){
-            NSLog(@"gallery");
-        }
-    }];
-    
+    if (self.overallImage == nil){
+        NSLog(@"set alert here");
+    }
+    else{
+        [Gallery postGallery:self.overallImage withCaption:self.logCaption.text withChallengeId:self.challenge.objectId withUnit:[NSNumber numberWithInt:[self.logUnit.text intValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded){
+                NSLog(@"gallery");
+                [self clearData];
+            }
+        }];
+    }
+}
+-(void)clearData{
+    self.logImage.image = nil;
+    self.stepUnit.value = 0;
+    self.logCaption.text = @"";
+    self.logUnit.text = @"0";
+    self.overallImage = nil;
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
