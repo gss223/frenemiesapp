@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Challenge.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DoneViewController : UIViewController
+@property (strong,nonatomic) Challenge *challenge;
+
 
 @end
 

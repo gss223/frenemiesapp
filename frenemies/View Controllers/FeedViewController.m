@@ -12,6 +12,8 @@
 #import "Challenge.h"
 #import "FeedCell.h"
 #import "ChallengeViewController.h"
+#import "DoneViewController.h"
+#import "ChallengeDetailViewController.h"
 
 @interface FeedViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -92,7 +94,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FeedCell *cell = (FeedCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"challengeLogSegue" sender:cell.challenge];
+    if ([cell.challengeName.text isEqualToString:@"Done"]){
+        [self performSegueWithIdentifier:@"doneSegue" sender:cell.challenge];
+    }
+    else if ([[NSDate date] compare:cell.challenge.timeStart] == NSOrderedAscending){
+        [self performSegueWithIdentifier:@"notStartedSegue" sender:cell.challenge];
+    }
+    else{
+        [self performSegueWithIdentifier:@"challengeLogSegue" sender:cell.challenge];
+    }
 }
 
 
@@ -105,6 +115,17 @@
     if ([[segue identifier] isEqualToString:@"challengeLogSegue"]){
         Challenge *sentChallenge = sender;
         ChallengeViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.challenge = sentChallenge;
+    }
+    else if([[segue identifier] isEqualToString:@"doneSegue"]){
+        Challenge *sentChallenge = sender;
+        DoneViewController *doneViewController = [segue destinationViewController];
+        doneViewController.challenge = sentChallenge;
+        
+    }
+    else if ([[segue identifier] isEqualToString:@"notStartedSegue"]){
+        Challenge *sentChallenge = sender;
+        ChallengeDetailViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.challenge = sentChallenge;
     }
 }
