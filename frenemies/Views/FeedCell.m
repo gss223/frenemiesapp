@@ -26,15 +26,22 @@
     self.containerView.layer.shadowOpacity = 1;
     self.containerView.layer.shadowRadius = 2;
     self.containerView.layer.shadowOffset = CGSizeMake(3,3);
-    self.challengeName.text = challenge.challengeName;
-    PFFile *cImage= challenge.challengePic;
-    self.challengeImage.layer.cornerRadius = 35;
-    self.challengeImage.layer.masksToBounds = YES;
-    [cImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            self.challengeImage.image = [UIImage imageWithData:imageData];
-        }
-    }];
+    NSLog(@"%d",([[NSDate date] compare:challenge.timeEnd] == NSOrderedDescending));
+    if ([[NSDate date] compare:challenge.timeEnd] == NSOrderedDescending){
+        self.challengeImage.image = [UIImage imageNamed:@"celebrate"];
+        self.challengeName.text = @"Done";
+    }
+    else{
+        self.challengeName.text = challenge.challengeName;
+        PFFile *cImage= challenge.challengePic;
+        self.challengeImage.layer.cornerRadius = 35;
+        self.challengeImage.layer.masksToBounds = YES;
+        [cImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                self.challengeImage.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    }
 }
 -(UIColor*) generateRandomPastelColor
 {
