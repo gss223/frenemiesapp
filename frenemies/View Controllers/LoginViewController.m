@@ -40,6 +40,7 @@
     [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email",@"user_friends"] block:^(PFUser * _Nullable user, NSError * _Nullable error) {
         if(error==nil){
             NSLog(@"success");
+            [self putInFacebookData];
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             myDelegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedTabController"];
@@ -57,6 +58,7 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
+            
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             myDelegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedTabController"];
@@ -69,6 +71,24 @@
 }
 - (IBAction)signupAction:(id)sender {
     [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
+}
+-(void)putInFacebookData{
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                   initWithGraphPath:@"/me/"
+                                  parameters:@{ @"fields": @"id,name",}
+                                          HTTPMethod:@"GET"];
+    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                          id result,
+                                          NSError *error) {
+        NSString *fbId = result[@"id"];
+        NSString *name = result[@"name"];
+        PFQuery *query = [PFUser query];
+        [query getObjectInBackgroundWithId:[PFUser currentUser].objectId block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+            user[@"name"] = name;
+            user[@"fbId"] = fbId;
+            [user saveInBackground];
+        }];
+    }];
 }
 
 /*

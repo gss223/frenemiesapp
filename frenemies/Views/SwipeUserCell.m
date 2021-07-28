@@ -61,6 +61,10 @@ static CGFloat const kBounceValue = 20.0f;
     [self.addButton setTitle:@"Added" forState:UIControlStateNormal];
     self.addButton.enabled = NO;
 }
+-(void)pressFriend{
+    [self.addButton setTitle:@"Added" forState:UIControlStateNormal];
+    self.addButton.enabled = NO;
+}
 - (IBAction)clickedProfile:(id)sender {
     [self.delegate profileButtonAction:self.user];
 }

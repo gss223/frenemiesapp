@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray *fbfriends;
 @property (strong,nonatomic) NSArray *fbfriendUser;
+@property (strong,nonatomic) NSMutableArray *currentFriends;
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
 
 @end
@@ -62,10 +63,30 @@
                 self.profilePic.image = [UIImage imageWithData:imageData];
             }
         }];
+        [self currentFriendData];
+    }];
+}
+-(void)currentFriendData{
+    PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
+    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if (object == nil){
+            PFObject *friend = [PFObject objectWithClassName:@"Friend"];
+            friend[@"userId"] =[PFUser currentUser].objectId;
+            friend[@"friendArray"] = [NSMutableArray array];
+            [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                  self.currentFriends = [NSMutableArray array];
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            self.currentFriends = object[@"friendArray"];
+        }
         [self getFacebookUserId];
     }];
-    
-    
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
@@ -196,6 +217,9 @@
     if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
       [cell openCell];
     }
+    if ([self.currentFriends containsObject:cell.user.objectId]){
+        [cell pressFriend];
+    }
     return cell;
 }
 - (void)cellDidOpen:(UITableViewCell *)cell {
@@ -268,7 +292,7 @@
     
 }
 -(void)profileButtonAction:(PFUser *)user{
-    [self performSegueWithIdentifier:@"viewProfile" sender:user];
+    [self performSegueWithIdentifier:@"friendProfileSegue" sender:user];
 }
 -(void)saveFriend:(NSString *)friendId withyourId:(NSString *)yourId{
     PFQuery *query = [PFQuery queryWithClassName:@"Friend"];

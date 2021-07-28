@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, weak) id <SwipeUserCellDelegate> delegate;
 - (void)openCell;
+- (void) pressFriend;
 
 @end
 NS_ASSUME_NONNULL_END
