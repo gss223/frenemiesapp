@@ -8,13 +8,19 @@
 #import "ProfileViewController.h"
 #import <Parse/Parse.h>
 #import <PFFacebookUtils.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "SwipeUserCell.h"
 
-@interface ProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UIButton *facebookLink;
 @property (strong, nonatomic) UIImage *setPic;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic) NSMutableArray *fbfriends;
+@property (strong,nonatomic) NSArray *fbfriendUser;
+@property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
 
 @end
 
@@ -23,8 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     [self settheProfile];
     [self fixFacebookButton];
+    
     UITapGestureRecognizer *photoTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapPhoto:)];
         [self.profilePic addGestureRecognizer:photoTapGestureRecognizer];
         [self.profilePic setUserInteractionEnabled:YES];
@@ -53,6 +62,7 @@
                 self.profilePic.image = [UIImage imageWithData:imageData];
             }
         }];
+        [self getFacebookUserId];
     }];
     
     
@@ -149,6 +159,169 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+-(void)getFacebookUserId{
+    if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+            initWithGraphPath:@"/me/friends"
+            parameters:@{ @"fields": @"data",}
+                   HTTPMethod:@"GET"];
+        [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+            NSArray *friends = result[@"data"];
+            self.fbfriends = [NSMutableArray array];
+            for (NSDictionary *friend in friends){
+                NSLog(@"%@",friend[@"id"]);
+                [self.fbfriends addObject:friend[@"id"]];
+            }
+            [self getFbFriendsData];
+        }];
+    }
+    
+}
+-(void) getFbFriendsData{
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"fbId" containedIn:self.fbfriends];
+    [query findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
+        self.fbfriendUser = objects;
+        [self.tableView reloadData];
+    }];
+}
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.fbfriendUser.count;
+}
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
+    cell.user = self.fbfriendUser[indexPath.row];
+    cell.delegate = self;
+    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+      [cell openCell];
+    }
+    return cell;
+}
+- (void)cellDidOpen:(UITableViewCell *)cell {
+  NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
+  [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
+}
+
+- (void)cellDidClose:(UITableViewCell *)cell {
+  [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
+}
+-(void)addButtonAction:(PFUser *)user{
+    NSString *friendId = user.objectId;
+    NSLog (@"%@",friendId);
+    
+    NSString *yourId = [PFUser currentUser].objectId;
+    NSLog(@"%@",yourId);
+    PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
+    [query whereKey:@"userId" equalTo:yourId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if(object==nil){
+            PFObject *friend = [PFObject objectWithClassName:@"Friend"];
+            friend[@"userId"] =[PFUser currentUser].objectId;
+            friend[@"friendArray"] = [NSMutableArray arrayWithObject:friendId];
+            [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                  [self saveFriend:yourId withyourId:friendId];
+                // The object has been saved.
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            
+            NSString *fOid = object.objectId;
+            NSLog(@"%@",fOid);
+            PFQuery *query2 = [PFQuery queryWithClassName:@"Friend"];
+
+            // Retrieve the object by id
+            [query2 getObjectInBackgroundWithId:fOid
+                                         block:^(PFObject *friend, NSError *error) {
+                NSMutableArray *myFriends = friend[@"friendArray"];
+                if (myFriends ==nil){
+                    myFriends = [NSMutableArray arrayWithObject:friendId];
+                }
+                else{
+                    [myFriends addObject:friendId];
+                }
+                NSLog(@"%@",myFriends);
+                for (NSString *friendxs in myFriends){
+                    NSLog(@"%@",friendxs);
+                }
+                friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
+                NSLog(@"addedFriend");
+                
+                [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded){
+                        NSLog(@"success");
+                        [self saveFriend:yourId withyourId:friendId];
+                    }
+                    else{
+                        NSLog(@"failed");
+                    }
+                }];
+            }];
+            
+           
+        }
+    }];
+    
+}
+-(void)profileButtonAction:(PFUser *)user{
+    [self performSegueWithIdentifier:@"viewProfile" sender:user];
+}
+-(void)saveFriend:(NSString *)friendId withyourId:(NSString *)yourId{
+    PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
+    [query whereKey:@"userId" equalTo:yourId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if(object==nil){
+            PFObject *friend = [PFObject objectWithClassName:@"Friend"];
+            friend[@"userId"] =[PFUser currentUser].objectId;
+            friend[@"friendArray"] = [NSMutableArray arrayWithObject:friendId];
+            [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                // The object has been saved.
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            
+            NSString *fOid = object.objectId;
+            NSLog(@"%@",fOid);
+            PFQuery *query2 = [PFQuery queryWithClassName:@"Friend"];
+
+            // Retrieve the object by id
+            [query2 getObjectInBackgroundWithId:fOid
+                                         block:^(PFObject *friend, NSError *error) {
+                NSMutableArray *myFriends = friend[@"friendArray"];
+                if (myFriends ==nil){
+                    myFriends = [NSMutableArray arrayWithObject:friendId];
+                }
+                else{
+                    [myFriends addObject:friendId];
+                }
+                NSLog(@"%@",myFriends);
+                for (NSString *friendxs in myFriends){
+                    NSLog(@"%@",friendxs);
+                }
+                friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
+                NSLog(@"addedFriend");
+                
+                [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded){
+                        NSLog(@"success");
+                    }
+                    else{
+                        NSLog(@"failed");
+                    }
+                }];
+            }];
+            
+           
+        }
+    }];
 }
 /*
 #pragma mark - Navigation

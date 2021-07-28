@@ -25,10 +25,10 @@
     UITapGestureRecognizer *photoTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapPhoto:)];
     [self.logImage addGestureRecognizer:photoTapGestureRecognizer];
     [self.logImage setUserInteractionEnabled:YES];
+    [self setUpView];
     // Do any additional setup after loading the view.
 }
 -(void)setUpView{
-    self.logUnit.text =[NSString stringWithFormat:@"%02lu",0];
     self.stepUnit.value= 0;
     self.units.text = [self.challenge.unitChosen stringByAppendingString:@"(s)"];
     
