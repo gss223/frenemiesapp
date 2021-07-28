@@ -230,6 +230,8 @@
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
+    double i = entry.x;
+    NSLog (@"%@",self.participants[(int)i][@"username"]);
 }
 
 
