@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *rankLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unitChose;
 @property (weak, nonatomic) IBOutlet UILabel *partAmount;
+@property (weak, nonatomic) IBOutlet UILabel *loggedTot;
+@property (weak, nonatomic) IBOutlet UILabel *outOf;
+@property (weak, nonatomic) IBOutlet UILabel *people;
 
 @end
 
@@ -98,7 +101,26 @@
     self.rankLabel.text = [self.rank stringValue];
     self.partAmount.text = [self.totalParticipants stringValue];
     self.celebrateView.image = [UIImage imageNamed:@"celebrate"];
+    [self fadeIn];
     
+}
+-(void)fadeIn{
+    [self.units setAlpha:0.0f];
+    [self.unitChose setAlpha:0.0f];
+    [self.rankLabel setAlpha:0.0f];
+    [self.partAmount setAlpha:0.0f];
+    [self.loggedTot setAlpha:0.0f];
+    [self.outOf setAlpha:0.0f];
+    [self.people setAlpha:0.0f];
+    [UIView animateWithDuration:2.0f animations:^{
+        [self.units setAlpha:1.0f];
+        [self.unitChose setAlpha:1.0f];
+        [self.rankLabel setAlpha:1.0f];
+        [self.partAmount setAlpha:1.0f];
+        [self.loggedTot setAlpha:1.0f];
+        [self.outOf setAlpha:1.0f];
+        [self.people setAlpha:1.0f];
+    }];
 }
 -(void) checkIfDataGone{
     if (self.challenge.completed){

@@ -49,8 +49,6 @@
     [self getLogData];
     [self getGalleryData];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
-    
-    // Do any additional setup after loading the view.
 }
 -(void)getYourUser{
     [PFUser getCurrentUserInBackground];

@@ -573,7 +573,10 @@
                     <navigationItem key="navigationItem" id="df7-Cy-BNm"/>
                     <connections>
                         <outlet property="celebrateView" destination="YoX-Cd-4eh" id="67r-dC-fp0"/>
+                        <outlet property="loggedTot" destination="2YL-QZ-sEr" id="YiX-eE-q2L"/>
+                        <outlet property="outOf" destination="pPC-Z5-1kt" id="0Gv-Nx-y5u"/>
                         <outlet property="partAmount" destination="oRp-6i-uQd" id="5aV-bk-DHT"/>
+                        <outlet property="people" destination="M0C-ZP-BQx" id="VIh-tT-LdL"/>
                         <outlet property="rankLabel" destination="Yfj-jf-ewt" id="vto-ey-5nf"/>
                         <outlet property="unitChose" destination="Xya-dz-duN" id="gX3-Zy-fcp"/>
                         <outlet property="units" destination="NZI-4c-XaH" id="LNK-T6-9NX"/>
