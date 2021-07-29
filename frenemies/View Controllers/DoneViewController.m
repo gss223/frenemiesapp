@@ -91,13 +91,13 @@
     
 }
 -(void) setUpViews{
+    self.units.text = [self.amount stringValue];
     if ([self.amount intValue]!=1){
-        self.units.text = [[self.amount stringValue] stringByAppendingString:@"s"];
+        self.unitChose.text = [self.challenge.unitChosen stringByAppendingString:@"s"];
     }
     else{
-        self.units.text = [self.amount stringValue];
+        self.unitChose.text = self.challenge.unitChosen;
     }
-    self.unitChose.text = self.challenge.unitChosen;
     self.rankLabel.text = [self.rank stringValue];
     self.partAmount.text = [self.totalParticipants stringValue];
     self.celebrateView.image = [UIImage imageNamed:@"celebrate"];
