@@ -38,7 +38,7 @@ This is a friendly competition app where groups can create specific battles amon
 - [x] User can see their ranking on a certain challenge
 - [x] User can see their ongoing challenges
 - [x] User can find challenges
-- [x] User can find frineds
+- [x] User can find friends
 - [x] User can link to their Facebook and find facebook friends
 
 **Optional Nice-to-have Stories**
