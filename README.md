@@ -27,27 +27,29 @@ This is a friendly competition app where groups can create specific battles amon
 
 **Required Must-have Stories**
 
-* User can login
-* User can create an account
-* User can create a challenge
-* User can invite their friends
-* User can update their progress on the challenge
-    * Customize the numerical amount that it is counting (e.g. liters, miles, days, etc.)
-* User can post photos into an internal gallery 
-* User can set a time limit on a challenge
-* User can see a leaderboard of friends on a certain challenge
-* User can see their ongoing challenges
-* User can find challenges
+- [x] User can login
+- [x] User can create an account
+- [x] User can create a challenge
+- [x] User can invite their friends
+- [x] User can update their progress on the challenge
+- [x] User can customize the numerical amount that it is counting (e.g. liters, miles, days, etc.)
+- [x] User can post photos into an internal gallery 
+- [x] User can set a time limit on a challenge
+- [x] User can see their ranking on a certain challenge
+- [x] User can see their ongoing challenges
+- [x] User can find challenges
+- [x] User can find frineds
+- [x] User can link to their Facebook and find facebook friends
 
 **Optional Nice-to-have Stories**
 
-* User can watch a progress bar throughout the challenge
-* User can post completed challenges to social media
-* User can add in maps for running challenges
-* User can access HealthKit
-* User can see trending challenges
-* Generates photo highlight reel after challenge is over
-* Global challenges
+- [x] User can watch a progress bar throughout the challenge
+- [x] Public and private challenges
+- [ ] User can post completed challenges to social media
+- [ ] User can add in maps for running challenges
+- [ ] User can access HealthKit
+- [ ] User can see trending challenges
+- [ ] Generates photo highlight reel after challenge is over
 
 ### 2. Screen Archetypes
 
