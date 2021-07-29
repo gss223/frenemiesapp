@@ -44,7 +44,6 @@
     self.relatedChallengeView.dataSource = self;
     self.relatedChallengeView.delegate = self;
     [self setUpDetails];
-    // Do any additional setup after loading the view.
 }
 -(void)setUpDetails{
     self.challengeNameLabel.text = self.challenge.challengeName;
@@ -139,7 +138,6 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
     for (NSString *tag in self.challenge.tags){
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ IN tags AND objectId!=%@ AND completed = false AND publicorprivate = true",tag,self.challenge.objectId];
         PFQuery *query = [PFQuery queryWithClassName:@"Challenge" predicate:predicate];
-        //[query whereKey:@"tags" equalTo:tag];
         [queries addObject:query];
     }
     PFQuery *combinedquery = [PFQuery orQueryWithSubqueries:queries];
@@ -195,9 +193,7 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     if (collectionView == self.tagView){
         TagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TagCell" forIndexPath:indexPath];
-        //NSArray *taggingArray =[NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
         cell.tagName.text = self.taggingArray[indexPath.row];
-        //NSLog(self.taggingArray[indexPath.row]);
         cell.contentView.layer.cornerRadius = 5.0;
         cell.contentView.layer.masksToBounds = true;
         cell.contentView.layer.borderColor = [UIColor blackColor].CGColor;

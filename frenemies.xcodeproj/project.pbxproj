@@ -24,6 +24,7 @@
 		AA46CBF326A8BBA600ED656D /* ChallengeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA46CBF226A8BBA600ED656D /* ChallengeDetailViewController.m */; };
 		AA4FECD326B2209000A357DD /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4FECD226B2208F00A357DD /* GraphViewController.m */; };
 		AA4FECD626B2210800A357DD /* RelatedChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4FECD526B2210800A357DD /* RelatedChallengeViewController.m */; };
+		AA4FECDA26B2474900A357DD /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4FECD926B2474900A357DD /* APIManager.m */; };
 		AA547E5726AEF56E00FA5357 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AA547E5626AEF56E00FA5357 /* Log.m */; };
 		AA547E5A26AF6DDE00FA5357 /* GalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA547E5926AF6DDE00FA5357 /* GalleryCell.m */; };
 		AA962F6526AA05630037229F /* RelatedChallengeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA962F6426AA05630037229F /* RelatedChallengeCell.m */; };
@@ -33,7 +34,6 @@
 		AABB838026AB6AFF00A0484E /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB837F26AB6AFF00A0484E /* Gallery.m */; };
 		AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */; };
 		AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */; };
-		AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF7D98269CAFAF00A6BC5E /* ViewController.m */; };
 		AADF7D9C269CAFAF00A6BC5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADF7D9A269CAFAF00A6BC5E /* Main.storyboard */; };
 		AADF7D9E269CAFB000A6BC5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AADF7D9D269CAFB000A6BC5E /* Assets.xcassets */; };
 		AADF7DA1269CAFB000A6BC5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADF7D9F269CAFB000A6BC5E /* LaunchScreen.storyboard */; };
@@ -102,6 +102,8 @@
 		AA4FECD226B2208F00A357DD /* GraphViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; };
 		AA4FECD426B2210800A357DD /* RelatedChallengeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedChallengeViewController.h; sourceTree = "<group>"; };
 		AA4FECD526B2210800A357DD /* RelatedChallengeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedChallengeViewController.m; sourceTree = "<group>"; };
+		AA4FECD826B2474900A357DD /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		AA4FECD926B2474900A357DD /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		AA547E5526AEF56E00FA5357 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		AA547E5626AEF56E00FA5357 /* Log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
 		AA547E5826AF6DDE00FA5357 /* GalleryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryCell.h; sourceTree = "<group>"; };
@@ -121,8 +123,6 @@
 		AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AADF7D94269CAFAF00A6BC5E /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		AADF7D97269CAFAF00A6BC5E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AADF7D98269CAFAF00A6BC5E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AADF7D9B269CAFAF00A6BC5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AADF7D9D269CAFB000A6BC5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AADF7DA0269CAFB000A6BC5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -225,6 +225,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AA4FECD726B2470200A357DD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FECD826B2474900A357DD /* APIManager.h */,
+				AA4FECD926B2474900A357DD /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		AADF7D85269CAFAF00A6BC5E = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +259,7 @@
 		AADF7D90269CAFAF00A6BC5E /* frenemies */ = {
 			isa = PBXGroup;
 			children = (
+				AA4FECD726B2470200A357DD /* API */,
 				AA34998D269F9D2800DCC7E7 /* Views */,
 				AA34998C269F9D2000DCC7E7 /* Models */,
 				AADF7DC6269CEB9C00A6BC5E /* View Controllers */,
@@ -257,8 +267,6 @@
 				AADF7D92269CAFAF00A6BC5E /* AppDelegate.m */,
 				AADF7D94269CAFAF00A6BC5E /* SceneDelegate.h */,
 				AADF7D95269CAFAF00A6BC5E /* SceneDelegate.m */,
-				AADF7D97269CAFAF00A6BC5E /* ViewController.h */,
-				AADF7D98269CAFAF00A6BC5E /* ViewController.m */,
 				AADF7D9A269CAFAF00A6BC5E /* Main.storyboard */,
 				AADF7D9D269CAFB000A6BC5E /* Assets.xcassets */,
 				AADF7D9F269CAFB000A6BC5E /* LaunchScreen.storyboard */,
@@ -560,7 +568,6 @@
 			files = (
 				AA44949026A777EE00E78128 /* FriendProfileViewController.m in Sources */,
 				AA349996269F9D7100DCC7E7 /* TagCell.m in Sources */,
-				AADF7D99269CAFAF00A6BC5E /* ViewController.m in Sources */,
 				AABB837426AB403D00A0484E /* ChallengeViewController.m in Sources */,
 				AA349990269F9D4400DCC7E7 /* FeedCell.m in Sources */,
 				AA44948D26A61C8900E78128 /* SwipeUserCell.m in Sources */,
@@ -569,6 +576,7 @@
 				AA547E5A26AF6DDE00FA5357 /* GalleryCell.m in Sources */,
 				AA46CBF026A879AE00ED656D /* ChallengeFindCell.m in Sources */,
 				AA44948A26A5FB8B00E78128 /* FriendViewController.m in Sources */,
+				AA4FECDA26B2474900A357DD /* APIManager.m in Sources */,
 				AADF7D93269CAFAF00A6BC5E /* AppDelegate.m in Sources */,
 				AA46CBF326A8BBA600ED656D /* ChallengeDetailViewController.m in Sources */,
 				AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */,

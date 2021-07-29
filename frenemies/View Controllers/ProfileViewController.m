@@ -10,6 +10,7 @@
 #import <PFFacebookUtils.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "SwipeUserCell.h"
+#import "APIManager.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -29,15 +30,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self settheProfile];
     [self fixFacebookButton];
     
     UITapGestureRecognizer *photoTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapPhoto:)];
-        [self.profilePic addGestureRecognizer:photoTapGestureRecognizer];
-        [self.profilePic setUserInteractionEnabled:YES];
+    [self.profilePic addGestureRecognizer:photoTapGestureRecognizer];
+    [self.profilePic setUserInteractionEnabled:YES];
     
 }
 -(void) fixFacebookButton{
@@ -121,36 +121,26 @@
     PFQuery *query = [PFUser query];
 
         // Retrieve the object by id
-        [query getObjectInBackgroundWithId:[PFUser currentUser].objectId
+    [query getObjectInBackgroundWithId:[PFUser currentUser].objectId
                                      block:^(PFObject *user, NSError *error) {
-            if(error==nil){
-                user[@"profilePic"] = [self getPFFileFromImage:[self resizeI:self.setPic withSize:self.setPic.size]];
-                user[@"name"] = self.nameField.text;
-                NSLog(@"success");
-                [user saveInBackground];
-            }
-            else{
-                NSLog(@"%@", error.localizedDescription);
-            }
-        }];
+        if(error==nil){
+            user[@"profilePic"] = [self getPFFileFromImage:[self resizeI:self.setPic withSize:self.setPic.size]];
+            user[@"name"] = self.nameField.text;
+            NSLog(@"success");
+            [user saveInBackground];
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
         
 }
 - (IBAction)facebookLink:(id)sender {
-    if (![PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-      [PFFacebookUtils linkUserInBackground:[PFUser currentUser] withReadPermissions:@[@"public_profile", @"email",@"user_friends"] block:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-          NSLog(@"Woohoo, user is linked with Facebook!");
+    [APIManager linkFacebook:^(BOOL succeeded, NSError * _Nonnull error) {
+        if (succeeded){
+            NSLog(@"Woohoo, user is linked with Facebook!");
         }
-      }];
-    }
-    else{
-        [PFFacebookUtils unlinkUserInBackground:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {
-          if (succeeded) {
-            NSLog(@"The user is no longer associated with their Facebook account.");
-          }
-        }];
-    }
-
+    }];
 }
 - (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
  
@@ -158,7 +148,6 @@
     if (!image) {
         return nil;
     }
-    
     
     NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
     // get image data and check if that is not nil
@@ -183,17 +172,8 @@
 }
 -(void)getFacebookUserId{
     if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
-            initWithGraphPath:@"/me/friends"
-            parameters:@{ @"fields": @"data",}
-                   HTTPMethod:@"GET"];
-        [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-            NSArray *friends = result[@"data"];
-            self.fbfriends = [NSMutableArray array];
-            for (NSDictionary *friend in friends){
-                NSLog(@"%@",friend[@"id"]);
-                [self.fbfriends addObject:friend[@"id"]];
-            }
+        [APIManager getFacebookFriends:^(NSMutableArray * _Nonnull friends, NSError * _Nonnull error) {
+            self.fbfriends = friends;
             [self getFbFriendsData];
         }];
     }
@@ -285,8 +265,6 @@
                     }
                 }];
             }];
-            
-           
         }
     }];
     

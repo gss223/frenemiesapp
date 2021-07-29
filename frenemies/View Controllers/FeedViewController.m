@@ -32,7 +32,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
         [self.refreshControl addTarget:self action:@selector(setUpChallenge) forControlEvents:UIControlEventValueChanged];
         [self.tableView insertSubview: self.refreshControl atIndex:0];
-    // Do any additional setup after loading the view.
 }
 -(void) setUpChallenge{
     NSString *yourId =[PFUser currentUser].objectId;
@@ -42,7 +41,6 @@
         // Retrieve the object by id
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             if(error==nil){
-                //NSArray *challengeIds = [NSArray arrayWithArray:user[@"challenges"]];
                 NSLog(@"%@",object[@"challengeArray"]);
                 NSLog(@"success");
                 PFQuery *query2 = [PFQuery queryWithClassName:@"Challenge"];
@@ -53,9 +51,6 @@
                   if (!error) {
                       NSLog(@"got challenge");
                       self.challengeArray = objects;
-                      /*for (Challenge *chall in self.challengeArray){
-                          NSLog(chall.challengeName);
-                      }*/
                       [self.tableView reloadData];
                       [self.refreshControl endRefreshing];
                     
@@ -63,8 +58,7 @@
                     // Log details of the failure
                     NSLog(@"Error: %@ %@", error, [error userInfo]);
                   }
-                }];
-                
+                }];                
             }
             else{
                 NSLog(@"%@", error.localizedDescription);

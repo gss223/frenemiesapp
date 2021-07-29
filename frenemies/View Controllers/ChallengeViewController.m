@@ -99,9 +99,6 @@
         [barChartDataEntries addObject:entry];
         [self.usernames addObject:self.participants[i][@"username"]];
     }
-    for (NSString *name in self.usernames){
-        NSLog(@"%@",name);
-    }
     BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:[self.challenge.unitChosen stringByAppendingString:@"s"]];
     BarChartData *data = [[BarChartData alloc] initWithDataSet:chartdataset];
     
@@ -110,40 +107,34 @@
 }
 -(void)graphComp{
     ChartXAxis *xAxis = self.horBarChart.xAxis;
-        xAxis.labelPosition = XAxisLabelPositionBottom;
-        xAxis.labelFont = [UIFont systemFontOfSize:5.f];
-        xAxis.drawAxisLineEnabled = YES;
-        xAxis.drawGridLinesEnabled = NO;
-        xAxis.granularity = 10.0;
+    xAxis.labelPosition = XAxisLabelPositionBottom;
+    xAxis.labelFont = [UIFont systemFontOfSize:5.f];
+    xAxis.drawAxisLineEnabled = YES;
+    xAxis.drawGridLinesEnabled = NO;
+    xAxis.granularity = 10.0;
         
     ChartYAxis *leftAxis = self.horBarChart.leftAxis;
-        leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-        leftAxis.drawAxisLineEnabled = YES;
-        leftAxis.drawGridLinesEnabled = NO;
-        //leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
+    leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
+    leftAxis.drawAxisLineEnabled = YES;
+    leftAxis.drawGridLinesEnabled = NO;
         
     ChartYAxis *rightAxis =self.horBarChart.rightAxis;
-        rightAxis.enabled = NO;
-        rightAxis.labelFont = [UIFont systemFontOfSize:10.f];
-        rightAxis.drawAxisLineEnabled = YES;
-        rightAxis.drawGridLinesEnabled = NO;
-        rightAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
+    rightAxis.enabled = NO;
         
     ChartLegend *l = self.horBarChart.legend;
-        l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
-        l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
-        l.orientation = ChartLegendOrientationHorizontal;
-        l.drawInside = NO;
-        l.form = ChartLegendFormSquare;
-        l.formSize = 8.0;
-        l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
-        l.xEntrySpace = 4.0;
+    l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
+    l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
+    l.orientation = ChartLegendOrientationHorizontal;
+    l.drawInside = NO;
+    l.form = ChartLegendFormSquare;
+    l.formSize = 8.0;
+    l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
+    l.xEntrySpace = 4.0;
     [self.horBarChart animateWithYAxisDuration:2.5];
 }
 -(void)getLogData{
     PFQuery *query = [PFQuery queryWithClassName:@"Log"];
     [query whereKey:@"challengeId" equalTo:self.challenge.objectId];
-    //[query whereKey:@"logger" equalTo:[PFUser currentUser]];
     [query includeKey:@"logger"];
     [query orderByDescending:@"unitAmount"];
     [query findObjectsInBackgroundWithBlock:^(NSArray <Log *> * _Nullable objects, NSError * _Nullable error) {
@@ -220,11 +211,6 @@
 }
 - (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis
 {
-    NSString *xAxisStringValue = @"";
-    int myInt = (int)value;
-    xAxisStringValue = self.participants[myInt][@"username"];
-    
-
     return @"";
 }
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight

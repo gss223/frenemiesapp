@@ -61,7 +61,7 @@
                           [self saveForFriends:friends withChallengeId:challengeOId];
                       }
                       else {
-                        // There was a problem, check error.description
+                          NSLog(@"%@", error.localizedDescription);
                       }
                     }];
                 }
@@ -103,8 +103,6 @@
     if (!image) {
         return nil;
     }
-    
-    
     NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
     // get image data and check if that is not nil
     if (!imageData) {
@@ -125,20 +123,16 @@
                 newLink[@"challengeArray"] = [NSMutableArray arrayWithObject:challengeId];
                 [newLink saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                   if (succeeded) {
-                    // The object has been saved.
+                      NSLog(@"Saved");
                   } else {
-                    // There was a problem, check error.description
+                      NSLog(@"%@", error.localizedDescription);
                   }
                 }];
             }
             else{
                 PFQuery *query2 = [PFQuery queryWithClassName:@"LinkChallenge"];
-
-                // Retrieve the object by id
                 [query2 getObjectInBackgroundWithId:objects[0][@"objectId"]
                                              block:^(PFObject *linkChall, NSError *error) {
-                    // Now let's update it with some new data. In this case, only cheatMode and score
-                    // will get sent to the cloud. playerName hasn't changed.
                     if (linkChall[@"challengeArray"] ==nil){
                         linkChall[@"challengeArray"] = [NSMutableArray arrayWithObject:challengeId];
                     }

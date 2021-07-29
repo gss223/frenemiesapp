@@ -8,9 +8,10 @@
 #import "LoginViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import<Parse/Parse.h>
+#import <Parse/Parse.h>
 #import <PFFacebookUtils.h>
 #import "SceneDelegate.h"
+#import "APIManager.h"
 @import Parse;
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
@@ -22,30 +23,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  /*FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-  // Optional: Place the button in the center of your view.
-  loginButton.center = self.view.center;
-  loginButton.readPermissions = @[@"public_profile", @"email",@"user_friends"];
-  [self.view addSubview:loginButton];
-  if ([FBSDKAccessToken currentAccessToken]) {
-       [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
-        startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-          if (!error) {
-             NSLog(@"fetched user:%@", result);
-          }
-      }];
-    }*/
 }
 - (IBAction)loginAction:(id)sender {
-    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email",@"user_friends"] block:^(PFUser * _Nullable user, NSError * _Nullable error) {
-        if(error==nil){
-            NSLog(@"success");
-            [self putInFacebookData];
+    [APIManager facebookLogin:^(PFUser * _Nonnull user, NSError * _Nonnull error) {
+        if (error==nil){
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             myDelegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedTabController"];
-            
-            //[self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
         }
     }];
 }
@@ -62,7 +46,6 @@
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             myDelegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedTabController"];
-            //[self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
         }
     }];
 }
@@ -72,25 +55,6 @@
 - (IBAction)signupAction:(id)sender {
     [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
 }
--(void)putInFacebookData{
-    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
-                                   initWithGraphPath:@"/me/"
-                                  parameters:@{ @"fields": @"id,name",}
-                                          HTTPMethod:@"GET"];
-    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
-                                          id result,
-                                          NSError *error) {
-        NSString *fbId = result[@"id"];
-        NSString *name = result[@"name"];
-        PFQuery *query = [PFUser query];
-        [query getObjectInBackgroundWithId:[PFUser currentUser].objectId block:^(PFObject * _Nullable user, NSError * _Nullable error) {
-            user[@"name"] = name;
-            user[@"fbId"] = fbId;
-            [user saveInBackground];
-        }];
-    }];
-}
-
 /*
 #pragma mark - Navigation
 

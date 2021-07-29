@@ -113,7 +113,6 @@
     UIImage *neededImage =[self resizeI:self.challengePic.image withSize:(self.challengePic.image.size)];
     [self clearAllFields];
     [self reloadInputViews];
-    //NSMutableArray *challengeParams = [NSMutableArray arrayWithObjects:challengeName,challengeDescription,puborpriv,timeStart,timeEnd,self.unitChose,self.selectedTags,self.selectedFriends,nil];
     [Challenge postChallenge:neededImage withOtherinfo:challengeParams withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded){
             NSLog(@"successfully created challenge");
@@ -155,9 +154,6 @@
 
     // Do something with the images (based on your use case)
     self.challengePic.image = editedImage;
-    
-    //[self sendProfile:self.author.objectId withImage:[self getPFFileFromImage:[self resizeI:editedImage withSize:editedImage.size]]];
-    
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -204,9 +200,7 @@
 }
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TagCell" forIndexPath:indexPath];
-    //NSArray *taggingArray =[NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
     cell.tagName.text = self.taggingArray[indexPath.row];
-    //NSLog(taggingArray[indexPath.row]);
     cell.contentView.layer.cornerRadius = 5.0;
     cell.contentView.layer.masksToBounds = true;
     cell.contentView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -215,18 +209,12 @@
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    //NSArray *taggingArray =[NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
     if (self.selectedTags ==nil){
         self.selectedTags = [NSMutableArray array];
     }
-    //if (self.selectedTags.count<3){
-        [self.selectedTags addObject:self.taggingArray[indexPath.row]];
-        UICollectionViewCell *cell= [collectionView cellForItemAtIndexPath:indexPath];
-        cell.backgroundColor= [UIColor greenColor];
-    /*}
-    else{
-        [self.collectionView deselectItemAtIndexPath:indexPath animated:true];
-    }*/
+    [self.selectedTags addObject:self.taggingArray[indexPath.row]];
+    UICollectionViewCell *cell= [collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor= [UIColor greenColor];
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self.selectedTags removeObject:self.taggingArray[indexPath.row]];

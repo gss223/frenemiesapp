@@ -26,7 +26,6 @@
     [self.logImage addGestureRecognizer:photoTapGestureRecognizer];
     [self.logImage setUserInteractionEnabled:YES];
     [self setUpView];
-    // Do any additional setup after loading the view.
 }
 -(void)setUpView{
     self.stepUnit.value= 0;

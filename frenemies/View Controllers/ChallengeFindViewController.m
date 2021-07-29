@@ -33,7 +33,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(removeCurrentChallenges) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview: self.refreshControl atIndex:0];
-    // Do any additional setup after loading the view.
 }
 -(void)setUpChallenges:(NSArray *)avoidChallenges{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"publicorprivate = true AND NOT(objectId IN %@) AND completed = false",avoidChallenges];

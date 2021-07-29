@@ -16,7 +16,6 @@
             self.galleryImage.image = [UIImage imageWithData:imageData];
         }
     }];
-    
 }
 
 @end

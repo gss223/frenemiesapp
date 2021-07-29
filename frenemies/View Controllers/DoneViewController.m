@@ -35,7 +35,6 @@
 -(void)getLogData{
     PFQuery *query = [PFQuery queryWithClassName:@"Log"];
     [query whereKey:@"challengeId" equalTo:self.challenge.objectId];
-    //[query whereKey:@"logger" equalTo:[PFUser currentUser]];
     [query includeKey:@"logger"];
     [query orderByDescending:@"unitAmount"];
     [query findObjectsInBackgroundWithBlock:^(NSArray <Log *> * _Nullable objects, NSError * _Nullable error) {

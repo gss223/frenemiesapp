@@ -32,7 +32,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(removeCurrentFriends) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview: self.refreshControl atIndex:0];
-    // Do any additional setup after loading the view.
 }
 
 -(void)setUpFriends:(NSArray *)currFriends{
@@ -124,7 +123,6 @@
             [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
               if (succeeded) {
                   [self saveFriend:yourId withyourId:friendId];
-                // The object has been saved.
               } else {
                 // There was a problem, check error.description
               }
