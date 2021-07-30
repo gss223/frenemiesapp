@@ -102,29 +102,6 @@
         }
     }];
 }
-NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* context)
-{
-    id firstValue = [first objectAtIndex:0];
-    id secondValue = [second objectAtIndex:0];
-    return [firstValue compare:secondValue];
-}
--(NSNumber *)calculateRelated:(NSArray *)yourTags{
-    float counter = [[NSNumber numberWithInt:yourTags.count] floatValue];
-    float n = [[NSNumber numberWithInt:yourTags.count] floatValue];
-    float totalRelTagVal = 0;
-    for (NSString *tag in yourTags){
-        NSInteger findInd= [self.tagArray indexOfObject:tag];
-        NSNumber *countofTag = self.countArray[findInd];
-        float tdf = counter/(n*(n+1)/2);
-        float df = [countofTag floatValue];
-        float totalN = [self.totalChallenges floatValue];
-        float idf = logf(totalN/(df+1));
-        float relTagVal = tdf*idf;
-        totalRelTagVal+=relTagVal;
-        counter-=1;
-    }
-    return [NSNumber numberWithFloat:totalRelTagVal];
-}
 -(void)getInitialStats{
     PFQuery *query = [PFQuery queryWithClassName:@"Tag"];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
@@ -170,11 +147,6 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
         self.relatedChallenges = (NSArray *)topTen;
         [self.relatedChallengeView reloadData];
     }];
-}
--(NSNumber *)calculateAbsRelated:(NSArray *)yourTags withBaseVal:(NSNumber *)value{
-    float tagWeight = [[self calculateRelated:yourTags] floatValue];
-    float difBetween = tagWeight - [value floatValue];
-    return [NSNumber numberWithFloat:fabsf(difBetween)];
 }
 
 - (IBAction)addChallengeAction:(id)sender {
@@ -230,6 +202,37 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
 
         [self presentViewController:formSheetController animated:YES completion:nil];
     }
+}
+#pragma mark - relatedChallengeAlgo
+-(NSNumber *)calculateAbsRelated:(NSArray *)yourTags withBaseVal:(NSNumber *)value{
+    float tagWeight = [[self calculateRelated:yourTags] floatValue];
+    float difBetween = tagWeight - [value floatValue];
+    return [NSNumber numberWithFloat:fabsf(difBetween)];
+}
+-(NSNumber *)calculateRelated:(NSArray *)yourTags{
+    float counter = [[NSNumber numberWithInt:yourTags.count] floatValue];
+    float n = [[NSNumber numberWithInt:yourTags.count] floatValue];
+    float totalRelTagVal = 0;
+    for (NSString *tag in yourTags){
+        NSInteger findInd= [self.tagArray indexOfObject:tag];
+        NSNumber *countofTag = self.countArray[findInd];
+        float tdf = counter/(n*(n+1)/2);
+        float df = [countofTag floatValue];
+        float totalN = [self.totalChallenges floatValue];
+        float idf = logf(totalN/(df+1));
+        float relTagVal = tdf*idf;
+        totalRelTagVal+=relTagVal;
+        counter-=1;
+    }
+    return [NSNumber numberWithFloat:totalRelTagVal];
+}
+
+#pragma mark - helpers
+NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* context)
+{
+    id firstValue = [first objectAtIndex:0];
+    id secondValue = [second objectAtIndex:0];
+    return [firstValue compare:secondValue];
 }
 
 #pragma mark - Navigation
