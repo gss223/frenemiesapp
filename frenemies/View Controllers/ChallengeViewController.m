@@ -142,7 +142,7 @@
                     NSLog(@"succesfully logged");
                 }
             }];
-            self.logNumbers = [NSMutableArray arrayWithObject:[NSNumber numberWithInt:1]];
+            self.logNumbers = [NSMutableArray arrayWithObject:[NSNumber numberWithInt:0]];
             self.participants = [NSMutableArray arrayWithObject:[PFUser currentUser]];
             self.totalParticipants = [NSNumber numberWithInt:1];
             self.amount =[NSNumber numberWithInt:0];

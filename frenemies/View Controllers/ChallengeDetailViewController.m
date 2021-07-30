@@ -224,7 +224,9 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
         RelatedChallengeViewController *rcViewController = [navigationController.viewControllers firstObject];
         
         rcViewController.challenge = self.relatedChallenges[indexPath.row];
-        formSheetController.presentationController.contentViewSize =  CGSizeMake(400, 550);
+        formSheetController.presentationController.shouldCenterVertically = YES;
+        
+        formSheetController.presentationController.contentViewSize =  CGSizeMake(300, 450);
 
         [self presentViewController:formSheetController animated:YES completion:nil];
     }

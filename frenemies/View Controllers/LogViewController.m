@@ -49,11 +49,12 @@
         NSLog(@"set alert here");
     }
     else{
-        [Gallery postGallery:self.overallImage withCaption:self.logCaption.text withChallengeId:self.challenge.objectId withUnit:[NSNumber numberWithInt:[self.logUnit.text intValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded){
-                NSLog(@"gallery");
-                [self clearData];
-            }
+        UIImage *sendImage = self.overallImage;
+        NSString *sendCaption = self.logCaption.text;
+        NSNumber *sendUnit = [NSNumber numberWithInt:[self.logUnit.text intValue]];
+        [self clearData];
+        [Gallery postGallery:sendImage withCaption:sendCaption withChallengeId:self.challenge.objectId withUnit:sendUnit withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            
         }];
     }
 }

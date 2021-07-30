@@ -26,7 +26,7 @@
     newGallery.author = [PFUser currentUser];
     [newGallery saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded){
-            NSLog(@"succeded in posting gallery");
+            NSLog(@"succeeded in posting gallery");
             PFQuery *query3 = [PFQuery queryWithClassName:@"Log"];
             [query3 whereKey:@"challengeId" equalTo:challengeId];
             [query3 whereKey:@"logger" equalTo:[PFUser currentUser]];

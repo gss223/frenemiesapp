@@ -22,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpView];
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setTranslucent:YES];
     // Do any additional setup after loading the view.
 }
 -(void)setUpView{
