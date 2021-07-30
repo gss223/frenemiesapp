@@ -49,6 +49,8 @@ static CGFloat const kBounceValue = 20.0f;
     self.nameField.text = user[@"name"];
     self.profilePic.layer.cornerRadius = 30;
     self.profilePic.layer.masksToBounds = YES;
+    [self.addButton setTitle:@"Add Friend" forState:UIControlStateNormal];
+    self.addButton.enabled = YES;
     PFFile *userImageFile = user[@"profilePic"];
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

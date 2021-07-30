@@ -45,10 +45,10 @@
     self.dropdownArray = [NSArray arrayWithObjects:@"mile",@"meter",@"liter",@"second",@"day",@"cup",@"meal",@"minute",@"hour",nil];
     self.taggingArray = [NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
     ManaDropDownMenu *menu = [[ManaDropDownMenu alloc] initWithFrame:self.dropdownView.frame title:@"Units"];
-        menu.delegate = self;
-        menu.numberOfRows = self.dropdownArray.count;
-        menu.textOfRows = self.dropdownArray;
-        [self.contentView addSubview:menu];
+    menu.delegate = self;
+    menu.numberOfRows = self.dropdownArray.count;
+    menu.textOfRows = self.dropdownArray;
+    [self.contentView addSubview:menu];
     [self setupFriend];
     self.challengeDescription.delegate = self;
     self.challengeDescription.text = @"Challenge Description";

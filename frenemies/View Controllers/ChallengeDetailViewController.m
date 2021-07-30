@@ -12,6 +12,10 @@
 #import "FriendCell.h"
 #import <Parse/Parse.h>
 #import "RelatedChallengeCell.h"
+#import "RelatedChallengeViewController.h"
+#import "MZFormSheetPresentationViewControllerSegue.h"
+#import "MZFormSheetPresentationViewController.h"
+
 
 @interface ChallengeDetailViewController () <UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *challengePic;
@@ -148,6 +152,7 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
             [yourTags addObject:chall.tags];
         }
         int count = 0;
+        NSLog(@"%@", compareWeight);
         for (NSArray *yourTag in yourTags){
             [weightTags addObject:[NSArray arrayWithObjects:[self calculateAbsRelated:yourTag withBaseVal:compareWeight],[NSNumber numberWithInt:count], nil]];
             count+=1;
@@ -207,7 +212,24 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
         return cell;
     }
 }
-/*
+- (UINavigationController *)formSheetControllerWithNavigationController {
+    return [self.storyboard instantiateViewControllerWithIdentifier:@"formSheetController"];
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (collectionView == self.relatedChallengeView){
+       UINavigationController *navigationController = [self formSheetControllerWithNavigationController];
+        MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:navigationController];
+        formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+        formSheetController.presentationController.shouldApplyBackgroundBlurEffect = YES;
+        RelatedChallengeViewController *rcViewController = [navigationController.viewControllers firstObject];
+        
+        rcViewController.challenge = self.relatedChallenges[indexPath.row];
+        formSheetController.presentationController.contentViewSize =  CGSizeMake(400, 550);
+
+        [self presentViewController:formSheetController animated:YES completion:nil];
+    }
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -215,6 +237,6 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
