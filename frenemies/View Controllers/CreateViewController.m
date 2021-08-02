@@ -149,6 +149,20 @@
         [self.tableView deselectRowAtIndexPath:indexPath animated:true];
     }
 }
+#pragma mark - UITextView
+-(void) textViewDidBeginEditing:(UITextView *)textView{
+    if (textView.textColor == [UIColor systemGrayColor]){
+        textView.text = nil;
+        textView.textColor = [UIColor blackColor];
+    }
+}
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    if (textView.text.length<=0){
+        textView.text = @"Challenge Description";
+        textView.textColor = [UIColor systemGrayColor];
+    }
+}
+#pragma mark - ImagePicker
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
@@ -190,14 +204,8 @@
     
     return newImage;
 }
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.friendArray.count;
-}
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FriendCell* cell = (FriendCell *) [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
-    cell.user = self.friendArray[indexPath.row];
-    return cell;
-}
+
+#pragma mark - UICollectionView
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.taggingArray.count;
 }
@@ -224,17 +232,14 @@
     UICollectionViewCell *cell= [collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor= [UIColor clearColor];
 }
--(void) textViewDidBeginEditing:(UITextView *)textView{
-    if (textView.textColor == [UIColor systemGrayColor]){
-        textView.text = nil;
-        textView.textColor = [UIColor blackColor];
-    }
+#pragma mark - UITableView
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.friendArray.count;
 }
--(void)textViewDidEndEditing:(UITextView *)textView{
-    if (textView.text.length<=0){
-        textView.text = @"Challenge Description";
-        textView.textColor = [UIColor systemGrayColor];
-    }
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    FriendCell* cell = (FriendCell *) [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
+    cell.user = self.friendArray[indexPath.row];
+    return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(self.selectedFriends ==nil){
@@ -245,15 +250,5 @@
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.selectedFriends removeObject:self.myFriends[indexPath.row]];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

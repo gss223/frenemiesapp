@@ -81,6 +81,8 @@
             }
         }];
 }
+
+#pragma mark - UITableView
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.challengeArray.count;
 }
@@ -101,7 +103,6 @@
         [self performSegueWithIdentifier:@"challengeLogSegue" sender:cell.challenge];
     }
 }
-
 
 #pragma mark - Navigation
 

@@ -87,27 +87,6 @@
     }];
     
 }
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.filteredData.count;
-}
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
-    cell.user = self.filteredData[indexPath.row];
-    cell.delegate = self;
-    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
-      [cell openCell];
-    }
-    return cell;
-}
-
-- (void)cellDidOpen:(UITableViewCell *)cell {
-  NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
-  [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
-}
-
-- (void)cellDidClose:(UITableViewCell *)cell {
-  [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
-}
 -(void)addButtonAction:(PFUser *)user{
     NSString *friendId = user.objectId;
     NSLog (@"%@",friendId);
@@ -243,7 +222,28 @@
     [self.tableView reloadData];
  
 }
+#pragma mark - UITableView
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.filteredData.count;
+}
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
+    cell.user = self.filteredData[indexPath.row];
+    cell.delegate = self;
+    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+      [cell openCell];
+    }
+    return cell;
+}
 
+- (void)cellDidOpen:(UITableViewCell *)cell {
+  NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
+  [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
+}
+
+- (void)cellDidClose:(UITableViewCell *)cell {
+  [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

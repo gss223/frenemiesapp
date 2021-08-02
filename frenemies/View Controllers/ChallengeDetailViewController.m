@@ -197,6 +197,7 @@
         [linkChallenge saveInBackground];
     }];
 }
+#pragma mark - UITableView
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.participants.count;
 }
@@ -205,6 +206,7 @@
     cell.user = self.participants[indexPath.row];
     return cell;
 }
+#pragma mark - UICollectionView
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == self.tagView){
         return self.taggingArray.count;

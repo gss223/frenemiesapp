@@ -66,57 +66,8 @@
         [self currentFriendData];
     }];
 }
--(void)currentFriendData{
-    PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
-    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-        if (object == nil){
-            PFObject *friend = [PFObject objectWithClassName:@"Friend"];
-            friend[@"userId"] =[PFUser currentUser].objectId;
-            friend[@"friendArray"] = [NSMutableArray array];
-            [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-              if (succeeded) {
-                  self.currentFriends = [NSMutableArray array];
-              } else {
-                // There was a problem, check error.description
-              }
-            }];
-        }
-        else{
-            self.currentFriends = object[@"friendArray"];
-        }
-        [self getFacebookUserId];
-    }];
-}
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
-    // Do something with the images (based on your use case)
-    self.profilePic.image = editedImage;
-    self.setPic = editedImage;
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (void) didTapPhoto:(UITapGestureRecognizer *)sender{
-    //TODO: Call method delegate
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-
-    // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-}
+#pragma mark - Button Actions
 - (IBAction)saveChanges:(id)sender {
     PFQuery *query = [PFUser query];
 
@@ -142,33 +93,29 @@
         }
     }];
 }
-- (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
- 
-    // check if image is not nil
-    if (!image) {
-        return nil;
-    }
-    
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
-    // get image data and check if that is not nil
-    if (!imageData) {
-        return nil;
-    }
-    
-    return [PFFile fileWithName:@"image.png" data:imageData];
-}
-- (UIImage *)resizeI:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(300, 300, size.width, size.height)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
+
+#pragma mark - Getting Data
+-(void)currentFriendData{
+    PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
+    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if (object == nil){
+            PFObject *friend = [PFObject objectWithClassName:@"Friend"];
+            friend[@"userId"] =[PFUser currentUser].objectId;
+            friend[@"friendArray"] = [NSMutableArray array];
+            [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                  self.currentFriends = [NSMutableArray array];
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            self.currentFriends = object[@"friendArray"];
+        }
+        [self getFacebookUserId];
+    }];
 }
 -(void)getFacebookUserId{
     if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
@@ -187,29 +134,7 @@
         [self.tableView reloadData];
     }];
 }
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.fbfriendUser.count;
-}
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
-    cell.user = self.fbfriendUser[indexPath.row];
-    cell.delegate = self;
-    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
-      [cell openCell];
-    }
-    if ([self.currentFriends containsObject:cell.user.objectId]){
-        [cell pressFriend];
-    }
-    return cell;
-}
-- (void)cellDidOpen:(UITableViewCell *)cell {
-  NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
-  [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
-}
-
-- (void)cellDidClose:(UITableViewCell *)cell {
-  [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
-}
+#pragma mark - SwipeUserCellDelegate
 -(void)addButtonAction:(PFUser *)user{
     NSString *friendId = user.objectId;
     NSLog (@"%@",friendId);
@@ -272,6 +197,7 @@
 -(void)profileButtonAction:(PFUser *)user{
     [self performSegueWithIdentifier:@"friendProfileSegue" sender:user];
 }
+#pragma mark - Saving Friends
 -(void)saveFriend:(NSString *)friendId withyourId:(NSString *)yourId{
     PFQuery *query = [PFQuery queryWithClassName:@"Friend"];
     [query whereKey:@"userId" equalTo:yourId];
@@ -324,6 +250,88 @@
            
         }
     }];
+}
+#pragma mark - UITableView
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.fbfriendUser.count;
+}
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
+    cell.user = self.fbfriendUser[indexPath.row];
+    cell.delegate = self;
+    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+      [cell openCell];
+    }
+    if ([self.currentFriends containsObject:cell.user.objectId]){
+        [cell pressFriend];
+    }
+    return cell;
+}
+- (void)cellDidOpen:(UITableViewCell *)cell {
+  NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
+  [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
+}
+
+- (void)cellDidClose:(UITableViewCell *)cell {
+  [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
+}
+#pragma mark - ImagePicker
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+
+    // Do something with the images (based on your use case)
+    self.profilePic.image = editedImage;
+    self.setPic = editedImage;
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void) didTapPhoto:(UITapGestureRecognizer *)sender{
+    //TODO: Call method delegate
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+
+    // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+- (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
+ 
+    // check if image is not nil
+    if (!image) {
+        return nil;
+    }
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+    // get image data and check if that is not nil
+    if (!imageData) {
+        return nil;
+    }
+    
+    return [PFFile fileWithName:@"image.png" data:imageData];
+}
+- (UIImage *)resizeI:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(300, 300, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 /*
 #pragma mark - Navigation

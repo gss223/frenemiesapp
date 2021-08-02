@@ -59,9 +59,6 @@
     [self getGalleryData];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
--(void)getYourUser{
-    [PFUser getCurrentUserInBackground];
-}
 -(void)setUpViews{
     if ([self.amount intValue]==1){
         self.unitsUsed.text = self.challenge.unitChosen;
@@ -93,51 +90,12 @@
     NSString *durat = [NSString stringWithFormat:@"%lu:%02lu:%02lu", h, m, s];
     self.timeLeft.text = durat;
 }
--(void)setUpGraph{
-    [self graphComp];
-    NSMutableArray <BarChartDataEntry *> *barChartDataEntries = [NSMutableArray array];
-    self.usernames = [NSMutableArray array];
-    int count = 5;
-    if ([self.totalParticipants intValue]<5){
-        count = [self.totalParticipants intValue];
-    }
-    for (int i = 0; i<count; i++){
-        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:(double)i y:[self.logNumbers[i] doubleValue]];
-        [barChartDataEntries addObject:entry];
-        [self.usernames addObject:self.participants[i][@"username"]];
-    }
-    BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:[self.challenge.unitChosen stringByAppendingString:@"s"]];
-    BarChartData *data = [[BarChartData alloc] initWithDataSet:chartdataset];
-    
-    self.horBarChart.data = data;
-    self.horBarChart.xAxis.valueFormatter = self;
+- (IBAction)logAction:(id)sender {
+    [self performSegueWithIdentifier:@"unitLogSegue" sender:self.challenge];
 }
--(void)graphComp{
-    ChartXAxis *xAxis = self.horBarChart.xAxis;
-    xAxis.labelPosition = XAxisLabelPositionBottom;
-    xAxis.labelFont = [UIFont systemFontOfSize:5.f];
-    xAxis.drawAxisLineEnabled = YES;
-    xAxis.drawGridLinesEnabled = NO;
-    xAxis.granularity = 10.0;
-        
-    ChartYAxis *leftAxis = self.horBarChart.leftAxis;
-    leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-    leftAxis.drawAxisLineEnabled = YES;
-    leftAxis.drawGridLinesEnabled = NO;
-        
-    ChartYAxis *rightAxis =self.horBarChart.rightAxis;
-    rightAxis.enabled = NO;
-        
-    ChartLegend *l = self.horBarChart.legend;
-    l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
-    l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
-    l.orientation = ChartLegendOrientationHorizontal;
-    l.drawInside = NO;
-    l.form = ChartLegendFormSquare;
-    l.formSize = 8.0;
-    l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
-    l.xEntrySpace = 4.0;
-    [self.horBarChart animateWithYAxisDuration:2.5];
+#pragma mark - Getting Data
+-(void)getYourUser{
+    [PFUser getCurrentUserInBackground];
 }
 -(void)getLogData{
     PFQuery *query = [PFQuery queryWithClassName:@"Log"];
@@ -205,16 +163,52 @@
     }];
     
 }
--(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.gallery.count;
+#pragma mark - Graph
+-(void)setUpGraph{
+    [self graphComp];
+    NSMutableArray <BarChartDataEntry *> *barChartDataEntries = [NSMutableArray array];
+    self.usernames = [NSMutableArray array];
+    int count = 5;
+    if ([self.totalParticipants intValue]<5){
+        count = [self.totalParticipants intValue];
+    }
+    for (int i = 0; i<count; i++){
+        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:(double)i y:[self.logNumbers[i] doubleValue]];
+        [barChartDataEntries addObject:entry];
+        [self.usernames addObject:self.participants[i][@"username"]];
+    }
+    BarChartDataSet *chartdataset = [[BarChartDataSet alloc] initWithEntries:barChartDataEntries label:[self.challenge.unitChosen stringByAppendingString:@"s"]];
+    BarChartData *data = [[BarChartData alloc] initWithDataSet:chartdataset];
+    
+    self.horBarChart.data = data;
+    self.horBarChart.xAxis.valueFormatter = self;
 }
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    GalleryCell *cell = (GalleryCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"GalleryCell" forIndexPath:indexPath];
-    cell.gallery = self.gallery[indexPath.row];
-    return cell;
-}
-- (IBAction)logAction:(id)sender {
-    [self performSegueWithIdentifier:@"unitLogSegue" sender:self.challenge];
+-(void)graphComp{
+    ChartXAxis *xAxis = self.horBarChart.xAxis;
+    xAxis.labelPosition = XAxisLabelPositionBottom;
+    xAxis.labelFont = [UIFont systemFontOfSize:5.f];
+    xAxis.drawAxisLineEnabled = YES;
+    xAxis.drawGridLinesEnabled = NO;
+    xAxis.granularity = 10.0;
+        
+    ChartYAxis *leftAxis = self.horBarChart.leftAxis;
+    leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
+    leftAxis.drawAxisLineEnabled = YES;
+    leftAxis.drawGridLinesEnabled = NO;
+        
+    ChartYAxis *rightAxis =self.horBarChart.rightAxis;
+    rightAxis.enabled = NO;
+        
+    ChartLegend *l = self.horBarChart.legend;
+    l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
+    l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
+    l.orientation = ChartLegendOrientationHorizontal;
+    l.drawInside = NO;
+    l.form = ChartLegendFormSquare;
+    l.formSize = 8.0;
+    l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
+    l.xEntrySpace = 4.0;
+    [self.horBarChart animateWithYAxisDuration:2.5];
 }
 - (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis
 {
@@ -241,7 +235,15 @@
 
      [self presentViewController:formSheetController animated:YES completion:nil];
 }
-
+#pragma mark - UICollectionView
+-(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.gallery.count;
+}
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    GalleryCell *cell = (GalleryCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"GalleryCell" forIndexPath:indexPath];
+    cell.gallery = self.gallery[indexPath.row];
+    return cell;
+}
 
 #pragma mark - Navigation
 

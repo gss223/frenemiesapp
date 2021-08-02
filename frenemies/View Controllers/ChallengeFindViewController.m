@@ -80,29 +80,25 @@
             else{
                 [self setUpChallenges:[NSArray array]];
             }
-            
-           
         }
     }];
+}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Challenge *evaluatedObject, NSDictionary *bindings) {
+            return ([evaluatedObject.challengeName.lowercaseString containsString:searchText.lowercaseString] || [evaluatedObject.challengeDescription.lowercaseString containsString:searchText.lowercaseString]);
+        }];
+        self.filteredData = [self.allChallenges filteredArrayUsingPredicate:predicate];
+    }
+    else {
+        self.filteredData = self.allChallenges;
+    }
+    
+    [self.tableView reloadData];
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.filteredData.count;
-}
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ChallengeFindCell *cell = (ChallengeFindCell *) [self.tableView dequeueReusableCellWithIdentifier:@"ChallengeFindCell" forIndexPath:indexPath];
-    cell.delegate = self;
-    cell.challenge = self.filteredData[indexPath.row];
-    return cell;
-}
-- (void)cellDidOpen:(UITableViewCell *)cell {
-  NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
-  [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
-}
-
-- (void)cellDidClose:(UITableViewCell *)cell {
-  [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
-}
+#pragma mark - ChallengeFindCellDelegate
 -(void)addChallengeButtonAction:(Challenge *)challenge{
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
 
@@ -120,26 +116,24 @@
     [self performSegueWithIdentifier:@"viewChallengeDetail" sender:challenge];
     
 }
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    if (searchText.length != 0) {
-        
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Challenge *evaluatedObject, NSDictionary *bindings) {
-            return ([evaluatedObject.challengeName.lowercaseString containsString:searchText.lowercaseString] || [evaluatedObject.challengeDescription.lowercaseString containsString:searchText.lowercaseString]);
-        }];
-        self.filteredData = [self.allChallenges filteredArrayUsingPredicate:predicate];
-        
-        //NSLog(@"%@", self.filteredData);
-        
-    }
-    else {
-        self.filteredData = self.allChallenges;
-    }
-    
-    [self.tableView reloadData];
- 
+#pragma mark - UITableView
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.filteredData.count;
+}
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ChallengeFindCell *cell = (ChallengeFindCell *) [self.tableView dequeueReusableCellWithIdentifier:@"ChallengeFindCell" forIndexPath:indexPath];
+    cell.delegate = self;
+    cell.challenge = self.filteredData[indexPath.row];
+    return cell;
+}
+- (void)cellDidOpen:(UITableViewCell *)cell {
+  NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
+  [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
 }
 
+- (void)cellDidClose:(UITableViewCell *)cell {
+  [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
