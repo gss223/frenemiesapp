@@ -184,10 +184,6 @@
         }
     }];
 }
-- (IBAction)addChallengeAction:(id)sender {
-    
-    
-}
 - (IBAction)challengeAddAction:(id)sender {
     self.challengeAddButton.title = @"Added";
     self.challengeAddButton.enabled = NO;
