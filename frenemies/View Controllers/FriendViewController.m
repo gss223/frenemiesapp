@@ -8,6 +8,7 @@
 #import "FriendViewController.h"
 #import <Parse/Parse.h>
 #import "SwipeUserCell.h"
+#import "FriendProfileViewController.h"
 
 @interface FriendViewController () <UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate,UISearchBarDelegate>
 @property (strong,nonatomic) NSArray *allUsers;
@@ -249,6 +250,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"viewProfile"]){
+        PFUser *sentUser = sender;
+        FriendProfileViewController *friendViewController = [segue destinationViewController];
+        friendViewController.user = sentUser;
+        
+    }
     
 }
 

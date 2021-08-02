@@ -13,6 +13,9 @@
 #import <Parse/Parse.h>
 #import <DateTools/DateTools.h>
 #import "GalleryCell.h"
+#import "MZFormSheetPresentationViewControllerSegue.h"
+#import "MZFormSheetPresentationViewController.h"
+#import "GraphViewController.h"
 #import <Charts-Swift.h>
 @import Charts;
 
@@ -211,11 +214,26 @@
 {
     return @"";
 }
+- (UINavigationController *)formSheetControllerWithNavigationController {
+    return [self.storyboard instantiateViewControllerWithIdentifier:@"gFormSheetController"];
+}
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
     double i = entry.x;
     NSLog (@"%@",self.participants[(int)i][@"username"]);
+    UINavigationController *navigationController = [self formSheetControllerWithNavigationController];
+     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:navigationController];
+     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+     formSheetController.presentationController.shouldApplyBackgroundBlurEffect = YES;
+     GraphViewController *gViewController = [navigationController.viewControllers firstObject];
+     
+     gViewController.user = self.participants[(int)i];
+     formSheetController.presentationController.shouldCenterVertically = YES;
+     
+     formSheetController.presentationController.contentViewSize =  CGSizeMake(265, 336);
+
+     [self presentViewController:formSheetController animated:YES completion:nil];
 }
 
 
