@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DoneViewController : UIViewController
 @property (strong,nonatomic) Challenge *challenge;
-
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -219,9 +219,7 @@
 }
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
-    NSLog(@"chartValueSelected");
     double i = entry.x;
-    NSLog (@"%@",self.participants[(int)i][@"username"]);
     UINavigationController *navigationController = [self formSheetControllerWithNavigationController];
      MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:navigationController];
      formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
@@ -231,7 +229,7 @@
      gViewController.user = self.participants[(int)i];
      formSheetController.presentationController.shouldCenterVertically = YES;
      
-     formSheetController.presentationController.contentViewSize =  CGSizeMake(265, 336);
+     formSheetController.presentationController.contentViewSize =  CGSizeMake(265, 325);
 
      [self presentViewController:formSheetController animated:YES completion:nil];
 }
