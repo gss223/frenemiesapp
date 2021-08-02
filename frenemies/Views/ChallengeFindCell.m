@@ -47,6 +47,8 @@ static CGFloat const kBounceValue = 20.0f;
     self.challengeName.text = challenge.challengeName;
     self.challengeImage.layer.cornerRadius = 40;
     self.challengeImage.layer.masksToBounds = YES;
+    [self.addChallenge setTitle:@"Add Challenge" forState:UIControlStateNormal];
+    self.addChallenge.enabled = YES;
     PFFile *ImageFile =challenge.challengePic;
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

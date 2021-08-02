@@ -64,6 +64,9 @@
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
     // Do any additional setup after loading the view.
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self setupFriend];
+}
 -(void) setupFriend{
     
     PFQuery *query = [PFQuery queryWithClassName:@"Friend"];

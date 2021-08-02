@@ -34,6 +34,7 @@
 @property (strong,nonatomic)NSNumber *totalChallenges;
 @property (strong,nonatomic)NSArray *tagArray;
 @property (strong,nonatomic)NSArray *countArray;
+@property (strong,nonatomic) NSString *linkChallengeId;
 
 @end
 
@@ -53,6 +54,8 @@
     self.challengeNameLabel.text = self.challenge.challengeName;
     self.challengePic.layer.cornerRadius = 40;
     self.challengePic.layer.masksToBounds = YES;
+    [self.addChallengeButton setTitle:@"Add Challenge" forState:UIControlStateNormal];
+    self.addChallengeButton.enabled = YES;
     PFFile *ImageFile =self.challenge.challengePic;
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
@@ -109,15 +112,15 @@
             self.totalChallenges = object[@"total"];
             self.tagArray = object[@"tagArray"];
             self.countArray = object[@"countArray"];
-            [self setUpRelated];
+            [self removeCurrent];
         }
     }];
 }
--(void)setUpRelated{
+-(void)setUpRelated:(NSArray *)currChall{
     NSNumber *compareWeight = [self calculateRelated:self.challenge.tags];
     NSMutableArray *queries = [NSMutableArray array];
     for (NSString *tag in self.challenge.tags){
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ IN tags AND objectId!=%@ AND completed = false AND publicorprivate = true",tag,self.challenge.objectId];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ IN tags AND objectId!=%@ AND completed = false AND publicorprivate = true AND NOT(objectId IN %@)",tag,self.challenge.objectId,currChall];
         PFQuery *query = [PFQuery queryWithClassName:@"Challenge" predicate:predicate];
         [queries addObject:query];
     }
@@ -148,8 +151,51 @@
         [self.relatedChallengeView reloadData];
     }];
 }
-
+-(void)removeCurrent{
+    PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
+    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if(object==nil){
+            PFObject *challenge = [PFObject objectWithClassName:@"LinkChallenge"];
+            challenge[@"userId"] =[PFUser currentUser].objectId;
+            challenge[@"challengeArray"] = [NSMutableArray array];
+            [challenge saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+              if (succeeded) {
+                  self.linkChallengeId = challenge.objectId;
+                  [self setUpRelated:[NSArray array]];
+                // The object has been saved.
+              } else {
+                // There was a problem, check error.description
+              }
+            }];
+        }
+        else{
+            self.linkChallengeId = object.objectId;
+            if (object[@"challengeArray"]!=nil){
+                NSMutableArray *currChallenge = object[@"challengeArray"];
+                [self setUpRelated:(NSArray *)currChallenge];
+            }
+            else{
+                [self setUpRelated:[NSArray array]];
+            }
+            
+           
+        }
+    }];
+}
 - (IBAction)addChallengeAction:(id)sender {
+    [self.addChallengeButton setTitle:@"Added" forState:UIControlStateNormal];
+    self.addChallengeButton.enabled = NO;
+    PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
+
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:self.linkChallengeId
+                                 block:^(PFObject *linkChallenge, NSError *error) {
+        NSMutableArray *challenges = linkChallenge[@"challengeArray"];
+        [challenges addObject:self.challenge.objectId];
+        linkChallenge[@"challengeArray"] = challenges;
+        [linkChallenge saveInBackground];
+    }];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.participants.count;
@@ -195,6 +241,7 @@
         RelatedChallengeViewController *rcViewController = [navigationController.viewControllers firstObject];
         
         rcViewController.challenge = self.relatedChallenges[indexPath.row];
+        rcViewController.linkChallengeId = self.linkChallengeId;
         formSheetController.presentationController.shouldCenterVertically = YES;
         
         formSheetController.presentationController.contentViewSize =  CGSizeMake(300, 450);

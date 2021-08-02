@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpView];
+    [self checkCurrent];
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
@@ -42,7 +43,38 @@
     self.timeStart.text = [dateForm stringFromDate:self.challenge.timeStart];
     self.timeEnd.text = [dateForm stringFromDate:self.challenge.timeEnd];
 }
+-(void)checkCurrent{
+    PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
 
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:self.linkChallengeId
+                                 block:^(PFObject *linkChallenge, NSError *error) {
+        NSMutableArray *challenges = linkChallenge[@"challengeArray"];
+        if ([challenges containsObject:self.challenge.objectId]){
+            [self.addChallengeButton setTitle:@"Added" forState:UIControlStateNormal];
+            self.addChallengeButton.enabled = NO;
+        }
+        else{
+            [self.addChallengeButton setTitle:@"Add Challenge" forState:UIControlStateNormal];
+            self.addChallengeButton.enabled = YES;
+        }
+      
+    }];
+}
+- (IBAction)addChallengeAction:(id)sender {
+    [self.addChallengeButton setTitle:@"Added" forState:UIControlStateNormal];
+    self.addChallengeButton.enabled = NO;
+    PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
+
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:self.linkChallengeId
+                                 block:^(PFObject *linkChallenge, NSError *error) {
+        NSMutableArray *challenges = linkChallenge[@"challengeArray"];
+        [challenges addObject:self.challenge.objectId];
+        linkChallenge[@"challengeArray"] = challenges;
+        [linkChallenge saveInBackground];
+    }];
+}
 /*
 #pragma mark - Navigation
 

@@ -34,6 +34,9 @@
     [self.refreshControl addTarget:self action:@selector(removeCurrentChallenges) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview: self.refreshControl atIndex:0];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self removeCurrentChallenges];
+}
 -(void)setUpChallenges:(NSArray *)avoidChallenges{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"publicorprivate = true AND NOT(objectId IN %@) AND completed = false",avoidChallenges];
     PFQuery *query = [PFQuery queryWithClassName:@"Challenge" predicate:predicate];

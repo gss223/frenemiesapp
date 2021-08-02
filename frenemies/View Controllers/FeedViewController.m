@@ -33,6 +33,9 @@
         [self.refreshControl addTarget:self action:@selector(setUpChallenge) forControlEvents:UIControlEventValueChanged];
         [self.tableView insertSubview: self.refreshControl atIndex:0];
 }
+-(void) viewWillAppear:(BOOL)animated{
+    [self setUpChallenge];
+}
 -(void) setUpChallenge{
     NSString *yourId =[PFUser currentUser].objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
