@@ -1164,7 +1164,7 @@
                             <constraint firstItem="kem-Xa-GBB" firstAttribute="leading" secondItem="N6D-Og-myI" secondAttribute="leading" constant="20" id="xah-vl-wx0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab-1" id="hp9-cc-bsr"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="hp9-cc-bsr"/>
                     <connections>
                         <outlet property="facebookLink" destination="E1a-SS-QlV" id="ndJ-lP-qfD"/>
                         <outlet property="nameField" destination="jyL-yu-qyY" id="xxf-EW-BWJ"/>
@@ -1991,7 +1991,7 @@
         <scene sceneID="Tw7-N5-u3P">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UNN-6S-cul" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="feed_tab" id="1oc-WG-Cds"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="1oc-WG-Cds"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2cX-H8-W57">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2010,7 +2010,7 @@
         <scene sceneID="aTc-KR-bqQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f6x-Ub-QyD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Create" id="Fjf-gU-aTN"/>
+                    <tabBarItem key="tabBarItem" title="Create" image="plus.square" catalog="system" selectedImage="plus.square.fill" id="Fjf-gU-aTN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6iM-Nr-PKl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2029,7 +2029,7 @@
         <scene sceneID="af0-aR-CBm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lGy-Hp-2Qu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="Qbw-nQ-rMV"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.2" catalog="system" selectedImage="person.2.fill" id="Qbw-nQ-rMV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aYJ-L4-o5n">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2048,7 +2048,7 @@
         <scene sceneID="w2p-6W-7n6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IDV-d4-fBt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Challenges" id="vOF-tP-ImK"/>
+                    <tabBarItem key="tabBarItem" title="Challenges" image="star.circle" catalog="system" selectedImage="star.circle.fill" id="vOF-tP-ImK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vDA-jP-tLV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2108,11 +2108,19 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="blank-profile" width="640" height="640"/>
-        <image name="feed_tab" width="25" height="25"/>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="noun_forward arrow_1010478" width="600" height="508"/>
         <image name="noun_world_341296" width="530" height="534"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.2" catalog="system" width="128" height="81"/>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="plus.square" catalog="system" width="128" height="114"/>
+        <image name="plus.square.fill" catalog="system" width="128" height="114"/>
         <image name="profile-icon" width="26" height="26"/>
-        <image name="profile_tab-1" width="25" height="25"/>
+        <image name="star.circle" catalog="system" width="128" height="121"/>
+        <image name="star.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
