@@ -15,6 +15,7 @@ target 'frenemies' do
   pod 'UICountingLabel'
   pod 'Charts'
   pod 'MZFormSheetPresentationController'
+  pod 'Colours'
 
   target 'frenemiesTests' do
     inherit! :search_paths

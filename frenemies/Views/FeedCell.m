@@ -6,22 +6,19 @@
 //
 
 #import "FeedCell.h"
+#import "Colours.h"
 
 @implementation FeedCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 -(void)setChallenge:(Challenge *)challenge{
     _challenge = challenge;
-    self.containerView.backgroundColor = [self generateRandomPastelColor];
     self.containerView.layer.cornerRadius = 20;
     self.containerView.layer.shadowOpacity = 1;
     self.containerView.layer.shadowRadius = 2;
@@ -29,8 +26,10 @@
     if ([[NSDate date] compare:challenge.timeEnd] == NSOrderedDescending){
         self.challengeImage.image = [UIImage imageNamed:@"celebrate"];
         self.challengeName.text = @"Done";
+        self.containerView.backgroundColor = [self generateCellColor:@"" withDone:true];
     }
     else{
+        self.containerView.backgroundColor = [self generateCellColor:challenge.tags[0] withDone:false];
         self.challengeName.text = challenge.challengeName;
         PFFile *cImage= challenge.challengePic;
         self.challengeImage.layer.cornerRadius = 35;
@@ -42,19 +41,33 @@
         }];
     }
 }
--(UIColor*) generateRandomPastelColor
-{
-    // Randomly generate numbers
-    CGFloat red  = ( (CGFloat)(arc4random() % 256) ) / 256;
-    CGFloat green  = ( (CGFloat)(arc4random() % 256) ) / 256;
-    CGFloat blue  = ( (CGFloat)(arc4random() % 256) ) / 256;
-
-    // Mix with light-blue
-    CGFloat mixRed = 1+0xad/256, mixGreen = 1+0xd8/256, mixBlue = 1+0xe6/256;
-    red = (red + mixRed) / 3;
-    green = (green + mixGreen) / 3;
-    blue = (blue + mixBlue) / 3;
-    return [UIColor colorWithRed:red green:green blue:blue alpha:1];
+-(UIColor *)generateCellColor:(NSString *)firstTag withDone:(BOOL)done{
+    if (done){
+        return [UIColor paleGreenColor];
+    }
+    else{
+        if([firstTag isEqualToString:@"health"]){
+            return [UIColor robinEggColor];
+        }
+        else if ([firstTag isEqualToString:@"fitness"]){
+            return [UIColor easterPinkColor];
+        }
+        else if ([firstTag isEqualToString:@"food"]){
+            return [UIColor pastelOrangeColor];
+        }
+        else if ([firstTag isEqualToString:@"academic"]){
+            return [UIColor palePurpleColor];
+        }
+        else if ([firstTag isEqualToString:@"social"]){
+            return [UIColor babyBlueColor];
+        }
+        else if ([firstTag isEqualToString:@"fashion"]){
+            return [UIColor paleRoseColor];
+        }
+        else{
+            return [UIColor peachColor];
+        }
+    }
 }
 
 @end

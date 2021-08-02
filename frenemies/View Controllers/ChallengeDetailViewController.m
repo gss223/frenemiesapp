@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *relatedChallengeView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *challengeAddButton;
 @property (strong,nonatomic) NSArray *participants;
 @property (strong,nonatomic) NSArray *taggingArray;
 @property (strong, nonatomic)NSArray *relatedChallenges;
@@ -52,10 +53,10 @@
 }
 -(void)setUpDetails{
     self.challengeNameLabel.text = self.challenge.challengeName;
-    self.challengePic.layer.cornerRadius = 40;
+    self.challengePic.layer.cornerRadius = 30;
     self.challengePic.layer.masksToBounds = YES;
-    [self.addChallengeButton setTitle:@"Add Challenge" forState:UIControlStateNormal];
-    self.addChallengeButton.enabled = YES;
+    self.challengeAddButton.title = @"Add Challenge";
+    self.challengeAddButton.enabled = YES;
     PFFile *ImageFile =self.challenge.challengePic;
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
@@ -184,8 +185,12 @@
     }];
 }
 - (IBAction)addChallengeAction:(id)sender {
-    [self.addChallengeButton setTitle:@"Added" forState:UIControlStateNormal];
-    self.addChallengeButton.enabled = NO;
+    
+    
+}
+- (IBAction)challengeAddAction:(id)sender {
+    self.challengeAddButton.title = @"Added";
+    self.challengeAddButton.enabled = NO;
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
 
     // Retrieve the object by id

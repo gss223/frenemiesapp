@@ -1463,13 +1463,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FN-36-aCH">
-                                <rect key="frame" x="185" y="119" width="42" height="21"/>
+                                <rect key="frame" x="185" y="119" width="209" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psT-77-nH4">
-                                <rect key="frame" x="185" y="150" width="42" height="21"/>
+                                <rect key="frame" x="185" y="150" width="209" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1477,6 +1477,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahf-gN-VxI">
                                 <rect key="frame" x="185" y="223" width="75" height="30"/>
                                 <state key="normal" title="Add Friend"/>
+                                <connections>
+                                    <action selector="addButtonAction:" destination="cFB-Sa-zf1" eventType="touchUpInside" id="rU6-je-AP5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l2n-Vs-gce"/>
@@ -1487,6 +1490,8 @@
                             <constraint firstItem="5oc-sa-Huw" firstAttribute="leading" secondItem="l2n-Vs-gce" secondAttribute="leading" constant="20" id="FfD-57-hkv"/>
                             <constraint firstItem="2FN-36-aCH" firstAttribute="top" secondItem="5oc-sa-Huw" secondAttribute="top" multiplier="1.1" id="Kum-BI-qoL"/>
                             <constraint firstItem="psT-77-nH4" firstAttribute="leading" secondItem="2FN-36-aCH" secondAttribute="leading" id="LMe-4c-OuJ"/>
+                            <constraint firstItem="l2n-Vs-gce" firstAttribute="trailing" secondItem="2FN-36-aCH" secondAttribute="trailing" constant="20" id="PgW-VW-0Xr"/>
+                            <constraint firstItem="l2n-Vs-gce" firstAttribute="trailing" secondItem="psT-77-nH4" secondAttribute="trailing" constant="20" id="aFT-ak-cr8"/>
                             <constraint firstItem="5oc-sa-Huw" firstAttribute="top" secondItem="l2n-Vs-gce" secondAttribute="top" constant="20" id="d28-jp-qzt"/>
                             <constraint firstItem="Ahf-gN-VxI" firstAttribute="bottom" secondItem="5oc-sa-Huw" secondAttribute="bottom" id="oLG-vc-XrD"/>
                             <constraint firstItem="Ahf-gN-VxI" firstAttribute="leading" secondItem="psT-77-nH4" secondAttribute="leading" id="ufu-fZ-DXL"/>
@@ -1526,7 +1531,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eds-PZ-9gS">
-                                                <rect key="frame" x="150" y="30" width="47" height="21"/>
+                                                <rect key="frame" x="150" y="30" width="244" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1607,13 +1612,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3j-Ec-IFk">
-                                                <rect key="frame" x="294" y="25.5" width="100" height="30"/>
-                                                <state key="normal" title="Add Challenge"/>
-                                                <connections>
-                                                    <action selector="addChallengeAction:" destination="GsL-q8-bjx" eventType="touchUpInside" id="itg-dA-Kj7"/>
-                                                </connections>
-                                            </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RLb-wX-e17">
                                                 <rect key="frame" x="20" y="366" width="374" height="175"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1774,18 +1772,16 @@
                                             <constraint firstItem="b3U-st-w45" firstAttribute="leading" secondItem="GF6-Vv-q02" secondAttribute="leading" id="SRL-6c-36F"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8tD-uv-W9m" secondAttribute="trailing" constant="20" id="UEH-5Z-I6y"/>
                                             <constraint firstItem="4c0-AB-t15" firstAttribute="top" secondItem="ROx-a1-yJA" secondAttribute="bottom" constant="15" id="ZYt-zy-tkb"/>
-                                            <constraint firstItem="F3j-Ec-IFk" firstAttribute="centerY" secondItem="eds-PZ-9gS" secondAttribute="centerY" id="bsx-s5-uIu"/>
                                             <constraint firstItem="GF6-Vv-q02" firstAttribute="leading" secondItem="DQQ-Bu-vTo" secondAttribute="leading" constant="20" id="f5D-V5-Hlz"/>
-                                            <constraint firstItem="F3j-Ec-IFk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eds-PZ-9gS" secondAttribute="trailing" constant="10" id="fAk-zR-lGN"/>
                                             <constraint firstItem="3j0-Dj-O5O" firstAttribute="leading" secondItem="eds-PZ-9gS" secondAttribute="leading" id="fCO-X2-bIO"/>
                                             <constraint firstItem="ROx-a1-yJA" firstAttribute="top" secondItem="b3U-st-w45" secondAttribute="bottom" constant="15" id="i29-Rl-jvt"/>
                                             <constraint firstItem="ROx-a1-yJA" firstAttribute="leading" secondItem="GF6-Vv-q02" secondAttribute="leading" id="iPI-iv-4Dc"/>
                                             <constraint firstItem="nP4-i9-opr" firstAttribute="leading" secondItem="GF6-Vv-q02" secondAttribute="leading" id="j01-hu-guX"/>
-                                            <constraint firstAttribute="trailing" secondItem="F3j-Ec-IFk" secondAttribute="trailing" constant="20" id="p0n-3U-vq9"/>
                                             <constraint firstItem="eds-PZ-9gS" firstAttribute="leading" secondItem="GF6-Vv-q02" secondAttribute="trailing" constant="10" id="qtV-nN-xbt"/>
                                             <constraint firstItem="RGd-Aa-vdw" firstAttribute="centerY" secondItem="tWy-iU-YPW" secondAttribute="centerY" id="r2Z-f4-znW"/>
                                             <constraint firstItem="KW2-az-iWh" firstAttribute="centerY" secondItem="W72-XK-ev0" secondAttribute="centerY" id="ri2-cF-nTK"/>
                                             <constraint firstItem="tWy-iU-YPW" firstAttribute="leading" secondItem="eds-PZ-9gS" secondAttribute="leading" id="rzq-e6-T5O"/>
+                                            <constraint firstAttribute="trailing" secondItem="eds-PZ-9gS" secondAttribute="trailing" constant="20" id="x8T-KP-qFW"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1810,9 +1806,15 @@
                             <constraint firstItem="yvk-Et-Wyc" firstAttribute="trailing" secondItem="mqb-Jh-LpI" secondAttribute="trailing" id="wJj-9a-5cZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lS2-aD-EQE"/>
+                    <navigationItem key="navigationItem" id="lS2-aD-EQE">
+                        <barButtonItem key="rightBarButtonItem" title="Add Challenge" id="K0U-B9-qSR">
+                            <connections>
+                                <action selector="challengeAddAction:" destination="GsL-q8-bjx" id="sRV-1f-VED"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="addChallengeButton" destination="F3j-Ec-IFk" id="xyd-lW-TUL"/>
+                        <outlet property="challengeAddButton" destination="K0U-B9-qSR" id="31m-t0-1o4"/>
                         <outlet property="challengeDescripLabel" destination="b3U-st-w45" id="LqR-en-GSB"/>
                         <outlet property="challengeNameLabel" destination="eds-PZ-9gS" id="IRA-ta-K36"/>
                         <outlet property="challengePic" destination="GF6-Vv-q02" id="bXl-bQ-h1F"/>
@@ -1890,7 +1892,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="LSK-Pk-pKB"/>
                                         </constraints>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
