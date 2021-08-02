@@ -180,7 +180,6 @@
     else{
         RelatedChallengeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RelatedChallengeCell" forIndexPath:indexPath];
         cell.challenge = self.relatedChallenges[indexPath.row];
-        NSLog (@"%@",cell.challenge.challengeName);
         return cell;
     }
 }

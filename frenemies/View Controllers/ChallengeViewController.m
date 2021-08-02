@@ -53,6 +53,12 @@
     [self getGalleryData];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self getYourUser];
+    [self getLogData];
+    [self getGalleryData];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
+}
 -(void)getYourUser{
     [PFUser getCurrentUserInBackground];
 }
