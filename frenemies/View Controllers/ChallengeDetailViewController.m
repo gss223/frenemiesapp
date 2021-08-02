@@ -72,7 +72,7 @@
     NSString *duration = [[NSNumber numberWithDouble:durat]stringValue];
     self.durationLabel.text = [duration stringByAppendingString:endDurat];
     NSDateFormatter *dateForm = [[NSDateFormatter alloc]init];
-    [dateForm setDateFormat:@"EEE, dd MMM yyy HH:mm"];
+    [dateForm setDateFormat:@"EEE, M/d/yy HH:mm"];
     self.timeStartLabel.text = [dateForm stringFromDate:self.challenge.timeStart];
     self.timeEndLabel.text = [dateForm stringFromDate:self.challenge.timeEnd];
     self.challengeDescripLabel.text = self.challenge.challengeDescription;

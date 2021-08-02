@@ -16,13 +16,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="fistbumplogo" translatesAutoresizingMaskIntoConstraints="NO" id="9GK-nM-JL5">
-                                <rect key="frame" x="119" y="360" width="176" height="176"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="fistbumplogo" translatesAutoresizingMaskIntoConstraints="NO" id="9GK-nM-JL5">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="DGx-Hd-QaL"/>
+                                    <constraint firstAttribute="height" constant="200" id="xfX-Op-0wy"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frenemies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4Q-sH-pv0">
+                                <rect key="frame" x="109" y="308" width="196" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PW6-p1-Gea"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9GK-nM-JL5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2Jv-G9-QCP"/>
+                            <constraint firstItem="9GK-nM-JL5" firstAttribute="top" secondItem="D4Q-sH-pv0" secondAttribute="bottom" id="EV2-Ve-zRS"/>
+                            <constraint firstItem="9GK-nM-JL5" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ke2-My-ivZ"/>
+                            <constraint firstItem="D4Q-sH-pv0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vHE-ze-nVh"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

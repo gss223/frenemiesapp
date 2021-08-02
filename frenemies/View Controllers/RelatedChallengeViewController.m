@@ -39,7 +39,7 @@
         }
     }];
     NSDateFormatter *dateForm = [[NSDateFormatter alloc]init];
-    [dateForm setDateFormat:@"EEE, dd MMM yyy HH:mm"];
+    [dateForm setDateFormat:@"EEE, M/d/yy HH:mm"];
     self.timeStart.text = [dateForm stringFromDate:self.challenge.timeStart];
     self.timeEnd.text = [dateForm stringFromDate:self.challenge.timeEnd];
 }
