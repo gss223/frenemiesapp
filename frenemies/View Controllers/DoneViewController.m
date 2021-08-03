@@ -24,6 +24,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *loggedTot;
 @property (weak, nonatomic) IBOutlet UILabel *outOf;
 @property (weak, nonatomic) IBOutlet UILabel *people;
+@property (strong, nonatomic) IBOutlet UIView *stickerView;
+@property (weak, nonatomic) IBOutlet UIImageView *challengeImage;
+@property (weak, nonatomic) IBOutlet UILabel *challName;
+@property (weak, nonatomic) IBOutlet UILabel *stickerUnits;
+@property (weak, nonatomic) IBOutlet UILabel *stickerAmount;
+@property (weak, nonatomic) IBOutlet UIImageView *trophyView;
 
 @end
 
