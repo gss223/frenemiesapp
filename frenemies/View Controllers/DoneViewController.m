@@ -112,109 +112,6 @@
     [self fadeIn];
     
 }
--(void)setUpStickerView{
-    self.challName.text = self.challenge.challengeName;
-    self.stickerAmount.text =[self.amount stringValue];
-    if ([self.amount intValue]!=1){
-        self.stickerUnits.text = [self.challenge.unitChosen stringByAppendingString:@"s"];
-    }
-    else{
-        self.stickerUnits.text = self.challenge.unitChosen;
-    }
-    if ([self.rank intValue]==1){
-        self.trophyView.image = [UIImage imageNamed:@"gold"];
-    }
-    else if ([self.rank intValue]==2){
-        self.trophyView.image = [UIImage imageNamed:@"silver"];
-    }
-    else if([self.rank intValue]==3){
-        self.trophyView.image = [UIImage imageNamed:@"bronze"];
-    }
-    else{
-        self.trophyView.image = [UIImage imageNamed:@"badge"];
-    }
-    PFFile *ImageFile =self.challenge.challengePic;
-    [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            self.challengeImage.image = [UIImage imageWithData:imageData];
-            if (self.challengeImage.image ==nil){
-                self.challengeImage.image = [UIImage imageNamed:@"celebrate"];
-            }
-            
-        }
-    }];
-}
-- (UIImage *)imageWithView:(UIView *)view
-{
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-
-    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-
-    UIGraphicsEndImageContext();
-
-    return img;
-}
--(void)shareInstaImage{
-    NSData *stickerImage = UIImagePNGRepresentation([self imageWithView:self.stickerView]);
-    // Verify app can open custom URL scheme. If able,
-      // assign assets to pasteboard, open scheme.
-    NSURL *urlScheme = [NSURL URLWithString:@"instagram-stories://share?source_application=com.my.app"];
-    if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
-
-          // Assign background and sticker image assets to pasteboard
-          NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
-                                         @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
-                                         @"com.instagram.sharedSticker.stickerImage" : stickerImage}];
-          NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
-          // This call is iOS 10+, can use 'setItems' depending on what versions you support
-          [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
-
-          [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
-      } else {
-          // Handle older app versions or app not installed case
-      }
-}
--(void)shareFBImage{
-    NSString *appId = @"355670739456353";
-    NSData *stickerImage = UIImagePNGRepresentation([self imageWithView:self.stickerView]);
-    // Verify app can open custom URL scheme. If able,
-      // assign assets to pasteboard, open scheme.
-    NSURL *urlScheme = [NSURL URLWithString:@"facebook-stories://share"];
-    if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
-
-          // Assign background and sticker image assets to pasteboard
-        NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
-                                       @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
-                                         @"com.facebook.sharedSticker.stickerImage" : stickerImage,
-                                         @"com.facebook.sharedSticker.appID" : appId}];
-          NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
-          // This call is iOS 10+, can use 'setItems' depending on what versions you support
-          [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
-
-          [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
-      } else {
-          // Handle older app versions or app not installed case
-      }
-}
--(void)fadeIn{
-    [self.units setAlpha:0.0f];
-    [self.unitChose setAlpha:0.0f];
-    [self.rankLabel setAlpha:0.0f];
-    [self.partAmount setAlpha:0.0f];
-    [self.loggedTot setAlpha:0.0f];
-    [self.outOf setAlpha:0.0f];
-    [self.people setAlpha:0.0f];
-    [UIView animateWithDuration:2.0f animations:^{
-        [self.units setAlpha:1.0f];
-        [self.unitChose setAlpha:1.0f];
-        [self.rankLabel setAlpha:1.0f];
-        [self.partAmount setAlpha:1.0f];
-        [self.loggedTot setAlpha:1.0f];
-        [self.outOf setAlpha:1.0f];
-        [self.people setAlpha:1.0f];
-    }];
-}
 -(void) checkIfDataGone{
     if (self.challenge.completed){
         [self removeUserData];
@@ -228,6 +125,14 @@
         
     }
 }
+#pragma mark - Button Methods
+- (IBAction)shareToInsta:(id)sender {
+    [self shareInstaImage];
+}
+- (IBAction)shareToFB:(id)sender {
+    [self shareFBImage];
+}
+#pragma mark - Updating Data
 -(void) removeLink{
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
     [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
@@ -281,11 +186,110 @@
         [chall saveInBackground];
     }];
 }
-- (IBAction)shareToInsta:(id)sender {
-    [self shareInstaImage];
+#pragma mark - Animation
+-(void)fadeIn{
+    [self.units setAlpha:0.0f];
+    [self.unitChose setAlpha:0.0f];
+    [self.rankLabel setAlpha:0.0f];
+    [self.partAmount setAlpha:0.0f];
+    [self.loggedTot setAlpha:0.0f];
+    [self.outOf setAlpha:0.0f];
+    [self.people setAlpha:0.0f];
+    [UIView animateWithDuration:2.0f animations:^{
+        [self.units setAlpha:1.0f];
+        [self.unitChose setAlpha:1.0f];
+        [self.rankLabel setAlpha:1.0f];
+        [self.partAmount setAlpha:1.0f];
+        [self.loggedTot setAlpha:1.0f];
+        [self.outOf setAlpha:1.0f];
+        [self.people setAlpha:1.0f];
+    }];
 }
-- (IBAction)shareToFB:(id)sender {
-    [self shareFBImage];
-}
+#pragma mark - Share to Social
+-(void)shareInstaImage{
+    NSData *stickerImage = UIImagePNGRepresentation([self imageWithView:self.stickerView]);
+    // Verify app can open custom URL scheme. If able,
+      // assign assets to pasteboard, open scheme.
+    NSURL *urlScheme = [NSURL URLWithString:@"instagram-stories://share?source_application=com.my.app"];
+    if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
 
+          // Assign background and sticker image assets to pasteboard
+          NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
+                                         @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
+                                         @"com.instagram.sharedSticker.stickerImage" : stickerImage}];
+          NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
+          // This call is iOS 10+, can use 'setItems' depending on what versions you support
+          [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
+
+          [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
+      } else {
+          // Handle older app versions or app not installed case
+      }
+}
+-(void)shareFBImage{
+    NSString *appId = @"355670739456353";
+    NSData *stickerImage = UIImagePNGRepresentation([self imageWithView:self.stickerView]);
+    // Verify app can open custom URL scheme. If able,
+      // assign assets to pasteboard, open scheme.
+    NSURL *urlScheme = [NSURL URLWithString:@"facebook-stories://share"];
+    if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
+
+          // Assign background and sticker image assets to pasteboard
+        NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
+                                       @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
+                                         @"com.facebook.sharedSticker.stickerImage" : stickerImage,
+                                         @"com.facebook.sharedSticker.appID" : appId}];
+          NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
+          // This call is iOS 10+, can use 'setItems' depending on what versions you support
+          [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
+
+          [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
+      } else {
+          // Handle older app versions or app not installed case
+      }
+}
+#pragma mark - StoryStickerView
+-(void)setUpStickerView{
+    self.challName.text = self.challenge.challengeName;
+    self.stickerAmount.text =[self.amount stringValue];
+    if ([self.amount intValue]!=1){
+        self.stickerUnits.text = [self.challenge.unitChosen stringByAppendingString:@"s"];
+    }
+    else{
+        self.stickerUnits.text = self.challenge.unitChosen;
+    }
+    if ([self.rank intValue]==1){
+        self.trophyView.image = [UIImage imageNamed:@"gold"];
+    }
+    else if ([self.rank intValue]==2){
+        self.trophyView.image = [UIImage imageNamed:@"silver"];
+    }
+    else if([self.rank intValue]==3){
+        self.trophyView.image = [UIImage imageNamed:@"bronze"];
+    }
+    else{
+        self.trophyView.image = [UIImage imageNamed:@"badge"];
+    }
+    PFFile *ImageFile =self.challenge.challengePic;
+    [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            self.challengeImage.image = [UIImage imageWithData:imageData];
+            if (self.challengeImage.image ==nil){
+                self.challengeImage.image = [UIImage imageNamed:@"celebrate"];
+            }
+            
+        }
+    }];
+}
+- (UIImage *)imageWithView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+
+    UIGraphicsEndImageContext();
+
+    return img;
+}
 @end
