@@ -34,6 +34,8 @@
     self.usernameLabel.text = self.gallery.author.username;
     self.captionLabel.text = self.gallery.logCaption;
     self.dateLabel.text = [self.gallery.createdAt shortTimeAgoSinceNow];
+    self.userImage.layer.cornerRadius = 25;
+    self.userImage.layer.masksToBounds = YES;
     PFFile *ImageFile =self.gallery.logImage;
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

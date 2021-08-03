@@ -157,6 +157,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Gallery"];
     [query whereKey:@"challengeId" equalTo:self.challenge.objectId];
     [query includeKey:@"author"];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray <Gallery *> * _Nullable objects, NSError * _Nullable error) {
         if (error==nil){
             self.gallery = objects;
