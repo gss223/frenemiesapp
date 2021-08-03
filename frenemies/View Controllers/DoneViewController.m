@@ -250,6 +250,8 @@
 }
 #pragma mark - StoryStickerView
 -(void)setUpStickerView{
+    self.stickerView.layer.cornerRadius = 5;
+    self.stickerView.layer.masksToBounds = true;
     self.challName.text = self.challenge.challengeName;
     self.stickerAmount.text =[self.amount stringValue];
     if ([self.amount intValue]!=1){
