@@ -772,6 +772,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-EC-ugD">
+                                <rect key="frame" x="153" y="588" width="42" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="insta_camera_btn"/>
+                                <connections>
+                                    <action selector="shareToInsta:" destination="dGH-FE-lle" eventType="touchUpInside" id="K1P-En-DQg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxH-Ia-up0">
+                                <rect key="frame" x="219" y="585" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="f_logo_RGB-Black_58"/>
+                                <connections>
+                                    <action selector="shareToFB:" destination="dGH-FE-lle" eventType="touchUpInside" id="Ojl-vu-CgP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hvq-fz-cbU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -867,7 +883,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2665" y="2532"/>
+            <point key="canvasLocation" x="2662.3188405797105" y="2531.9196428571427"/>
         </scene>
         <!--Create Challenge-->
         <scene sceneID="UNh-JA-iH1">
@@ -2327,8 +2343,10 @@
         <image name="badge" width="512" height="512"/>
         <image name="blank-profile" width="640" height="640"/>
         <image name="celebrate" width="641" height="556"/>
+        <image name="f_logo_RGB-Black_58" width="130" height="130"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <image name="noun_forward arrow_1010478" width="600" height="508"/>
         <image name="noun_world_341296" width="530" height="534"/>
         <image name="person" catalog="system" width="128" height="117"/>

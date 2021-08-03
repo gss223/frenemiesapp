@@ -7,6 +7,7 @@
 
 #import "DoneViewController.h"
 #import "Log.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DoneViewController ()
 @property (nonatomic,strong) NSMutableArray *logNumbers;
@@ -97,6 +98,7 @@
     
 }
 -(void) setUpViews{
+    [self setUpStickerView];
     self.units.text = [self.amount stringValue];
     if ([self.amount intValue]!=1){
         self.unitChose.text = [self.challenge.unitChosen stringByAppendingString:@"s"];
@@ -109,6 +111,48 @@
     self.celebrateView.image = [UIImage imageNamed:@"celebrate"];
     [self fadeIn];
     
+}
+-(void)setUpStickerView{
+    self.stickerAmount.text =[self.amount stringValue];
+    if ([self.amount intValue]!=1){
+        self.stickerUnits.text = [self.challenge.unitChosen stringByAppendingString:@"s"];
+    }
+    else{
+        self.stickerUnits.text = self.challenge.unitChosen;
+    }
+    if ([self.rank intValue]==1){
+        self.trophyView.image = [UIImage imageNamed:@"gold"];
+    }
+    else if ([self.rank intValue]==2){
+        self.trophyView.image = [UIImage imageNamed:@"silver"];
+    }
+    else if([self.rank intValue]==3){
+        self.trophyView.image = [UIImage imageNamed:@"bronze"];
+    }
+    else{
+        self.trophyView.image = [UIImage imageNamed:@"badge"];
+    }
+    PFFile *ImageFile =self.challenge.challengePic;
+    [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            self.challengeImage.image = [UIImage imageWithData:imageData];
+            if (self.challengeImage.image ==nil){
+                self.challengeImage.image = [UIImage imageNamed:@"celebrate"];
+            }
+            
+        }
+    }];
+}
+- (UIImage *)imageWithView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+
+    UIGraphicsEndImageContext();
+
+    return img;
 }
 -(void)fadeIn{
     [self.units setAlpha:0.0f];
@@ -193,6 +237,10 @@
         chall[@"completed"] = @YES;
         [chall saveInBackground];
     }];
+}
+- (IBAction)shareToInsta:(id)sender {
+}
+- (IBAction)shareToFB:(id)sender {
 }
 
 @end
