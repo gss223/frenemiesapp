@@ -36,6 +36,8 @@
       <string>fbshareextension</string>
       <string>instagram</string>
       <string>instagram-stories</string>
+      <string>facebook</string>
+      <string>facebook-stories</string>
     </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

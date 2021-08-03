@@ -772,17 +772,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-EC-ugD">
-                                <rect key="frame" x="153" y="588" width="42" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-EC-ugD">
+                                <rect key="frame" x="156" y="582" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="E7x-DL-iku"/>
+                                    <constraint firstAttribute="height" constant="42" id="agY-WO-UTZ"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="insta_camera_btn"/>
                                 <connections>
                                     <action selector="shareToInsta:" destination="dGH-FE-lle" eventType="touchUpInside" id="K1P-En-DQg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxH-Ia-up0">
-                                <rect key="frame" x="219" y="585" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxH-Ia-up0">
+                                <rect key="frame" x="214.5" y="580.5" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="G6D-KA-pLc"/>
+                                    <constraint firstAttribute="width" constant="45" id="KFi-D7-uV7"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="f_logo_RGB-Black_58"/>
                                 <connections>
                                     <action selector="shareToFB:" destination="dGH-FE-lle" eventType="touchUpInside" id="Ojl-vu-CgP"/>
@@ -797,6 +803,7 @@
                             <constraint firstItem="pPC-Z5-1kt" firstAttribute="centerY" secondItem="Yfj-jf-ewt" secondAttribute="centerY" id="JTh-Go-gzH"/>
                             <constraint firstItem="oRp-6i-uQd" firstAttribute="centerY" secondItem="Yfj-jf-ewt" secondAttribute="centerY" id="Len-4A-F4J"/>
                             <constraint firstItem="pPC-Z5-1kt" firstAttribute="trailing" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" multiplier="0.95" id="MhR-R8-2kt"/>
+                            <constraint firstItem="hxH-Ia-up0" firstAttribute="centerY" secondItem="c2y-EC-ugD" secondAttribute="centerY" id="Nei-YT-bdh"/>
                             <constraint firstItem="ms0-T0-MD0" firstAttribute="centerY" secondItem="Uq8-iy-ZQ9" secondAttribute="centerY" id="O3E-T8-RzI"/>
                             <constraint firstItem="ms0-T0-MD0" firstAttribute="centerX" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" id="QQd-6m-wZt"/>
                             <constraint firstItem="Xya-dz-duN" firstAttribute="leading" secondItem="NZI-4c-XaH" secondAttribute="trailing" constant="5" id="Qbk-aI-l9R"/>
@@ -804,9 +811,12 @@
                             <constraint firstItem="2YL-QZ-sEr" firstAttribute="centerX" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" multiplier="1.15" id="TUG-fm-ueU"/>
                             <constraint firstItem="M0C-ZP-BQx" firstAttribute="leading" secondItem="oRp-6i-uQd" secondAttribute="trailing" constant="5" id="V4i-VV-UnT"/>
                             <constraint firstItem="2YL-QZ-sEr" firstAttribute="leading" secondItem="Xya-dz-duN" secondAttribute="trailing" constant="5" id="YxV-jL-Nfz"/>
+                            <constraint firstItem="hxH-Ia-up0" firstAttribute="top" secondItem="oRp-6i-uQd" secondAttribute="bottom" constant="50" id="cZp-Fo-EJH"/>
                             <constraint firstItem="pPC-Z5-1kt" firstAttribute="leading" secondItem="Yfj-jf-ewt" secondAttribute="trailing" constant="5" id="hU1-Mj-KcL"/>
                             <constraint firstItem="Xya-dz-duN" firstAttribute="centerY" secondItem="NZI-4c-XaH" secondAttribute="centerY" id="iBe-BW-kA8"/>
                             <constraint firstItem="ms0-T0-MD0" firstAttribute="top" secondItem="YoX-Cd-4eh" secondAttribute="bottom" constant="15" id="lkh-Oi-3VV"/>
+                            <constraint firstItem="hxH-Ia-up0" firstAttribute="centerX" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" constant="30" id="rT0-ES-7un"/>
+                            <constraint firstItem="c2y-EC-ugD" firstAttribute="centerX" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" constant="-30" id="tCe-zr-w9S"/>
                             <constraint firstItem="YoX-Cd-4eh" firstAttribute="centerX" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" id="w9b-2L-SAr"/>
                             <constraint firstItem="NZI-4c-XaH" firstAttribute="top" secondItem="ms0-T0-MD0" secondAttribute="bottom" constant="10" id="yHo-GM-9Ml"/>
                             <constraint firstItem="2YL-QZ-sEr" firstAttribute="centerY" secondItem="NZI-4c-XaH" secondAttribute="centerY" id="zD5-z9-BbQ"/>

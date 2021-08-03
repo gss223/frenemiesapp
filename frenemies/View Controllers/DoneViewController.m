@@ -113,6 +113,7 @@
     
 }
 -(void)setUpStickerView{
+    self.challName.text = self.challenge.challengeName;
     self.stickerAmount.text =[self.amount stringValue];
     if ([self.amount intValue]!=1){
         self.stickerUnits.text = [self.challenge.unitChosen stringByAppendingString:@"s"];
@@ -153,6 +154,48 @@
     UIGraphicsEndImageContext();
 
     return img;
+}
+-(void)shareInstaImage{
+    NSData *stickerImage = UIImagePNGRepresentation([self imageWithView:self.stickerView]);
+    // Verify app can open custom URL scheme. If able,
+      // assign assets to pasteboard, open scheme.
+    NSURL *urlScheme = [NSURL URLWithString:@"instagram-stories://share?source_application=com.my.app"];
+    if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
+
+          // Assign background and sticker image assets to pasteboard
+          NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
+                                         @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
+                                         @"com.instagram.sharedSticker.stickerImage" : stickerImage}];
+          NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
+          // This call is iOS 10+, can use 'setItems' depending on what versions you support
+          [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
+
+          [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
+      } else {
+          // Handle older app versions or app not installed case
+      }
+}
+-(void)shareFBImage{
+    NSString *appId = @"355670739456353";
+    NSData *stickerImage = UIImagePNGRepresentation([self imageWithView:self.stickerView]);
+    // Verify app can open custom URL scheme. If able,
+      // assign assets to pasteboard, open scheme.
+    NSURL *urlScheme = [NSURL URLWithString:@"facebook-stories://share"];
+    if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
+
+          // Assign background and sticker image assets to pasteboard
+        NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
+                                       @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
+                                         @"com.facebook.sharedSticker.stickerImage" : stickerImage,
+                                         @"com.facebook.sharedSticker.appID" : appId}];
+          NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
+          // This call is iOS 10+, can use 'setItems' depending on what versions you support
+          [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
+
+          [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
+      } else {
+          // Handle older app versions or app not installed case
+      }
 }
 -(void)fadeIn{
     [self.units setAlpha:0.0f];
@@ -239,8 +282,10 @@
     }];
 }
 - (IBAction)shareToInsta:(id)sender {
+    [self shareInstaImage];
 }
 - (IBAction)shareToFB:(id)sender {
+    [self shareFBImage];
 }
 
 @end
