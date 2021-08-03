@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *stickerUnits;
 @property (weak, nonatomic) IBOutlet UILabel *stickerAmount;
 @property (weak, nonatomic) IBOutlet UIImageView *trophyView;
+@property (weak, nonatomic) IBOutlet UIButton *igButton;
+@property (weak, nonatomic) IBOutlet UIButton *fbButton;
 
 @end
 
@@ -195,6 +197,8 @@
     [self.loggedTot setAlpha:0.0f];
     [self.outOf setAlpha:0.0f];
     [self.people setAlpha:0.0f];
+    [self.igButton setAlpha:0.0f];
+    [self.fbButton setAlpha:0.0f];
     [UIView animateWithDuration:2.0f animations:^{
         [self.units setAlpha:1.0f];
         [self.unitChose setAlpha:1.0f];
@@ -203,6 +207,8 @@
         [self.loggedTot setAlpha:1.0f];
         [self.outOf setAlpha:1.0f];
         [self.people setAlpha:1.0f];
+        [self.igButton setAlpha:1.0f];
+        [self.fbButton setAlpha:1.0f];
     }];
 }
 #pragma mark - Share to Social
@@ -214,8 +220,8 @@
     if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
 
           // Assign background and sticker image assets to pasteboard
-          NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
-                                         @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
+          NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#aadbee",
+                                         @"com.instagram.sharedSticker.backgroundBottomColor" : @"#3880f7",
                                          @"com.instagram.sharedSticker.stickerImage" : stickerImage}];
           NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
           // This call is iOS 10+, can use 'setItems' depending on what versions you support
@@ -235,8 +241,8 @@
     if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
 
           // Assign background and sticker image assets to pasteboard
-        NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.backgroundTopColor" : @"#636e72",
-                                       @"com.instagram.sharedSticker.backgroundBottomColor" : @"#636e72",
+        NSArray *pasteboardItems = @[@{@"com.facebook.sharedSticker.backgroundTopColor" : @"#aadbee",
+                                       @"com.facebook.sharedSticker.backgroundBottomColor" : @"#3880f7",
                                          @"com.facebook.sharedSticker.stickerImage" : stickerImage,
                                          @"com.facebook.sharedSticker.appID" : appId}];
           NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
