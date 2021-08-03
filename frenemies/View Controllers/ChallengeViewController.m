@@ -16,6 +16,7 @@
 #import "MZFormSheetPresentationViewControllerSegue.h"
 #import "MZFormSheetPresentationViewController.h"
 #import "GraphViewController.h"
+#import "GalleryViewController.h"
 #import <Charts-Swift.h>
 @import Charts;
 
@@ -155,6 +156,7 @@
 -(void)getGalleryData{
     PFQuery *query = [PFQuery queryWithClassName:@"Gallery"];
     [query whereKey:@"challengeId" equalTo:self.challenge.objectId];
+    [query includeKey:@"author"];
     [query findObjectsInBackgroundWithBlock:^(NSArray <Gallery *> * _Nullable objects, NSError * _Nullable error) {
         if (error==nil){
             self.gallery = objects;
@@ -241,6 +243,23 @@
     GalleryCell *cell = (GalleryCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"GalleryCell" forIndexPath:indexPath];
     cell.gallery = self.gallery[indexPath.row];
     return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    UINavigationController *navigationController = [self formSheetControllerWithNavigationControllerForGallery];
+     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:navigationController];
+     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+     formSheetController.presentationController.shouldApplyBackgroundBlurEffect = YES;
+     GalleryViewController *gViewController = [navigationController.viewControllers firstObject];
+     
+     gViewController.gallery = self.gallery[indexPath.row];
+     formSheetController.presentationController.shouldCenterVertically = YES;
+     
+     formSheetController.presentationController.contentViewSize =  CGSizeMake(300, 430);
+
+     [self presentViewController:formSheetController animated:YES completion:nil];
+}
+- (UINavigationController *)formSheetControllerWithNavigationControllerForGallery {
+    return [self.storyboard instantiateViewControllerWithIdentifier:@"GalleryFormSheetController"];
 }
 
 #pragma mark - Navigation

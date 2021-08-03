@@ -13,6 +13,7 @@
 @dynamic logCaption;
 @dynamic logImage;
 @dynamic challengeId;
+@dynamic createdAt;
 @dynamic author;
 
 + (nonnull NSString *)parseClassName {
@@ -22,6 +23,7 @@
     Gallery *newGallery = [Gallery new];
     newGallery.challengeId = challengeId;
     newGallery.logCaption = caption;
+    newGallery.createdAt = [NSDate date];
     newGallery.logImage = [self getPFFileFromImage:image];
     newGallery.author = [PFUser currentUser];
     [newGallery saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {

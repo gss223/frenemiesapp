@@ -524,6 +524,75 @@
             </objects>
             <point key="canvasLocation" x="1771.0144927536232" y="2531.9196428571427"/>
         </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="7YZ-xn-JhP">
+            <objects>
+                <viewController id="If6-mf-GqW" customClass="GalleryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zpz-Rs-WHk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n5Z-fo-RsU">
+                                <rect key="frame" x="0.0" y="0.0" width="296" height="429"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTr-d8-ihV">
+                                        <rect key="frame" x="28" y="29" width="240" height="233"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggQ-Do-7HF">
+                                        <rect key="frame" x="28" y="270" width="41" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGQ-Xu-DwO">
+                                        <rect key="frame" x="77" y="270" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzj-ch-rvZ">
+                                        <rect key="frame" x="77" y="293" width="76" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXa-UQ-QES">
+                                        <rect key="frame" x="27" y="371" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-Jy-FCZ">
+                                        <rect key="frame" x="27" y="342" width="60" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HmK-tV-fSE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5xX-cr-PDK"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="eeV-Jy-FCZ" id="kl9-2I-1cZ"/>
+                        <outlet property="dateLabel" destination="JXa-UQ-QES" id="wcC-dz-HDw"/>
+                        <outlet property="galleryImage" destination="fTr-d8-ihV" id="j4h-z8-Wga"/>
+                        <outlet property="nameLabel" destination="zGQ-Xu-DwO" id="ysE-S3-OiG"/>
+                        <outlet property="userImage" destination="ggQ-Do-7HF" id="rfg-w9-qQk"/>
+                        <outlet property="usernameLabel" destination="fzj-ch-rvZ" id="Se0-Ld-qCx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sq9-DW-CtF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3647.826086956522" y="2531.9196428571427"/>
+        </scene>
         <!--Log View Controller-->
         <scene sceneID="xDg-bP-Ebl">
             <objects>
@@ -630,43 +699,43 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZI-4c-XaH">
-                                <rect key="frame" x="152" y="472.5" width="13" height="24"/>
+                                <rect key="frame" x="132.5" y="472.5" width="13" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xya-dz-duN">
-                                <rect key="frame" x="170" y="474" width="37" height="21"/>
+                                <rect key="frame" x="150.5" y="474" width="37" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="logged total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YL-QZ-sEr">
-                                <rect key="frame" x="212" y="474" width="91" height="21"/>
+                                <rect key="frame" x="192.5" y="474" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfj-jf-ewt">
-                                <rect key="frame" x="141" y="506.5" width="10" height="24"/>
+                                <rect key="frame" x="130.5" y="506.5" width="10" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="out off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPC-Z5-1kt">
-                                <rect key="frame" x="156" y="508" width="51" height="21"/>
+                                <rect key="frame" x="145.5" y="508" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRp-6i-uQd">
-                                <rect key="frame" x="212" y="506.5" width="35" height="24"/>
+                                <rect key="frame" x="201.5" y="506.5" width="35" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="people" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-ZP-BQx">
-                                <rect key="frame" x="252" y="508" width="52" height="21"/>
+                                <rect key="frame" x="241.5" y="508" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -679,12 +748,12 @@
                             <constraint firstItem="oRp-6i-uQd" firstAttribute="leading" secondItem="pPC-Z5-1kt" secondAttribute="trailing" constant="5" id="G4b-dR-hUE"/>
                             <constraint firstItem="pPC-Z5-1kt" firstAttribute="centerY" secondItem="Yfj-jf-ewt" secondAttribute="centerY" id="JTh-Go-gzH"/>
                             <constraint firstItem="oRp-6i-uQd" firstAttribute="centerY" secondItem="Yfj-jf-ewt" secondAttribute="centerY" id="Len-4A-F4J"/>
-                            <constraint firstItem="pPC-Z5-1kt" firstAttribute="trailing" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" id="MhR-R8-2kt"/>
-                            <constraint firstItem="Xya-dz-duN" firstAttribute="trailing" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" id="NqI-it-9XZ"/>
+                            <constraint firstItem="pPC-Z5-1kt" firstAttribute="trailing" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" multiplier="0.95" id="MhR-R8-2kt"/>
                             <constraint firstItem="ms0-T0-MD0" firstAttribute="centerY" secondItem="Uq8-iy-ZQ9" secondAttribute="centerY" id="O3E-T8-RzI"/>
                             <constraint firstItem="ms0-T0-MD0" firstAttribute="centerX" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" id="QQd-6m-wZt"/>
                             <constraint firstItem="Xya-dz-duN" firstAttribute="leading" secondItem="NZI-4c-XaH" secondAttribute="trailing" constant="5" id="Qbk-aI-l9R"/>
                             <constraint firstItem="Yfj-jf-ewt" firstAttribute="top" secondItem="NZI-4c-XaH" secondAttribute="bottom" constant="10" id="R3o-BL-3ed"/>
+                            <constraint firstItem="2YL-QZ-sEr" firstAttribute="centerX" secondItem="Uq8-iy-ZQ9" secondAttribute="centerX" multiplier="1.15" id="TUG-fm-ueU"/>
                             <constraint firstItem="M0C-ZP-BQx" firstAttribute="leading" secondItem="oRp-6i-uQd" secondAttribute="trailing" constant="5" id="V4i-VV-UnT"/>
                             <constraint firstItem="2YL-QZ-sEr" firstAttribute="leading" secondItem="Xya-dz-duN" secondAttribute="trailing" constant="5" id="YxV-jL-Nfz"/>
                             <constraint firstItem="pPC-Z5-1kt" firstAttribute="leading" secondItem="Yfj-jf-ewt" secondAttribute="trailing" constant="5" id="hU1-Mj-KcL"/>
@@ -1183,7 +1252,7 @@
                             <constraint firstItem="kem-Xa-GBB" firstAttribute="leading" secondItem="N6D-Og-myI" secondAttribute="leading" constant="20" id="xah-vl-wx0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="hp9-cc-bsr"/>
+                    <navigationItem key="navigationItem" title="Profile" id="pn6-L2-LdB"/>
                     <connections>
                         <outlet property="facebookLink" destination="E1a-SS-QlV" id="ndJ-lP-qfD"/>
                         <outlet property="nameField" destination="jyL-yu-qyY" id="xxf-EW-BWJ"/>
@@ -1195,7 +1264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VDk-6U-614" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="1145"/>
+            <point key="canvasLocation" x="3816" y="1144"/>
         </scene>
         <!--Find Friends-->
         <scene sceneID="4mT-63-RSD">
@@ -1260,13 +1329,13 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GY3-uH-zmU">
-                                                            <rect key="frame" x="90" y="10" width="274" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <rect key="frame" x="90" y="10" width="274" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoO-9v-bHc">
-                                                            <rect key="frame" x="90" y="41" width="274" height="21"/>
+                                                            <rect key="frame" x="90" y="44" width="274" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1335,7 +1404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcL-q7-cIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4498.5507246376819" y="1143.75"/>
+            <point key="canvasLocation" x="5408.6956521739139" y="1143.75"/>
         </scene>
         <!--Find Challenges-->
         <scene sceneID="irX-hL-7Ab">
@@ -1464,7 +1533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULm-Q0-hgZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6002.898550724638" y="1144.4196428571429"/>
+            <point key="canvasLocation" x="6913.04347826087" y="1144.4196428571429"/>
         </scene>
         <!--Friend Profile View Controller-->
         <scene sceneID="7gj-kf-xoG">
@@ -1967,7 +2036,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Crq-qz-3Uo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7828.985507246377" y="2489.7321428571427"/>
+            <point key="canvasLocation" x="8739.1304347826099" y="2489.7321428571427"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="p9I-3n-iof">
@@ -1982,7 +2051,7 @@
                     <connections>
                         <segue destination="UNN-6S-cul" kind="relationship" relationship="viewControllers" id="ntc-iZ-7Gp"/>
                         <segue destination="f6x-Ub-QyD" kind="relationship" relationship="viewControllers" id="SBe-S0-ec8"/>
-                        <segue destination="rGR-YF-B5d" kind="relationship" relationship="viewControllers" id="dzi-oH-nvu"/>
+                        <segue destination="ACt-wV-egd" kind="relationship" relationship="viewControllers" id="dzi-oH-nvu"/>
                         <segue destination="IDV-d4-fBt" kind="relationship" relationship="viewControllers" id="KZu-Js-Fmd"/>
                         <segue destination="lGy-Hp-2Qu" kind="relationship" relationship="viewControllers" id="XKc-OF-KTa"/>
                     </connections>
@@ -2064,7 +2133,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHd-u3-EAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3763.7681159420295" y="1143.75"/>
+            <point key="canvasLocation" x="4673.913043478261" y="1143.75"/>
         </scene>
         <!--Challenges-->
         <scene sceneID="w2p-6W-7n6">
@@ -2083,7 +2152,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqC-xc-mSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5308.695652173913" y="1145.7589285714284"/>
+            <point key="canvasLocation" x="6217.3913043478269" y="1145.0892857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yDu-7l-wTc">
@@ -2102,7 +2171,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbv-pS-MF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6918.8405797101459" y="2489.7321428571427"/>
+            <point key="canvasLocation" x="7828.985507246377" y="2489.7321428571427"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ayO-99-V64">
@@ -2121,6 +2190,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCr-iu-bGe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860.86956521739137" y="2531.9196428571427"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="FHe-Ug-0fW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ACt-wV-egd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="hp9-cc-bsr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Py3-sT-dhh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rGR-YF-B5d" kind="relationship" relationship="rootViewController" id="1yr-hc-7qp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ewN-YJ-FhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3095.6521739130435" y="1144.4196428571429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aNi-gt-nYa">
+            <objects>
+                <navigationController storyboardIdentifier="GalleryFormSheetController" automaticallyAdjustsScrollViewInsets="NO" id="oyB-6z-Qa1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xft-Cm-aSo">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="If6-mf-GqW" kind="relationship" relationship="rootViewController" id="b2O-XK-Ww3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bcf-3e-JDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2737.68115942029" y="2531.9196428571427"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
