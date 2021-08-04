@@ -11,6 +11,7 @@
 #import "TagCell.h"
 #import <CCDropDownMenus/CCDropDownMenus.h>
 #import "Challenge.h"
+#import "Colours.h"
 
 @interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,CCDropDownMenuDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *challengePic;
@@ -62,7 +63,13 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width-layout.minimumInteritemSpacing*(4-1))/4;
     CGFloat itemHeight = itemWidth*0.3;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-    // Do any additional setup after loading the view.
+    
+    self.navigationItem.title = @"";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setTranslucent:YES];
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Rockwell-Bold" size:25], NSForegroundColorAttributeName : [UIColor blackColor]};
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self setupFriend];

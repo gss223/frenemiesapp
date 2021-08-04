@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "SwipeUserCell.h"
 #import "FriendProfileViewController.h"
+#import "Colours.h"
 
 @interface FriendViewController () <UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate,UISearchBarDelegate>
 @property (strong,nonatomic) NSArray *allUsers;
@@ -33,6 +34,13 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(removeCurrentFriends) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview: self.refreshControl atIndex:0];
+    
+    self.navigationItem.title = @"";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setTranslucent:YES];
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Rockwell-Bold" size:25], NSForegroundColorAttributeName : [UIColor blackColor]};
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self removeCurrentFriends];

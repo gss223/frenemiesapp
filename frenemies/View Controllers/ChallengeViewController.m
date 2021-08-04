@@ -226,13 +226,11 @@
     UINavigationController *navigationController = [self formSheetControllerWithNavigationController];
      MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:navigationController];
      formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
-     formSheetController.presentationController.shouldApplyBackgroundBlurEffect = YES;
      GraphViewController *gViewController = [navigationController.viewControllers firstObject];
      
      gViewController.user = self.participants[(int)i];
-     formSheetController.presentationController.shouldCenterVertically = YES;
      
-     formSheetController.presentationController.contentViewSize =  CGSizeMake(265, 325);
+     formSheetController.presentationController.contentViewSize =  CGSizeMake(350, 100);
 
      [self presentViewController:formSheetController animated:YES completion:nil];
 }

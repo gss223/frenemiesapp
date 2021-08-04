@@ -27,6 +27,8 @@
     self.friendUsername.text = self.user.username;
     [self.addFriend setTitle:@"Add Friend" forState:UIControlStateNormal];
     self.addFriend.enabled = YES;
+    self.friendProfilePic.layer.cornerRadius = 145/2;
+    self.friendProfilePic.layer.masksToBounds = YES;
     PFFile *ImageFile =self.user[@"profilePic"];
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

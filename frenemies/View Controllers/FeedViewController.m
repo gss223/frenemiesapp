@@ -14,6 +14,7 @@
 #import "ChallengeViewController.h"
 #import "DoneViewController.h"
 #import "ChallengeDetailViewController.h"
+#import "Colours.h"
 
 @interface FeedViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -30,8 +31,15 @@
     self.tableView.dataSource = self;
     [self setUpChallenge];
     self.refreshControl = [[UIRefreshControl alloc] init];
-        [self.refreshControl addTarget:self action:@selector(setUpChallenge) forControlEvents:UIControlEventValueChanged];
-        [self.tableView insertSubview: self.refreshControl atIndex:0];
+    [self.refreshControl addTarget:self action:@selector(setUpChallenge) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview: self.refreshControl atIndex:0];
+    
+    self.navigationItem.title = @"Challenges";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setTranslucent:YES];
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Rockwell-Bold" size:25], NSForegroundColorAttributeName : [UIColor blackColor]};
 }
 -(void) viewWillAppear:(BOOL)animated{
     [self setUpChallenge];

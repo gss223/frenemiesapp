@@ -28,6 +28,8 @@
 -(void) setUpView{
     self.nameLabel.text = self.user[@"name"];
     self.usernameLabel.text = self.user.username;
+    self.profilePic.layer.cornerRadius = 35;
+    self.profilePic.layer.masksToBounds = YES;
     PFFile *ImageFile =self.user[@"profilePic"];
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

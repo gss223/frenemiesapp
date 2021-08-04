@@ -11,6 +11,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "SwipeUserCell.h"
 #import "APIManager.h"
+#import "Colours.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -38,6 +39,13 @@
     UITapGestureRecognizer *photoTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapPhoto:)];
     [self.profilePic addGestureRecognizer:photoTapGestureRecognizer];
     [self.profilePic setUserInteractionEnabled:YES];
+    
+    self.navigationItem.title = @"";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setTranslucent:YES];
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Rockwell-Bold" size:25], NSForegroundColorAttributeName : [UIColor blackColor]};
     
 }
 -(void) fixFacebookButton{
