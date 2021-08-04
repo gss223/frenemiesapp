@@ -49,8 +49,6 @@
             NSString *yourId =[PFUser currentUser].objectId;
             PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
             [query whereKey:@"userId" equalTo:yourId];
-
-                // Retrieve the object by id
             [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                 if(objects==nil || objects.count==0){
                     PFObject *newLink = [PFObject objectWithClassName:@"LinkChallenge"];
@@ -66,7 +64,6 @@
                     }];
                 }
                 else{
-                
                     if(error==nil){
                         PFObject *user = objects[0];
                         if (user[@"challengeArray"] ==nil){
@@ -77,8 +74,6 @@
                             [challArray addObject:challengeOId];
                             user[@"challengeArray"] = challArray;
                         }
-                        NSLog(@"%@",user[@"challengeArray"]);
-                        NSLog(@"success");
                         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                             if (error==nil){
                                 NSLog(@"saved user");

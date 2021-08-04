@@ -11,7 +11,6 @@
 #import "TagCell.h"
 #import <CCDropDownMenus/CCDropDownMenus.h>
 #import "Challenge.h"
-#import "Colours.h"
 
 @interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,CCDropDownMenuDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *challengePic;

@@ -133,7 +133,6 @@
             [yourTags addObject:chall.tags];
         }
         int count = 0;
-        NSLog(@"%@", compareWeight);
         for (NSArray *yourTag in yourTags){
             [weightTags addObject:[NSArray arrayWithObjects:[self calculateAbsRelated:yourTag withBaseVal:compareWeight],[NSNumber numberWithInt:count], nil]];
             count+=1;
@@ -283,14 +282,5 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
     id secondValue = [second objectAtIndex:0];
     return [firstValue compare:secondValue];
 }
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
 
 @end

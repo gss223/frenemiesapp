@@ -10,7 +10,6 @@
 #import "Challenge.h"
 #import <Parse/Parse.h>
 #import "ChallengeDetailViewController.h"
-#import "Colours.h"
 
 @interface ChallengeFindViewController () <UITableViewDelegate,UITableViewDataSource,ChallengeFindCellDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -109,8 +108,6 @@
 #pragma mark - ChallengeFindCellDelegate
 -(void)addChallengeButtonAction:(Challenge *)challenge{
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
-
-    // Retrieve the object by id
     [query getObjectInBackgroundWithId:self.linkChallengeId
                                  block:^(PFObject *linkChallenge, NSError *error) {
         NSMutableArray *challenges = linkChallenge[@"challengeArray"];
@@ -144,7 +141,6 @@
 }
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

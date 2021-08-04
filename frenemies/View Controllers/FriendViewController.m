@@ -9,7 +9,6 @@
 #import <Parse/Parse.h>
 #import "SwipeUserCell.h"
 #import "FriendProfileViewController.h"
-#import "Colours.h"
 
 @interface FriendViewController () <UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate,UISearchBarDelegate>
 @property (strong,nonatomic) NSArray *allUsers;
@@ -140,8 +139,6 @@
             NSString *fOid = object.objectId;
             NSLog(@"%@",fOid);
             PFQuery *query2 = [PFQuery queryWithClassName:@"Friend"];
-
-            // Retrieve the object by id
             [query2 getObjectInBackgroundWithId:fOid
                                          block:^(PFObject *friend, NSError *error) {
                 NSMutableArray *myFriends = friend[@"friendArray"];
@@ -150,10 +147,6 @@
                 }
                 else{
                     [myFriends addObject:friendId];
-                }
-                NSLog(@"%@",myFriends);
-                for (NSString *friendxs in myFriends){
-                    NSLog(@"%@",friendxs);
                 }
                 friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
                 NSLog(@"addedFriend");
@@ -210,10 +203,6 @@
                 else{
                     [myFriends addObject:friendId];
                 }
-                NSLog(@"%@",myFriends);
-                for (NSString *friendxs in myFriends){
-                    NSLog(@"%@",friendxs);
-                }
                 friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
                 NSLog(@"addedFriend");
                 
@@ -259,8 +248,6 @@
   [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
 }
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

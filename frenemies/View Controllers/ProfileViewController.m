@@ -78,8 +78,6 @@
 #pragma mark - Button Actions
 - (IBAction)saveChanges:(id)sender {
     PFQuery *query = [PFUser query];
-
-        // Retrieve the object by id
     [query getObjectInBackgroundWithId:[PFUser currentUser].objectId
                                      block:^(PFObject *user, NSError *error) {
         if(error==nil){
@@ -181,10 +179,6 @@
                 else{
                     [myFriends addObject:friendId];
                 }
-                NSLog(@"%@",myFriends);
-                for (NSString *friendxs in myFriends){
-                    NSLog(@"%@",friendxs);
-                }
                 friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
                 NSLog(@"addedFriend");
                 
@@ -237,10 +231,6 @@
                 }
                 else{
                     [myFriends addObject:friendId];
-                }
-                NSLog(@"%@",myFriends);
-                for (NSString *friendxs in myFriends){
-                    NSLog(@"%@",friendxs);
                 }
                 friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
                 NSLog(@"addedFriend");
@@ -341,14 +331,4 @@
     
     return newImage;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

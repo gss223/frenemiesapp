@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpView];
-    // Do any additional setup after loading the view.
 }
 -(void)setUpView{
     self.friendName.text = self.user[@"name"];
@@ -79,10 +78,6 @@
                 else{
                     [myFriends addObject:friendId];
                 }
-                NSLog(@"%@",myFriends);
-                for (NSString *friendxs in myFriends){
-                    NSLog(@"%@",friendxs);
-                }
                 friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
                 NSLog(@"addedFriend");
                 
@@ -133,10 +128,6 @@
                 else{
                     [myFriends addObject:friendId];
                 }
-                NSLog(@"%@",myFriends);
-                for (NSString *friendxs in myFriends){
-                    NSLog(@"%@",friendxs);
-                }
                 friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
                 NSLog(@"addedFriend");
                 
@@ -149,8 +140,6 @@
                     }
                 }];
             }];
-            
-           
         }
     }];
 }

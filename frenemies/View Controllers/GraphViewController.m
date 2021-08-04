@@ -23,7 +23,6 @@
     [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
     [navigationBar setTranslucent:YES];
-    // Do any additional setup after loading the view.
 }
 -(void) setUpView{
     self.nameLabel.text = self.user[@"name"];

@@ -27,7 +27,6 @@
     [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
     [navigationBar setTranslucent:YES];
-    // Do any additional setup after loading the view.
 }
 -(void)setUpView{
     self.nameLabel.text = self.challenge.challengeName;
@@ -45,8 +44,6 @@
 }
 -(void)checkCurrent{
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
-
-    // Retrieve the object by id
     [query getObjectInBackgroundWithId:self.linkChallengeId
                                  block:^(PFObject *linkChallenge, NSError *error) {
         NSMutableArray *challenges = linkChallenge[@"challengeArray"];

@@ -14,7 +14,6 @@
 #import "ChallengeViewController.h"
 #import "DoneViewController.h"
 #import "ChallengeDetailViewController.h"
-#import "Colours.h"
 
 @interface FeedViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -48,8 +47,6 @@
     NSString *yourId =[PFUser currentUser].objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
     [query whereKey:@"userId" equalTo:yourId];
-
-        // Retrieve the object by id
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             if(error==nil){
                 NSLog(@"%@",object[@"challengeArray"]);
@@ -113,11 +110,7 @@
 }
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"challengeLogSegue"]){
         Challenge *sentChallenge = sender;
         ChallengeViewController *detailsViewController = [segue destinationViewController];
