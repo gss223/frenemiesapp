@@ -44,9 +44,19 @@
     NSUInteger value= sender.value;
     self.logUnit.text= [NSString stringWithFormat:@"%02lu",value];
 }
-- (IBAction)addAction:(id)sender {
+- (IBAction)addButtonAction:(id)sender {
     if (self.overallImage == nil){
-        NSLog(@"set alert here");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Field"
+            message:@"Please add an image."
+            preferredStyle:(UIAlertControllerStyleAlert)];
+        // create a cancel action
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+            handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        // add the cancel action to the alertController
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:^{
+        }];
     }
     else{
         UIImage *sendImage = self.overallImage;
@@ -58,6 +68,7 @@
         }];
     }
 }
+
 -(void)clearData{
     self.logImage.image = nil;
     self.stepUnit.value = 0;

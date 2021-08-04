@@ -638,13 +638,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uf-BZ-ClM">
-                                <rect key="frame" x="349" y="123" width="30" height="30"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="addAction:" destination="vC4-xT-Llc" eventType="touchUpInside" id="aXi-BS-ilS"/>
-                                </connections>
-                            </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-t7-nkC">
                                 <rect key="frame" x="110" y="159" width="94" height="32"/>
                                 <connections>
@@ -688,12 +681,10 @@
                             <constraint firstItem="kcP-t7-nkC" firstAttribute="leading" secondItem="PDU-1L-r7E" secondAttribute="trailing" constant="10" id="CoR-hD-oDe"/>
                             <constraint firstItem="PDU-1L-r7E" firstAttribute="top" secondItem="xEt-pk-fAo" secondAttribute="top" constant="70" id="IN1-Ns-Qh8"/>
                             <constraint firstItem="75u-Wt-yLT" firstAttribute="leading" secondItem="PDU-1L-r7E" secondAttribute="leading" id="MW4-3k-XD6"/>
-                            <constraint firstItem="9Uf-BZ-ClM" firstAttribute="top" secondItem="xEt-pk-fAo" secondAttribute="top" constant="35" id="P1b-sV-3D8"/>
                             <constraint firstItem="kcP-t7-nkC" firstAttribute="centerY" secondItem="PDU-1L-r7E" secondAttribute="centerY" id="Qlm-gZ-MJQ"/>
                             <constraint firstItem="75u-Wt-yLT" firstAttribute="width" secondItem="hpB-PL-3z4" secondAttribute="width" id="aOh-86-w8B"/>
                             <constraint firstItem="xEt-pk-fAo" firstAttribute="trailing" secondItem="Kmg-2U-xbw" secondAttribute="trailing" constant="20" id="g55-Jb-TNw"/>
                             <constraint firstItem="75u-Wt-yLT" firstAttribute="top" secondItem="hpB-PL-3z4" secondAttribute="bottom" constant="25" id="lPd-xd-j7S"/>
-                            <constraint firstItem="xEt-pk-fAo" firstAttribute="trailing" secondItem="9Uf-BZ-ClM" secondAttribute="trailing" constant="35" id="lhJ-WZ-1p8"/>
                             <constraint firstItem="PDU-1L-r7E" firstAttribute="leading" secondItem="xEt-pk-fAo" secondAttribute="leading" constant="50" id="nWF-4j-aqb"/>
                             <constraint firstItem="hpB-PL-3z4" firstAttribute="top" secondItem="PDU-1L-r7E" secondAttribute="bottom" constant="50" id="qMi-pI-CxM"/>
                             <constraint firstItem="Kmg-2U-xbw" firstAttribute="leading" secondItem="kcP-t7-nkC" secondAttribute="trailing" constant="10" id="ukr-Dh-8cn"/>
@@ -701,7 +692,13 @@
                             <constraint firstItem="hpB-PL-3z4" firstAttribute="leading" secondItem="PDU-1L-r7E" secondAttribute="leading" id="zW5-1z-WLf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hmB-iv-Nci"/>
+                    <navigationItem key="navigationItem" id="hmB-iv-Nci">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="1eU-pA-OFf">
+                            <connections>
+                                <action selector="addButtonAction:" destination="vC4-xT-Llc" id="bA0-vN-7l2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="logCaption" destination="75u-Wt-yLT" id="buA-fE-DHB"/>
                         <outlet property="logImage" destination="hpB-PL-3z4" id="p8t-zb-Q6L"/>
