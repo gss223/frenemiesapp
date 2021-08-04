@@ -45,7 +45,7 @@ This is a friendly competition app where groups can create specific battles amon
 
 - [x] User can watch a progress bar throughout the challenge
 - [x] Public and private challenges
-- [ ] User can post completed challenges to social media
+- [x] User can post completed challenges to social media
 - [ ] User can add in maps for running challenges
 - [ ] User can access HealthKit
 - [ ] User can see trending challenges

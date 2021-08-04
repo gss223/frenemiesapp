@@ -40,6 +40,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.units setAlpha:0.0f];
+    [self.unitChose setAlpha:0.0f];
+    [self.rankLabel setAlpha:0.0f];
+    [self.partAmount setAlpha:0.0f];
+    [self.loggedTot setAlpha:0.0f];
+    [self.outOf setAlpha:0.0f];
+    [self.people setAlpha:0.0f];
+    [self.igButton setAlpha:0.0f];
+    [self.fbButton setAlpha:0.0f];
     [self checkIfDataGone];
     [self getLogData];
     // Do any additional setup after loading the view.
@@ -241,8 +250,8 @@
     if ([[UIApplication sharedApplication] canOpenURL:urlScheme]) {
 
           // Assign background and sticker image assets to pasteboard
-        NSArray *pasteboardItems = @[@{@"com.facebook.sharedSticker.backgroundTopColor" : @"#aadbee",
-                                       @"com.facebook.sharedSticker.backgroundBottomColor" : @"#3880f7",
+        NSArray *pasteboardItems = @[@{@"com.facebook.sharedSticker.backgroundTopColor" : @"#abcdef",
+                                       @"com.facebook.sharedSticker.backgroundBottomColor" : @"#abcdef",
                                          @"com.facebook.sharedSticker.stickerImage" : stickerImage,
                                          @"com.facebook.sharedSticker.appID" : appId}];
           NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
@@ -278,6 +287,8 @@
     else{
         self.trophyView.image = [UIImage imageNamed:@"badge"];
     }
+    self.challengeImage.layer.cornerRadius = 5;
+    self.challengeImage.layer.masksToBounds = true;
     PFFile *ImageFile =self.challenge.challengePic;
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

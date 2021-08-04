@@ -852,7 +852,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="250" height="350"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="celebrate" translatesAutoresizingMaskIntoConstraints="NO" id="eJo-LZ-35f">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="celebrate" translatesAutoresizingMaskIntoConstraints="NO" id="eJo-LZ-35f">
                             <rect key="frame" x="50" y="20" width="150" height="150"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="lHQ-Xi-UTR"/>
