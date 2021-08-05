@@ -34,12 +34,18 @@
     [self.refreshControl addTarget:self action:@selector(removeCurrentFriends) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview: self.refreshControl atIndex:0];
     
+    UILabel *navTitle = [[UILabel alloc] init];
+    navTitle.frame = CGRectMake(0,0,190,45);
+    navTitle.text = @"Find Friends";
+    navTitle.font = [UIFont fontWithName:@"Rockwell-Bold" size:25];
+    navTitle.backgroundColor = [UIColor clearColor];
+    navTitle.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = navTitle;
     self.navigationItem.title = @"";
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
     [navigationBar setTranslucent:YES];
-    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Rockwell-Bold" size:25], NSForegroundColorAttributeName : [UIColor blackColor]};
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self removeCurrentFriends];
@@ -50,9 +56,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
         if (error==nil){
             self.allUsers = objects;
-            for (PFUser *user in self.allUsers){
-                NSLog(@"%@",user.username);
-            }
             self.filteredData = self.allUsers;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];

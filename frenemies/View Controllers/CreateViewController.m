@@ -68,7 +68,6 @@
     [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
     [navigationBar setTranslucent:YES];
-    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Rockwell-Bold" size:25], NSForegroundColorAttributeName : [UIColor blackColor]};
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self setupFriend];
