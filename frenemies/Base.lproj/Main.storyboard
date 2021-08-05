@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2S-fA-Vng">
-                                <rect key="frame" x="124.5" y="522.5" width="165" height="30"/>
+                                <rect key="frame" x="124.5" y="545" width="165" height="30"/>
                                 <state key="normal" title="Continue with Facebook"/>
                                 <connections>
                                     <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y7c-Ib-wcN"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wlF-mR-C4N">
-                                <rect key="frame" x="57" y="325" width="300" height="34"/>
+                                <rect key="frame" x="57" y="375" width="300" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="3bz-4J-3cz"/>
                                 </constraints>
@@ -33,12 +33,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxD-Nz-GZp">
-                                <rect key="frame" x="57" y="379" width="300" height="34"/>
+                                <rect key="frame" x="57" y="429" width="300" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-Rk-NTN">
-                                <rect key="frame" x="188" y="433" width="38" height="30"/>
+                                <rect key="frame" x="188" y="483" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="normalLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V9A-Fe-gI2"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frenemies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pms-9z-45h">
-                                <rect key="frame" x="95.5" y="255" width="223" height="50"/>
+                                <rect key="frame" x="95.5" y="305" width="223" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D9w-lV-7Ip"/>
                                 </constraints>
@@ -60,17 +60,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="fistbumplogo" translatesAutoresizingMaskIntoConstraints="NO" id="keK-5A-zWF">
+                                <rect key="frame" x="159.5" y="195" width="95" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="MXU-Yb-N3J"/>
+                                    <constraint firstAttribute="height" constant="95" id="gYk-sv-gOd"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MNa-Rk-NTN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0gw-GQ-tZw"/>
-                            <constraint firstItem="i2S-fA-Vng" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.2" id="6qK-l8-OEc"/>
+                            <constraint firstItem="MNa-Rk-NTN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="0gw-GQ-tZw"/>
+                            <constraint firstItem="i2S-fA-Vng" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.25" id="6qK-l8-OEc"/>
                             <constraint firstItem="jxD-Nz-GZp" firstAttribute="width" secondItem="wlF-mR-C4N" secondAttribute="width" id="9Is-KC-Dqn"/>
                             <constraint firstItem="MNa-Rk-NTN" firstAttribute="top" secondItem="jxD-Nz-GZp" secondAttribute="bottom" constant="20" id="A30-5m-izK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rn7-Fr-IQY" secondAttribute="trailing" constant="45" id="Ckd-eE-mod"/>
+                            <constraint firstItem="Pms-9z-45h" firstAttribute="top" secondItem="keK-5A-zWF" secondAttribute="bottom" constant="15" id="K95-na-kht"/>
                             <constraint firstItem="wlF-mR-C4N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V60-bv-mss"/>
                             <constraint firstItem="wlF-mR-C4N" firstAttribute="top" secondItem="Pms-9z-45h" secondAttribute="bottom" constant="20" id="ZsR-hq-57k"/>
+                            <constraint firstItem="keK-5A-zWF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fzT-AP-37w"/>
                             <constraint firstItem="i2S-fA-Vng" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ifN-tb-vU9"/>
                             <constraint firstItem="jxD-Nz-GZp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jj3-bd-L2N"/>
                             <constraint firstItem="MNa-Rk-NTN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pVM-ud-8PV"/>
@@ -100,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hP8-AH-Dgk">
-                                <rect key="frame" x="57" y="325" width="300" height="34"/>
+                                <rect key="frame" x="57" y="375" width="300" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="yEG-rY-fyq"/>
                                 </constraints>
@@ -108,19 +117,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acj-jf-cXu">
-                                <rect key="frame" x="57" y="379" width="300" height="34"/>
+                                <rect key="frame" x="57" y="429" width="300" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lP-3d-Wst">
-                                <rect key="frame" x="183" y="433" width="48" height="30"/>
+                                <rect key="frame" x="183" y="483" width="48" height="30"/>
                                 <state key="normal" title="Signup"/>
                                 <connections>
                                     <action selector="signupAction:" destination="wjB-N7-u5e" eventType="touchUpInside" id="baD-fI-Ooy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frenemies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2i-it-8Fm">
-                                <rect key="frame" x="95.5" y="255" width="223" height="50"/>
+                                <rect key="frame" x="95.5" y="305" width="223" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="vfd-jw-6jW"/>
                                 </constraints>
@@ -136,7 +145,7 @@
                             <constraint firstItem="hP8-AH-Dgk" firstAttribute="centerX" secondItem="Gwh-zx-Nfn" secondAttribute="centerX" id="JOx-p7-Pc5"/>
                             <constraint firstItem="acj-jf-cXu" firstAttribute="top" secondItem="hP8-AH-Dgk" secondAttribute="bottom" constant="20" id="LD6-7h-6U4"/>
                             <constraint firstItem="hP8-AH-Dgk" firstAttribute="top" secondItem="Q2i-it-8Fm" secondAttribute="bottom" constant="20" id="ct8-Ja-9NH"/>
-                            <constraint firstItem="5lP-3d-Wst" firstAttribute="centerY" secondItem="Gwh-zx-Nfn" secondAttribute="centerY" id="gve-yH-Jq7"/>
+                            <constraint firstItem="5lP-3d-Wst" firstAttribute="centerY" secondItem="Gwh-zx-Nfn" secondAttribute="centerY" constant="50" id="gve-yH-Jq7"/>
                             <constraint firstItem="Q2i-it-8Fm" firstAttribute="centerX" secondItem="Gwh-zx-Nfn" secondAttribute="centerX" id="i6F-rZ-BAu"/>
                             <constraint firstItem="acj-jf-cXu" firstAttribute="width" secondItem="hP8-AH-Dgk" secondAttribute="width" id="pCT-dg-Gjk"/>
                             <constraint firstItem="5lP-3d-Wst" firstAttribute="top" secondItem="acj-jf-cXu" secondAttribute="bottom" constant="20" id="rw4-0L-s1a"/>
@@ -2376,7 +2385,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Rjb-lw-FHW"/>
+        <segue reference="tYp-1J-qbj"/>
         <segue reference="EHO-Q7-Zp8"/>
         <segue reference="Z9m-rs-tl6"/>
     </inferredMetricsTieBreakers>
@@ -2385,6 +2394,7 @@
         <image name="blank-profile" width="640" height="640"/>
         <image name="celebrate" width="641" height="556"/>
         <image name="f_logo_RGB-Black_58" width="130" height="130"/>
+        <image name="fistbumplogo" width="300" height="300"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="insta_camera_btn" width="25" height="25"/>
