@@ -11,6 +11,7 @@
 #import "TagCell.h"
 #import <CCDropDownMenus/CCDropDownMenus.h>
 #import "Challenge.h"
+#import "Colours.h"
 
 @interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,CCDropDownMenuDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *challengePic;
@@ -65,8 +66,7 @@
     
     self.navigationItem.title = @"";
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setBackgroundColor:[UIColor tealColor]];
     [navigationBar setTranslucent:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{

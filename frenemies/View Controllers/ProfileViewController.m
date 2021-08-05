@@ -42,10 +42,8 @@
     
     self.navigationItem.title = @"";
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setBackgroundColor:[UIColor pastelPurpleColor]];
     [navigationBar setTranslucent:YES];
-    
 }
 -(void) fixFacebookButton{
     if (![PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]){

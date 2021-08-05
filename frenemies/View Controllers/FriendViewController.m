@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "SwipeUserCell.h"
 #import "FriendProfileViewController.h"
+#import "Colours.h"
 
 @interface FriendViewController () <UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate,UISearchBarDelegate>
 @property (strong,nonatomic) NSArray *allUsers;
@@ -36,8 +37,7 @@
     
     self.navigationItem.title = @"";
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setBackgroundColor:[UIColor salmonColor]];
     [navigationBar setTranslucent:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{

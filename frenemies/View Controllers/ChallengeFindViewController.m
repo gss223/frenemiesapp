@@ -10,6 +10,7 @@
 #import "Challenge.h"
 #import <Parse/Parse.h>
 #import "ChallengeDetailViewController.h"
+#import "Colours.h"
 
 @interface ChallengeFindViewController () <UITableViewDelegate,UITableViewDataSource,ChallengeFindCellDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,8 +37,7 @@
     
     self.navigationItem.title = @"";
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-    [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [navigationBar setShadowImage:[UIImage new]];
+    [navigationBar setBackgroundColor:[UIColor salmonColor]];
     [navigationBar setTranslucent:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
