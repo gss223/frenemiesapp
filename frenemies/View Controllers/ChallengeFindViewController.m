@@ -34,13 +34,6 @@
     [self.refreshControl addTarget:self action:@selector(removeCurrentChallenges) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview: self.refreshControl atIndex:0];
     
-    UILabel *navTitle = [[UILabel alloc] init];
-    navTitle.frame = CGRectMake(0,0,190,45);
-    navTitle.text = @"Find Challenges";
-    navTitle.font = [UIFont fontWithName:@"Rockwell-Bold" size:25];
-    navTitle.backgroundColor = [UIColor clearColor];
-    navTitle.textAlignment = NSTextAlignmentCenter;
-    self.navigationItem.titleView = navTitle;
     self.navigationItem.title = @"";
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
