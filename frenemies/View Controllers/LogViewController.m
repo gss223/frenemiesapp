@@ -8,7 +8,7 @@
 #import "LogViewController.h"
 #import "Gallery.h"
 
-@interface LogViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface LogViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *logImage;
 @property (weak, nonatomic) IBOutlet UILabel *units;
 @property (weak, nonatomic) IBOutlet UITextField *logCaption;
@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.logCaption.delegate = self;
+    self.logUnit.delegate = self;
     UITapGestureRecognizer *photoTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapPhoto:)];
     [self.logImage addGestureRecognizer:photoTapGestureRecognizer];
     [self.logImage setUserInteractionEnabled:YES];
