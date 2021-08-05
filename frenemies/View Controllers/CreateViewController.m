@@ -13,7 +13,7 @@
 #import "Challenge.h"
 #import "Colours.h"
 
-@interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,CCDropDownMenuDelegate,UITextViewDelegate>
+@interface CreateViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,CCDropDownMenuDelegate,UITextViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *challengePic;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -43,6 +43,8 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.allowsMultipleSelection = true;
+    self.challengeName.delegate = self;
+    self.challengeDescription.delegate = self;
     self.dropdownArray = [NSArray arrayWithObjects:@"mile",@"meter",@"liter",@"second",@"day",@"cup",@"meal",@"minute",@"hour",nil];
     self.taggingArray = [NSArray arrayWithObjects:@"health", @"fitness",@"food",@"academic",@"social",@"fashion",@"other",nil];
     ManaDropDownMenu *menu = [[ManaDropDownMenu alloc] initWithFrame:self.dropdownView.frame title:@"Units"];
@@ -167,6 +169,9 @@
         textView.textColor = [UIColor systemGrayColor];
     }
 }
+-(void)endTextView{
+    [self.challengeDescription resignFirstResponder];
+}
 #pragma mark - ImagePicker
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
@@ -181,14 +186,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void) didTapPhoto:(UITapGestureRecognizer *)sender{
-    //TODO: Call method delegate
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
 
     // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        //imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
         NSLog(@"Camera 🚫 available so we will use photo library instead");
@@ -225,6 +229,7 @@
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self endTextView];
     if (self.selectedTags ==nil){
         self.selectedTags = [NSMutableArray array];
     }
@@ -254,6 +259,11 @@
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.selectedFriends removeObject:self.myFriends[indexPath.row]];
+}
+#pragma mark - textField
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

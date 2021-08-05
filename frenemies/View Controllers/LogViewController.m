@@ -76,6 +76,10 @@
     self.logUnit.text = @"0";
     self.overallImage = nil;
 }
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 #pragma mark - ImagePicker
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
