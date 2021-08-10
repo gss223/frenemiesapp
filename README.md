@@ -15,7 +15,7 @@ This is a friendly competition app where groups can create specific battles amon
 
 ### Demo
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=UooAGx6csrI "Frenemies Demo")
+[![Frenemies Demo](https://github.com/gss223/frenemiesapp/blob/main/thumbnail.png)](https://www.youtube.com/watch?v=UooAGx6csrI "Frenemies Demo")
 
 ### App Evaluation
 - **Category:** Social
