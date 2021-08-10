@@ -31,8 +31,6 @@
     self.facebookCont.backgroundColor=[UIColor tealColor];
     self.facebookCont.clipsToBounds = YES;
     self.facebookCont.layer.cornerRadius = 3;
-    //self.buttonLogin.layer.borderColor=[UIColor redColor].CGColor;
-    //self.buttonLogin.layer.borderWidth=2.0f;
 }
 - (IBAction)loginAction:(id)sender {
     [APIManager facebookLogin:^(PFUser * _Nonnull user, NSError * _Nonnull error) {

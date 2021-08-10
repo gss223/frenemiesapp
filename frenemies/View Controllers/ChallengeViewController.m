@@ -105,11 +105,6 @@
     [query orderByDescending:@"unitAmount"];
     [query findObjectsInBackgroundWithBlock:^(NSArray <Log *> * _Nullable objects, NSError * _Nullable error) {
         if (objects ==nil ||objects.count==0){
-            [Log postLog:self.challenge.objectId withAmount:[NSNumber numberWithInt:0] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (error==nil){
-                    NSLog(@"succesfully logged");
-                }
-            }];
             self.logNumbers = [NSMutableArray arrayWithObject:[NSNumber numberWithInt:0]];
             self.participants = [NSMutableArray arrayWithObject:[PFUser currentUser]];
             self.totalParticipants = [NSNumber numberWithInt:1];
