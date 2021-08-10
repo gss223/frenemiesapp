@@ -147,6 +147,7 @@
         Challenge *sentChallenge = sender;
         ChallengeDetailViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.challenge = sentChallenge;
+        detailsViewController.added = false;
     }
 }
 

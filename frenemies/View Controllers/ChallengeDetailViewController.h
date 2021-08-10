@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChallengeDetailViewController : UIViewController
 @property (strong, nonatomic) Challenge *challenge;
+@property (nonatomic,assign) BOOL added;
 
 @end
 

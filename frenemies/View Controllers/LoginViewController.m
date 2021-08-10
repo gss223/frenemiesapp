@@ -12,16 +12,27 @@
 #import <PFFacebookUtils.h>
 #import "SceneDelegate.h"
 #import "APIManager.h"
+#import "Colours.h"
 @import Parse;
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLogin;
+@property (weak, nonatomic) IBOutlet UIButton *facebookCont;
 
 @end
 @implementation LoginViewController
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
+    [super viewDidLoad];
+    self.buttonLogin.backgroundColor=[UIColor coralColor];
+    self.buttonLogin.clipsToBounds = YES;
+    self.buttonLogin.layer.cornerRadius = 3;
+    self.facebookCont.backgroundColor=[UIColor tealColor];
+    self.facebookCont.clipsToBounds = YES;
+    self.facebookCont.layer.cornerRadius = 3;
+    //self.buttonLogin.layer.borderColor=[UIColor redColor].CGColor;
+    //self.buttonLogin.layer.borderWidth=2.0f;
 }
 - (IBAction)loginAction:(id)sender {
     [APIManager facebookLogin:^(PFUser * _Nonnull user, NSError * _Nonnull error) {

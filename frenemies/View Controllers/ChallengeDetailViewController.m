@@ -52,11 +52,17 @@
     [self setUpDetails];
 }
 -(void)setUpDetails{
+    if (self.added){
+        self.challengeAddButton.title = @"Added";
+        self.challengeAddButton.enabled = NO;
+    }
+    else{
+        self.challengeAddButton.title = @"Add Challenge";
+        self.challengeAddButton.enabled = YES;
+    }
     self.challengeNameLabel.text = self.challenge.challengeName;
     self.challengePic.layer.cornerRadius = 30;
     self.challengePic.layer.masksToBounds = YES;
-    self.challengeAddButton.title = @"Add Challenge";
-    self.challengeAddButton.enabled = YES;
     PFFile *ImageFile =self.challenge.challengePic;
     [ImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
