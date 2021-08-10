@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FriendProfileViewController : UIViewController
 @property (nonatomic,strong) PFUser *user;
+@property (nonatomic,assign) BOOL added;
 
 @end
 

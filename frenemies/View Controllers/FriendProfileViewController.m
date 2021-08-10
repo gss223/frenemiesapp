@@ -24,8 +24,14 @@
 -(void)setUpView{
     self.friendName.text = self.user[@"name"];
     self.friendUsername.text = self.user.username;
-    [self.addFriend setTitle:@"Add Friend" forState:UIControlStateNormal];
-    self.addFriend.enabled = YES;
+    if(self.added){
+        [self.addFriend setTitle:@"Added" forState:UIControlStateNormal];
+        self.addFriend.enabled = NO;
+    }
+    else{
+        [self.addFriend setTitle:@"Add Friend" forState:UIControlStateNormal];
+        self.addFriend.enabled = YES;
+    }
     self.friendProfilePic.layer.cornerRadius = 145/2;
     self.friendProfilePic.layer.masksToBounds = YES;
     PFFile *ImageFile =self.user[@"profilePic"];

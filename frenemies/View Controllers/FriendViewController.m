@@ -254,6 +254,7 @@
         PFUser *sentUser = sender;
         FriendProfileViewController *friendViewController = [segue destinationViewController];
         friendViewController.user = sentUser;
+        friendViewController.added = false;
         
     }
     

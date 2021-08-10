@@ -13,6 +13,7 @@
 #import "APIManager.h"
 #import "Colours.h"
 #import "CurrentFriendCell.h"
+#import "FriendProfileViewController.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate,UITextFieldDelegate,CurrentFriendCellDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -162,6 +163,9 @@
 }
 #pragma mark - SwipeUserCellDelegate
 -(void)addButtonAction:(PFUser *)user{
+    [self.currentFriends addObject:user.objectId];
+    [self.cFriend addObject:user];
+    [self.currentFriendsTableView reloadData];
     NSString *friendId = user.objectId;
     NSLog (@"%@",friendId);
     
@@ -334,6 +338,11 @@
 - (void)cellDidClose:(UITableViewCell *)cell {
   [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == self.currentFriendsTableView){
+        [self performSegueWithIdentifier:@"friendProfileSegue" sender:self.cFriend[indexPath.row]];
+    }
+}
 #pragma mark - ImagePicker
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
@@ -356,7 +365,7 @@
 
     // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        //imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
         NSLog(@"Camera 🚫 available so we will use photo library instead");
@@ -396,5 +405,23 @@
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"friendProfileSegue"]){
+        PFUser *sentUser = sender;
+        FriendProfileViewController *friendViewController = [segue destinationViewController];
+        friendViewController.user = sentUser;
+        if([self.currentFriends containsObject:sentUser.objectId]){
+            friendViewController.added = true;
+        }
+        else{
+            friendViewController.added = false;
+        }
+        
+    }
+    
 }
 @end
