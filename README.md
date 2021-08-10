@@ -14,6 +14,7 @@ Original App Design Project
 This is a friendly competition app where groups can create specific battles amongst themselves. For example, who can drink more water during the week. Images for proof can be submitted to keep players honest.
 
 ### Demo
+
 <!-- blank line -->
 <figure class="video_container">
   <iframe src="https://www.youtube.com/embed/UooAGx6csrI" frameborder="0" allowfullscreen="true"> </iframe>
