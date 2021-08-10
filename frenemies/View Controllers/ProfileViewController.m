@@ -12,8 +12,9 @@
 #import "SwipeUserCell.h"
 #import "APIManager.h"
 #import "Colours.h"
+#import "CurrentFriendCell.h"
 
-@interface ProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate>
+@interface ProfileViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,SwipeUserCellDelegate,UITextFieldDelegate,CurrentFriendCellDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
@@ -23,7 +24,10 @@
 @property (strong,nonatomic) NSMutableArray *fbfriends;
 @property (strong,nonatomic) NSArray *fbfriendUser;
 @property (strong,nonatomic) NSMutableArray *currentFriends;
+@property (strong,nonatomic) NSMutableArray *cFriend;
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
+@property (weak, nonatomic) IBOutlet UITableView *currentFriendsTableView;
+@property (strong,nonatomic) NSString *userFriendId;
 
 @end
 
@@ -33,6 +37,9 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.currentFriendsTableView.delegate = self;
+    self.currentFriendsTableView.dataSource = self;
+    self.nameField.delegate = self;
     [self settheProfile];
     [self fixFacebookButton];
     
@@ -44,6 +51,10 @@
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar setBackgroundColor:[UIColor pastelPurpleColor]];
     [navigationBar setTranslucent:YES];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self settheProfile];
+    [self fixFacebookButton];
 }
 -(void) fixFacebookButton{
     if (![PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]){
@@ -116,6 +127,8 @@
         }
         else{
             self.currentFriends = object[@"friendArray"];
+            self.userFriendId = object.objectId;
+            [self getCFriendData];
         }
         [self getFacebookUserId];
     }];
@@ -135,6 +148,16 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
         self.fbfriendUser = objects;
         [self.tableView reloadData];
+    }];
+}
+-(void)getCFriendData{
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"objectId" containedIn:self.currentFriends];
+    [query findObjectsInBackgroundWithBlock:^(NSArray <PFUser *> * _Nullable objects, NSError * _Nullable error) {
+        if (error==nil){
+            self.cFriend = [NSMutableArray arrayWithArray:objects];
+            [self.currentFriendsTableView reloadData];
+        }
     }];
 }
 #pragma mark - SwipeUserCellDelegate
@@ -246,21 +269,62 @@
         }
     }];
 }
+-(void)delButtonAction:(PFUser *)user{
+    [self.cFriend removeObject:user];
+    [self.currentFriendsTableView reloadData];
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Friend"];
+
+    // Retrieve the object by id
+    [query2 getObjectInBackgroundWithId:self.userFriendId
+                                 block:^(PFObject *friend, NSError *error) {
+        NSMutableArray *myFriends = friend[@"friendArray"];
+        if (myFriends ==nil){
+            myFriends = [NSMutableArray array];
+        }
+        else{
+            [myFriends removeObject:user.objectId];
+        }
+        friend[@"friendArray"] = [NSMutableArray arrayWithArray:myFriends];
+        NSLog(@"removedFriend");
+        
+        [friend saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded){
+                NSLog(@"success");
+            }
+            else{
+                NSLog(@"failed");
+            }
+        }];
+    }];
+}
 #pragma mark - UITableView
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.fbfriendUser.count;
+    if(tableView == self.tableView){
+        return self.fbfriendUser.count;
+    }
+    else{
+        return self.cFriend.count;
+    }
 }
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
-    cell.user = self.fbfriendUser[indexPath.row];
-    cell.delegate = self;
-    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
-      [cell openCell];
+    if(tableView == self.tableView){
+        SwipeUserCell *cell = (SwipeUserCell *) [tableView dequeueReusableCellWithIdentifier:@"SwipeUserCell"];
+        cell.user = self.fbfriendUser[indexPath.row];
+        cell.delegate = self;
+        if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+            [cell openCell];
+        }
+        if ([self.currentFriends containsObject:cell.user.objectId]){
+            [cell pressFriend];
+        }
+        return cell;
     }
-    if ([self.currentFriends containsObject:cell.user.objectId]){
-        [cell pressFriend];
+    else{
+        CurrentFriendCell *cell = (CurrentFriendCell *)[tableView dequeueReusableCellWithIdentifier:@"CurrentFriendCell"];
+        cell.user = self.cFriend[indexPath.row];
+        cell.delegate = self;
+        return cell;
     }
-    return cell;
 }
 - (void)cellDidOpen:(UITableViewCell *)cell {
   NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
@@ -327,5 +391,10 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+#pragma mark - textField
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 @end

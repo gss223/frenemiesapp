@@ -113,6 +113,9 @@
     [self.tableView reloadData];
  
 }
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+}
 #pragma mark - Save Friends
 -(void)saveFriend:(NSString *)friendId withyourId:(NSString *)yourId{
     PFQuery *query = [PFQuery queryWithClassName:@"Friend"];

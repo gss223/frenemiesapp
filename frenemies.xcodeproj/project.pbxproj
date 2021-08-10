@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2212D0A12707F72601DAE7A1 /* Pods_frenemies_frenemiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FD82E4BF510242883CD936 /* Pods_frenemies_frenemiesUITests.framework */; };
+		AA16134E26C3155B0094A58A /* CurrentFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16134D26C3155B0094A58A /* CurrentFriendCell.m */; };
 		AA349982269E137500DCC7E7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349981269E137500DCC7E7 /* SignUpViewController.m */; };
 		AA349985269E1DF100DCC7E7 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349984269E1DF100DCC7E7 /* FeedViewController.m */; };
 		AA349988269E1E1700DCC7E7 /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA349987269E1E1700DCC7E7 /* CreateViewController.m */; };
@@ -71,6 +72,8 @@
 		6FCB02DDDCE8DEA372E51C1C /* Pods-frenemiesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemiesTests.debug.xcconfig"; path = "Target Support Files/Pods-frenemiesTests/Pods-frenemiesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72C59350E77F21961A3B9B88 /* Pods-frenemies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frenemies.debug.xcconfig"; path = "Target Support Files/Pods-frenemies/Pods-frenemies.debug.xcconfig"; sourceTree = "<group>"; };
 		79A99CDD99B473C155BB11CF /* Pods_frenemiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_frenemiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA16134C26C3155B0094A58A /* CurrentFriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentFriendCell.h; sourceTree = "<group>"; };
+		AA16134D26C3155B0094A58A /* CurrentFriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentFriendCell.m; sourceTree = "<group>"; };
 		AA349980269E137500DCC7E7 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		AA349981269E137500DCC7E7 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		AA349983269E1DF100DCC7E7 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 				AA962F6426AA05630037229F /* RelatedChallengeCell.m */,
 				AA547E5826AF6DDE00FA5357 /* GalleryCell.h */,
 				AA547E5926AF6DDE00FA5357 /* GalleryCell.m */,
+				AA16134C26C3155B0094A58A /* CurrentFriendCell.h */,
+				AA16134D26C3155B0094A58A /* CurrentFriendCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 				AADF7DA4269CAFB000A6BC5E /* main.m in Sources */,
 				AA46CBED26A8757D00ED656D /* ChallengeFindViewController.m in Sources */,
 				AADF7D96269CAFAF00A6BC5E /* SceneDelegate.m in Sources */,
+				AA16134E26C3155B0094A58A /* CurrentFriendCell.m in Sources */,
 				AA962F6526AA05630037229F /* RelatedChallengeCell.m in Sources */,
 				AABB838026AB6AFF00A0484E /* Gallery.m in Sources */,
 				AA4FECD326B2209000A357DD /* GraphViewController.m in Sources */,

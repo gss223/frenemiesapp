@@ -104,6 +104,9 @@
     
     [self.tableView reloadData];
 }
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+}
 #pragma mark - ChallengeFindCellDelegate
 -(void)addChallengeButtonAction:(Challenge *)challenge{
     PFQuery *query = [PFQuery queryWithClassName:@"LinkChallenge"];
