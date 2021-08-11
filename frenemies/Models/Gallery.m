@@ -7,6 +7,7 @@
 
 #import "Gallery.h"
 #import <Parse/Parse.h>
+#import "Log.h"
 
 @implementation Gallery
 @dynamic objectId;
@@ -29,7 +30,8 @@
     [newGallery saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded){
             NSLog(@"succeeded in posting gallery");
-            PFQuery *query3 = [PFQuery queryWithClassName:@"Log"];
+            [Log updateLog:challengeId withAmount:num];
+            /*PFQuery *query3 = [PFQuery queryWithClassName:@"Log"];
             [query3 whereKey:@"challengeId" equalTo:challengeId];
             [query3 whereKey:@"logger" equalTo:[PFUser currentUser]];
             [query3 getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
@@ -41,7 +43,7 @@
                     logObject[@"unitAmount"] = [NSNumber numberWithInt:uam];
                     [logObject saveInBackground];
                 }];
-            }];
+            }];*/
         }
     }];
     

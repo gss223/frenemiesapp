@@ -51,7 +51,10 @@
             PFQuery *query2 = [PFQuery queryWithClassName:@"Log"];
             [query2 getObjectInBackgroundWithId:logId block:^(PFObject * _Nullable logObject, NSError * _Nullable error) {
                 if (error ==nil){
-                    [logObject incrementKey:@"unitAmount" byAmount:amount];
+                    int uam = [logObject[@"unitAmount"] intValue];
+                    uam+=[amount intValue];
+                    logObject[@"unitAmount"] = [NSNumber numberWithInt:uam];
+                    [logObject saveInBackground];
                 }
                 else{
                     NSLog(@"%@", error.localizedDescription);
